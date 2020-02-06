@@ -1,0 +1,488 @@
+
+\documentclass[12pt]{article} 
+\usepackage{graphicx,relsize, verbatim, amssymb, amsmath, amsthm, mathabx,dcolumn,mathrsfs, dsfont, enumerate, soul, titlesec}
+
+\newcolumntype{2}{D{.}{}{2.0}}
+\textwidth = 7 in
+\textheight = 9.5 in
+\oddsidemargin = -0.3 in
+\evensidemargin = -0.3 in
+\topmargin = -0.4 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+\titlespacing*{\section}
+{0pt}{0ex plus .1ex minus .2ex}{.1ex plus .1ex}
+\titlespacing*{\subsection}
+{0pt}{.5ex plus .1ex minus .2ex}{.3ex plus .2ex}
+
+\DeclareMathOperator{\Gal}{Gal}	
+\DeclareMathOperator{\gal}{Gal}	
+\DeclareMathOperator{\im}{Image}
+\DeclareMathOperator{\Ann}{Ann}	
+\DeclareMathOperator{\spn}{span}	
+\DeclareMathOperator{\sgn}{sgn}	
+
+
+\newcommand{\CC}{\mathbb{C}}	
+\newcommand{\GG}{\mathbb{G}}	
+\newcommand{\LL}{\mathbb{L}}	
+\newcommand{\NN}{\mathbb{N}}	
+\newcommand{\PP}{\mathbb{P}}	
+\newcommand{\QQ}{\mathbb{Q}}	
+\newcommand{\RR}{\mathbb{R}}	
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\one}{\mathds{1}}
+\newcommand{\eps}{\epsilon}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\s}[1]{\sqrt{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\I}[1]{#1^{-1}}
+\newcommand{\Rw}{\Rightarrow}
+\newcommand{\Lw}{\Leftarrow}
+\newcommand{\lw}{\leftarrow}
+\newcommand{\rw}{\rightarrow}
+\newcommand{\p}{\partial}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\sumi}{\sum_{i=0}}
+\newcommand{\sumo}{\sum_{i=1}}
+\newcommand{\num}[1]{{\large \bf  #1)}}
+\newcommand{\del}{\Delta}
+\newcommand{\lamb}{\lambda}	
+\newcommand{\al}{\alpha}	
+\newcommand{\nab}{\nabla}	
+\newcommand{\pp}[2]{\frac{\p #1}{\p #2}}
+\newcommand{\di}{\mathrm{d}}
+\newcommand{\dd}[2]{\frac{\di #1}{\di #2}}
+\newcommand{\intinf}{\int_{-\infty}^\infty}	
+\newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
+
+\newtheorem{thm}{Theorem}
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{lem}{Lemma}[section]
+
+% \unlhd = normal subgroup symbol%
+%%%%% End of preamble %%%%%
+\begin{document}
+
+\title{Linear Math In Infinte Dimensions}
+
+{\Large Nicholas Hemleben} \hfill
+{\large Linear Math In Infinte Dimensions}  
+\hfill  \today
+
+\section{Chapter 1}
+
+\subsection{ Subsection 5}
+
+\begin{enumerate}
+\item 
+\hrule
+{\large 
+
+Show that 
+\vspace{-2mm}
+\[
+\langle f , g \rangle = \sum_{k=1}^\infty \bar c_k d_k 
+\]
+}
+\hrule
+\[
+\langle f , g \rangle = \int_a^b \bar f (x) g(x) \rho(x) \di x
+\]
+
+Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and get:
+
+\[
+= \int_a^b \overline { \sum_{k=1}^\infty u_k(x) c_k } g(x) \rho(x) \di x
+=  \sum_{k=1}^\infty \int_a^b \bar u_k(x) \bar c_k  g(x) \rho(x) \di x
+\]
+\[
+=  \sum_{k=1}^\infty \int_a^b \bar u_k(x) \bar c_k  g (x)\rho (x)\di x
+=  \sum_{k=1}^\infty \bar c_k \int_a^b \bar u_k(x)  g (x)\rho (x)\di x
+= \sum_{k=1}^\infty \bar c_k d_k 
+\]
+
+\hrule
+\item
+\[
+T f(\omega, t) = 
+\int_{-\infty}^\infty \bar g(x-t) e^{-i\omega x} f(x) \di x
+\]
+
+\[
+\langle h_1, h_2 \rangle = \intinf \intinf \bar h_1(\omega,t) h_2(\omega,t) \di \omega \di t
+\]
+Find a formula for:
+$\langle Tf_1, Tf_2 \rangle $
+in terms of 
+\[
+\intinf \bar f_1 f_2 \di x
+\]
+
+\hrule
+\[
+\langle Tf_1, Tf_2 \rangle 
+=
+\intinf \intinf 
+\overline{Tf_1} Tf_2  \di \omega \di t
+=
+\]
+
+\[
+\intinf \intinf 
+\overline{
+\left[
+\int_{-\infty}^\infty \bar g(x-t) e^{-i\omega x} f_1(x) \di x
+\right]
+}
+\left[
+\int_{-\infty}^\infty \bar g(x-t) e^{-i\omega x} f_2(x) \di x
+\right]
+\di \omega \di t
+\]
+
+\[
+=
+\intinf \intinf 
+\intinf \intinf 
+\overline{
+\bar g(x-t) e^{-i\omega x} f_1(x) 
+}
+\bar g(y-t) e^{-i\omega y} f_2(y) 
+\di x \di y
+\di \omega \di t
+\]
+
+We now return to Calc III and need to do a replacment of variables:
+\[
+\begin{matrix}
+u = x-y,& v =y \\
+x = u+v,& y =y 
+\end{matrix}
+\text{ which has deterimnate:\ }
+J = 
+\left|
+\begin{bmatrix}
+1 & -1 \\
+0 & 1 
+\end{bmatrix}
+\right|
+=1
+\]
+
+\[
+=
+\intinf \intinf 
+\intinf  
+\overline{
+\bar g(u+v-t)  f_1(u+v) 
+}
+\bar g(v-t)  f_2(v) 
+\intinf
+e^{i\omega u}
+\di \omega 
+\di u \di v
+\di t
+\]
+
+\[
+\intinf
+e^{i\omega u}
+\di \omega 
+= \delta( u)
+\]
+
+\[
+=
+\intinf \intinf 
+\intinf  
+\overline{
+\bar g(u+v-t)  f_1(u+v) 
+}
+\bar g(v-t)  f_2(v) 
+\delta(u)
+\di u \di v
+\di t
+\]
+
+\[
+=
+\intinf \intinf 
+\overline{
+\bar g(v-t)  f_1(v) 
+}
+\bar g(v-t)  f_2(v) 
+ \di v
+\di t
+=
+\intinf 
+\bar  f_1(v)  f_2(v) 
+ \intinf g(v-t)\bar g(v-t) 
+\di t
+ \di v
+\]
+\[
+=
+\intinf 
+\bar  f_1(v)  f_2(v) 
+|g|^2
+ \di v
+=
+|g|^2
+\intinf \bar f_1 f_2 \di x
+= |g|^2 \langle f_1, f_2 \rangle
+\]
+
+\hrule
+\item 1.5.3
+\hrule
+    
+    ************************************
+    [This seems tedious and maybe not worth it]
+
+\hrule
+
+\section{Chapter 2}
+\subsection{Subsection 1}
+\hrule
+\item 2.1.1
+Suppose $f(x) =f(x+2\pi) \ \forall x$ is periodic with period $2\pi$.
+Show 
+\[
+\int_a^{2\pi +a} f(x) \di x
+=
+\int_0^{2\pi} f(x) \di x
+, \ \forall a \in \RR
+\]
+\hrule
+As all great math proofs, no words are needed just equalities and beautiful integrals.
+Let a be given then:
+\[
+\int_a^{2\pi +a} f(x) \di x
+=
+\int_a^{2\pi} f(x) \di x +
+\int_{2\pi}^{2\pi +a} f(x) \di x
+=
+\int_a^{2\pi} f(x) \di x +
+\int_{0}^{a} f(x+2\pi) \di x
+\]
+\[
+=
+\int_a^{2\pi} f(x) \di x +
+\int_{0}^{a} f(x) \di x
+=
+\int_0^{2\pi} f(x) \di x
+\]
+
+\hrule
+\item 2.1.2
+*
+\hrule
+*
+\hrule
+
+
+\hrule
+\item 2.1.3
+Riemann-Lebesgue Lemma
+
+$G(u)$ piecewise continuous and has left and right derivatives on $[0,2\pi]$. Show that 
+\[
+\lim_{N \rw \infty} \int_0^{2\pi} G(u) \sin ( N +\frac 1 2)u \di u=0
+\]
+\hrule
+WLOG $\exists a,b \in [0,\pi]$ st. $\forall x \in [a,b]$ $G(x) >0$ or $G(x) <0$.
+
+Now it suffices to show 
+\[
+\lim_{N \rw \infty} \int_a^{b} G(u) \sin ( N +\frac 1 2)u \di u =0
+\]
+[since the interval $[0,2\pi]$ can be sliced into a countable number of these intervals, and hten you can sum over them]
+WLOG we assume $G(x)$ is positve.
+
+\[
+0 \leq 
+\lim_{N \rw \infty} \int_a^{b} G(u) \sin ( N +\frac 1 2)u \di u 
+\leq
+\lim_{N \rw \infty} \int_a^{b} [\max_u G(u)] \sin ( N +\frac 1 2)u \di u 
+\]
+Let $G_m$ be the max above, then we have
+\[
+0 \leq G_m\lim_{N \rw \infty} \int_a^{b} \sin ( N +\frac 1 2)u \di u 
+= G_m\lim_{N \rw \infty}  
+\frac{\cos ( N +\frac 1 2)u }
+{N + \frac 1 2}|_a^{b}
+\leq
+ G_m\lim_{N \rw \infty}  
+ \frac 2
+{N + \frac 1 2}
+\leq 0
+\]
+Thus we get the 0 value for the limit as desired.
+\hrule
+\item 2.1.4
+Prove or disprove:
+\[
+\suminf{m} 
+\frac 1 {(m+x)^2 + a^2} = \frac \pi a \frac {\coth \pi a } {\cos^2 \pi x + \sin^2 \pi x \coth^2 \pi a}
+\]
+\[
+\suminf{m} 
+\frac 1 {(m+x)^2} = \frac {\pi^2} { \sin^2 \pi x }
+\]
+\[
+\suminf{m} 
+\frac 1 {(2 \pi m+x)^2} = \frac {1} { 4 \sin^2 x/2 }
+\]
+\hrule
+\hrule
+\item 2.1.5
+My man Stephane G. Mallat claims the following:
+The family of funcitons $\phi(x-k) k = 0 ,\pm 1, \pm 2, \cdots$ is orthonormal iff 
+\[
+\suminf{k} |\hat \phi ( \omega +2\pi k)|^2 
+\]
+is constant wrt $\omega$.
+Prove my boy wrong or right.
+\hrule
+Stephane is no chump and said a true thing. 
+Lets investigate the sum:
+\[
+\suminf{k} |\hat \phi ( \omega +2\pi k)|^2 
+=
+\suminf{k} \overline{\hat \phi ( \omega +2\pi k)}
+\hat \phi ( \omega +2\pi k) 
+\]
+
+\[
+=
+\suminf{k} 
+\intinf e^{i (\omega+ 2\pi k)y}\bar \phi (y) \di y 
+\intinf e^{-i (\omega+ 2\pi k)x} \phi (x) \di x 
+\]
+\[
+=
+\suminf{k} 
+\intinf\intinf \phi (x)\bar \phi (y) e^{i (\omega+ 2\pi k)y}
+ e^{-i (\omega+ 2\pi k)x}  \di x \di y 
+\]
+\[
+=
+\intinf\intinf \phi (x)\bar \phi (y) 
+\suminf{k} 
+ e^{-i (\omega + 2\pi k)(x-y)}  \di x \di y 
+\]
+Via formula on page 62
+\[
+=
+\intinf\intinf \phi (x)\bar \phi (y) 
+ e^{-i \omega(x-y)}  
+\suminf{k} 
+\delta(x-y-k)  \di x \di y 
+\]
+
+Now for the change of variables $u= x-y, v = y$
+\[
+=
+\intinf\intinf \phi (u+v)\bar \phi (v) 
+ e^{-i \omega u}  
+\suminf{k} \delta(u-k)  \di u \di v 
+=
+\intinf\bar \phi (v) 
+\suminf{k} \intinf e^{-i \omega u} \phi (u+v)\delta(u-k)  \di u \di v 
+\]
+
+\[
+=
+\intinf\bar \phi (v) 
+\suminf{k}  e^{-i \omega k} \phi (k+v) \di v 
+=
+\suminf{k}
+e^{-i \omega u}
+\intinf\bar \phi (v) 
+  \phi (k+v) \di v 
+=
+\suminf{k}
+\langle \phi (v) ,
+  \phi (k+v) \rangle 
+  e^{-i \omega u}
+\]
+
+Thus the sum above is in fact a Fourier series with $c_k = 
+\langle \phi (v) , \phi (k+v) \rangle $.
+Now this series being constnat is equivalent to $c_k = \delta_{0k}$, which is equivalent to the $\phi(v+k)$'s being an orthogonal system.
+
+Moreover if $c_0 =1$ then we have an orthonormal system aswell. Thus the system is orthonormal if the series is constant and equal to 1.
+
+
+\hrule
+\item 2.1.6
+
+\hrule
+
+\hrule
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
