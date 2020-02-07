@@ -282,22 +282,36 @@ Let a be given then:
 \item 2.1.2
 	{\bf Dirichelet Basis}
 	\[
-		W_{2N+1} = \text{span} \{ \frac 1 {\sqrt {2\pi}} e^{ikt} \}_{k=\pm N}
+		W_{2N+1} = \text{span} \left\{ \frac 1 {\sqrt{2\pi} } e^{ikt} \right\} _{k=\pm N}
 	\]
 	Consider the set 
 	\[
 g_k(t) = \frac {2 \pi} { 2 N+1} \delta_N (t-x_k) = 
 \frac 1 {2N+1} \sum_{n=-N}^N e^{in(t-k\pi / (N+\frac 1 2) } 
 	\]
+	Show that
+	\begin{enumerate}[A)]
+		\item $B = \{ g_k , k \in 1,2, \cdots \}$ is linearly independent.
+		\item B spans $W_{2N+1}$
+	\end{enumerate}
 \hrule
-*
+	\begin{enumerate}[A)]
+	\item
+		It suffices to notice that $g_k(x_l) = \delta_{kl}$. Thus we can see for any given k that $g_k$ is independent of all the other's as $\sum_{k' \neq k} \lambda_{k'} g_{k'} (x_k) = 0$. Thus we can not have a non trivial linear relationship between the functions. 
+	\item
+		It is clear that $g_k(t) \in W_{2N+1}$ since each of the elements in its sum namely $e^{in(t-k\pi/(N+\frac 1 2)}$ is just a multiple of $e^{int}$ a basis element of $W_{2N+1}$.
+		Notice there are $2N+1$ of these independnet vectors in the vector space of dimmension $2N+1$. 
+			Thus they must be a spanning set and there must exist coefficents for any function in the space to be written as a sum of this basis.
+
+		To actually exhibit coefficents one would use $f(t) = \sum_k f(x_k) g_k(t)$. 
+		
+	\end{enumerate}
 \hrule
 
 
 \hrule
 \item 2.1.3
-Riemann-Lebesgue Lemma
-
+	{\bf Riemann-Lebesgue Lemma}\\
 $G(u)$ piecewise continuous and has left and right derivatives on $[0,2\pi]$. Show that 
 \[
 \lim_{N \rw \infty} \int_0^{2\pi} G(u) \sin ( N +\frac 1 2)u \di u=0
@@ -332,6 +346,8 @@ Let $G_m$ be the max above, then we have
 \]
 Thus we get the 0 value for the limit as desired.
 \hrule
+
+
 \item 2.1.4
 Prove or disprove:
 \[
@@ -346,8 +362,162 @@ Prove or disprove:
 \suminf{m} 
 \frac 1 {(2 \pi m+x)^2} = \frac {1} { 4 \sin^2 x/2 }
 \]
+
 \hrule
+
+Let $f(m) = \frac 1 { (m+x)^2 +a^2} $, then we wish to find $\sum f(m)$. 
+To this end we consider $F(k) = \intinf e^{-ikm} f(m) \di m$. To find this we use the u sub: $u = m+x$
+\[
+\intinf e^{-ikm} \frac 1 { (m+x)^2 +a^2}  \di m
+=
+e^{ikx} \intinf e^{-iku} \frac 1 { u^2 +a^2}  \di u
+= 
+e^{ikx} \frac \pi a e^{-|k| a}
+\]
+
+
+Using the Poisson formula we thus see:
+\[
+\suminf{m} 
+\frac 1 {(m+x)^2 + a^2}  	
+=
+\suminf{k}
+e^{i2\pi kx} \frac \pi a e^{-|2\pi k| a}
+=
+ \frac \pi a
+ \left[
+\sum{k\geq0}
+e^{i 2 \pi kx}  e^{-| 2 \pi k| a}
++
+\sum{k\leq0}
+e^{i 2 \pi kx}  e^{-| 2 \pi k| a}
+-1
+\right]
+\]
+
+\[
+=
+ \frac \pi a
+ \left[
+\sum{k\geq0}
+e^{i 2 \pi k(x-a)}
++
+\sum{k\leq0}
+e^{i 2 \pi k(x+a)}
+-1
+\right]
+=
+ \frac \pi a
+ \left[
+\sum{k\geq0}
+e^{i 2 \pi k(x-a)}
++
+e^{-i 2 \pi k(x+a)}
+-1
+\right]
+\]
+
+\[
+=
+ \frac \pi a
+ \left[
+\frac{ 1} { 1 -  e^{-i 2 \pi (x+a)} } +
+\frac{ 1} { 1 -  e^{i 2 \pi (x-a)} }
+-1
+\right]
+\]
+\[
+=
+ \frac \pi a
+ \left[
+\frac{
+1 -  e^{-i 2 \pi (x+a)}  
++1 -  e^{i 2 \pi (x-a)} 
+-
+\left(1 -  e^{i 2 \pi (x-a)} \right) 
+\left(1 -  e^{-i 2 \pi (x+a)} \right) 
+ 	}
+ { \left(1 -  e^{i 2 \pi (x-a)} \right) 
+  \left(1 -  e^{-i 2 \pi (x+a)} \right) 
+}
+\right]
+\]
+
+\[
+=
+ \frac \pi a
+ \left[
+\frac{
+1-
+ e^{i 2 \pi (x-a)} 
+e^{-i 2 \pi (x+a)} 
+ 	}
+ { \left(1 -  e^{i 2 \pi (x-a)} \right) 
+  \left(1 -  e^{-i 2 \pi (x+a)} \right) 
+}
+\right]
+=
+ \frac \pi a
+ \left[
+\frac{
+1-
+ e^{-i 4 \pi a} 
+ 	}
+ { \left(1 -  e^{i 2 \pi (x-a)} \right) 
+  \left(1 -  e^{-i 2 \pi (x+a)} \right) 
+}
+\right]
+\]
+
+\[
+=
+ \frac \pi a
+ \left[
+\frac{
+	\left(1-e^{-i 2 \pi a}\right) 
+	\left(1+e^{-i 2 \pi a}\right) 
+ 	}
+ { \left(1 -  e^{i 2 \pi (x-a)} \right) 
+  \left(1 -  e^{-i 2 \pi (x+a)} \right) 
+}
+\right]
+=
+ \frac \pi a
+ \left[
+\frac{
+	\left(1-e^{-i 2 \pi a}\right) 
+	\left(1+e^{-i 2 \pi a}\right) 
+ 	}
+ { \left(1 -  e^{i 2 \pi (x-a)} \right) 
+  \left(1 -  e^{-i 2 \pi (x+a)} \right) 
+}
+\right]
+\]
+
+************BELIEVE THE ABOVE DISPROVES THE SUM********\\
+
+For the last 2 the answers are somewhat lack luster. 
+
+
+Let $f(m) = \frac 1 { (m+x)^2} $, then we wish to find $\sum f(m)$. 
+To this end we consider $F(k) = \intinf e^{-ikm} f(m) \di m$. To find this we use the u sub: $u = m+x$
+\[
+\intinf e^{-ikm} \frac 1 { (m+x)^2 }  \di m
+=
+e^{ikx} \intinf e^{-iku} \frac 1 { u^2 }  \di u
+\]
+This is an error function producing integral. This is bad.
+Notice also that the claimed value on the right hand side of the equation doesn't even make sense for $x=0$.
+Thus the equation as stated is clearly false, 
+Besides as any good student of Bergelson knows: $\sum 1/n^2 = \frac {\pi^2} 6$
+
+
+
+For the final one we again have issues with $\sin (0 ) = 0$
+in the denominator.
 \hrule
+
+
 \item 2.1.5
 My man Stephane G. Mallat claims the following:
 The family of funcitons $\phi(x-k) k = 0 ,\pm 1, \pm 2, \cdots$ is orthonormal iff 
@@ -366,6 +536,7 @@ Lets investigate the sum:
 \hat \phi ( \omega +2\pi k) 
 \]
 
+Now to avoid a factor out front the rest of the analysis, the $\frac 1 {\sqrt {2\pi}} $ is suppressed when expanding the Fourier transform.
 \[
 =
 \suminf{k} 
@@ -425,16 +596,68 @@ Thus the sum above is in fact a Fourier series with $c_k =
 Now this series being constnat is equivalent to $c_k = \delta_{0k}$, which is equivalent to the $\phi(v+k)$'s being an orthogonal system.
 
 Moreover if $c_0 =1$ then we have an orthonormal system aswell. Thus the system is orthonormal if the series is constant and equal to 1.
+Now in actuallity we rememeber that we have a secret factor of $\frac 1 { \sqrt{ 2 \pi} }$ hanging around. Thus the constants value is actually that.
 
 
 \hrule
 \item 2.1.6
+Prove or Disprove the following identities:
+\begin{enumerate}[i)]
+\item
+		\[
+	\suminf{m} f( [2m+1] \pi) = \frac 1 {2\pi} \suminf{n} (-1)^n F(n)
+		\]
+\item
+		\[
+		2 \pi \suminf{m} (-1)^m f( 2\pi m) = \suminf{n} F(n + \frac 1 2)
+		\]
+\item
+		\[
+			\suminf{m} \delta(u- [2m+1] \pi) = \frac 1 {2\pi} \suminf{n} (-1)^n e^{inu}
+		\]
+\item
+	And in greater generality 
+		\[
+	\suminf{m} f(\frac{ [2m+1] \pi} {a} ) =
+		\frac a {2\pi} \suminf{n} (-1)^n F(na)
+		\]
+\item
+		\[
+	\suminf{m} \frac 1 {|a|} \delta(u- \frac{[2m+1] \pi} {a}) = \frac 1 {2\pi} \suminf{n} (-1)^n e^{inau}
+		\]
+\end{enumerate}
+
+\hrule
+The main equation to keep in mind here is the general Poisson formula:
+\[
+	\frac 1 {2 \pi} \suminf{n} \intinf e^{in(x-t)} f(t) \di t = \suminf{m} f(x+ 2 \pi m)
+\]
+\begin{enumerate}[i)]
+	\item
+		Begin with $x=\pi$ in the formula above and we see:
+\[
+	\frac 1 {2 \pi} \suminf{n} \intinf e^{in(\pi -t)} f(t) \di t = \suminf{m} f([2 m+1]\pi )
+\]
+\[
+=	\frac 1 {2 \pi} \suminf{n} (-1)^n \intinf e^{-int} f(t) \di t
+		=	\frac 1 {2 \pi} \suminf{n} (-1)^n F(n)
+	\]
+
+
+
+	\item
+	\item
+	\item
+	\item
+\end{enumerate}
 
 \hrule
 
+
 \hrule
-
-
+\item 2.2.1
+\hrule
+\hrule
 
 \end{enumerate}
 
