@@ -646,9 +646,51 @@ The main equation to keep in mind here is the general Poisson formula:
 
 
 	\item
+		Begining with the right hand side:
+		\[
+			\suminf{n} F(n + \frac 1 2) 
+	= \suminf{n} \intinf e^{-i(n+\frac 1 2) t} f(t) \di t
+	= \suminf{n} \intinf e^{-in t} f(t)e^{-i t/2} \di t
+		\]
+		Now we notice this is the Fourier transform of not $f$ but of $f(t) e^{-i t/2}$, applying Poisson sum with this:
+		\[
+			= 2\pi \suminf{m} f(2 \pi m) e^{-i (2 \pi m)/2}
+			= 2\pi \suminf{m} f(2 \pi m) e^{-i \pi m}
+		=2 \pi \suminf{m} (-1)^m f( 2\pi m) 
+		\]
+
 	\item
+		It is straightforward to see that this is actually just 1) but in the supressed function notation.
+		To see this we note that
+		\[
+			\delta( u - [2m+1] \pi) \rw f([2m+1] \pi), \quad  e^{inu} \rw \intinf e^{inu} f(u) \di u = F(-n)
+		\]
+		But wait we get $\suminf n (-1)^n F(-n)$ and not the exact sum we wanted! Thankfully $(-1)^n = (-1)^{-n}$ and we just switch the order of the sum and get the identity.
+		
 	\item
+		Let $\bar f(x) = f(\frac x a )$, then by 1) we have:
+		\[
+			\suminf m f ( \frac {[2m+1] \pi} a) = \suminf m \bar f ( [2m+1] \pi) =
+			\frac 1 {2\pi} \suminf n (-1)^n \bar F (n) 
+		\]
+		\[
+			=
+			\frac 1 {2\pi} \suminf n (-1)^n \intinf e^{-int} \bar f (t) \di t
+			=
+			\frac 1 {2\pi} \suminf n (-1)^n \intinf e^{-int} f (t/a) \di t
+		\]
+		\[
+			=
+			\frac 1 {2\pi} \suminf n (-1)^n a  \intinf e^{-inau} f (u) \di u
+			=
+			\frac 1 {2\pi} \suminf n (-1)^n a F(na) 
+			=
+			\frac a {2\pi} \suminf n (-1)^n  F(na) 
+		\]
+		
 	\item
+		Similar to 3) we note that this is just an earlier identity. A constant is shifted around but this is basicly just 4).
+		
 \end{enumerate}
 
 \hrule
@@ -656,6 +698,159 @@ The main equation to keep in mind here is the general Poisson formula:
 
 \hrule
 \item 2.2.1
+	Show that 
+	\[
+		\lim_{\omega \rw \infty} \frac { \sin 2 \pi \omega x } { \pi x}, \ \omega >0
+	\]
+	is a representation of the Dirac $\delta$ DISTRIBUTION.
+\hrule
+This equality can only be expressed inside of an integral, thus we must apply the above to test functions and see that the answer is the same as with the delta \emph{distribution}.
+
+Thus if we consider f continuous on some $[-a,a]$ then we get:
+\[
+	\lim_{\omega \rw \infty} \int_{-a}^a \delta_\omega (x) f(x) \di x
+	=
+	\lim_{\omega \rw \infty} \int_{-a}^a\frac { \sin 2 \pi \omega x } { \pi x} f(x) \di x
+\]
+Now in following with the style of the Fourier series theorem we add and subtract the same term, namely a $f(0)$ (inside some paranthesis but basicly the same)
+
+\[
+	=
+	\lim_{\omega \rw \infty} \int_{-a}^a\frac { \sin 2 \pi \omega x } { \pi x} \left(f(x)  - f(0) + f(0) \right)\di x
+	=
+	\lim_{\omega \rw \infty} \int_{-a}^a\frac { \sin 2 \pi \omega x } \pi  \frac{ f(x)  - f(0)}  { x}
++f(0)\frac { \sin 2 \pi \omega x } { \pi x}\di x
+\]
+
+Now we can consider WLOG just the positive side of the integral.
+\[
+	\lim_{\omega \rw \infty} \int_{0}^a\frac { \sin 2 \pi \omega x } \pi  \frac{ f(x)  - f(0)}  { x}
++f(0)\frac { \sin 2 \pi \omega x } { \pi x}\di x
+\]
+Notice for the exact same resonaning as $G(u)$ on page 57 that we get $\frac{ f(x) - f(0)} {x}$ is continuous at 0 and converges to $f'(0^+)$. 
+Thus again we see that the integral:
+\[
+	\int_{0}^a\frac { \sin 2 \pi \omega x } \pi  \frac{ f(x)  - f(0)}  { x} \di x 
+	\rw 0
+\]
+as $\omega \rw \infty$. Thus we only have:
+\[
+	\lim_{\omega \rw \infty} \int_0^a f(0)\frac { \sin 2 \pi \omega x } { \pi x}\di x
+	=
+	f(0) \lim_{\omega \rw \infty} \int_0^a \frac { \sin 2 \pi \omega x } { \pi x}\di x
+\]
+
+	\[
+	y = 2 \pi \omega x, \quad 
+	dy = 2 \pi \omega dx
+	\]
+
+	\[
+	\frac y {2 \pi \omega } = x, \quad 
+	\frac {dy} { 2 \pi \omega } = dx
+	\]
+
+\[
+	=
+	f(0) \lim_{\omega \rw \infty} \int_0^{a 2 \pi \omega} \frac { \sin y } { \pi y/ (2 \pi \omega) }\frac{ \di y} {2 \pi \omega}
+	=
+	\frac {f(0)} \pi  \int_0^{\infty} \frac { \sin y } {  y } \di y
+	=
+	\frac {f(0)} \pi  \frac \pi 2
+	=
+	\frac {f(0)} 2
+\]
+Using a isomorphic version of the logic above one can get the $f(0^-)$ term and complete the proof.
+\hrule
+
+
+\hrule
+\item 2.2.2
+	Assuming that $f(x)$ is nearlly linear, that is to say that 
+	\[
+		f(-a) = f(0) - a f'(0) + \text{ H.O.T.}
+	\]
+	Show that 
+	\[
+	I = \intinf \delta ( x+a) f(x) \di x
+	\]
+	can be evaluated by means of the formal equation:
+	\[
+	\delta(x+a) = \delta(x) + a \delta'(xx)
+	\]
+\hrule
+
+By the definition of the $\delta$ funciton we have:
+\[
+	I = \intinf \delta ( x+a) f(x) \di x = f(-a)
+\]
+\[
+	=
+	f(0) - a f'(0) + \text{ H.O.T.}
+	= 
+	\intinf  \delta (x)f(x)  - a \delta(x)f'(x) \di x 
+	= 
+	\intinf  \delta (x)f(x)\di x  - a \intinf \delta(x)f'(x) \di x 
+\]
+Via integration by parts we know that:
+\[
+\intinf \delta(x)f'(x) \di x 
+=
+\delta(x) f(x) |_{\pm \infty}
+- \intinf \delta'(x)f(x) \di x 
+=
+- \intinf \delta'(x)f(x) \di x 
+\]
+Putting stuff together:
+\[
+	= 
+	\intinf  \delta (x)f(x)\di x  + a \intinf \delta'(x)f(x) \di x 
+	= 
+	\intinf  \left[\delta (x)+ a \delta'(x)\right]f(x) \di x 
+\]
+Thus it makes some sense to claim $\delta (x +a ) = \delta(x) + \delta'(x)$
+\hrule
+
+
+\hrule
+\item 2.3.1
+\hrule
+\hrule
+
+
+\hrule
+\item 2.3.2
+\hrule
+\hrule
+
+
+\hrule
+\item 2.3.3
+\hrule
+\hrule
+
+
+\hrule
+\item 2.3.4
+\hrule
+\hrule
+
+
+\hrule
+\item 2.3.5
+\hrule
+\hrule
+
+
+
+
+
+
+
+
+
+\hrule
+\item 8.8.8
 \hrule
 \hrule
 
