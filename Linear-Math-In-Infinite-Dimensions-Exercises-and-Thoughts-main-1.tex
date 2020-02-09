@@ -64,23 +64,53 @@
 \newtheorem{defi}{Definition}[section]
 \newtheorem{lem}{Lemma}[section]
 
-% \unlhd = normal subgroup symbol%
+\newcounter{Prb}%[subsection]
+\newenvironment{Porb}[1][]{
+	\refstepcounter{Prb}\par\medskip 
+   \noindent \textbf{\thesubsection~Problem~\thePrb. 
+   #1
+   }
+		       }
+   {\medskip \hrule}
+   %Just need one hline at the end [otheriwse double thicc lines
+\newenvironment{Boxed}{\begin{center}
+	           \begin{tabular}{|p{0.9\textwidth}|}
+			       \hline\\
+	           }
+	       { 
+           \\\\\hline
+	       \end{tabular} 
+           \end{center}
+		       }
+%So basicly the problem envorment does not want ot box stuff 
+%To combat this we use 2 enviroments, the first being Problem
+%the second being boxed
+%Problem goes in box
+%Solution goes outside box
+%Hlines for everyone and the world is happy
 %%%%% End of preamble %%%%%
 \begin{document}
-
 \title{Linear Math In Infinte Dimensions}
-
 {\Large Nicholas Hemleben} \hfill
 {\large Linear Math In Infinte Dimensions}  
 \hfill  \today
 
 \section{Chapter 1}
-
+\setcounter{subsection}{4}
 \subsection{ Subsection 5}
+%\setcounter{Prb}{-1}
+%		\begin{Porb}
+%		\begin{Boxed}
+%			A Demo porblem
+%			Inside a Box
+%		\end{Boxed}
+%			Outside a Box
+%		\end{Porb}
 
-\begin{enumerate}
-\item 
+%THe first hrule
 \hrule
+\begin{Porb}
+\begin{Boxed}
 {\large 
 
 Show that 
@@ -89,10 +119,11 @@ Show that
 \langle f , g \rangle = \sum_{k=1}^\infty \bar c_k d_k 
 \]
 }
-\hrule
+with
 \[
 \langle f , g \rangle = \int_a^b \bar f (x) g(x) \rho(x) \di x
 \]
+\end{Boxed}
 
 Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and get:
 
@@ -105,9 +136,13 @@ Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and 
 =  \sum_{k=1}^\infty \bar c_k \int_a^b \bar u_k(x)  g (x)\rho (x)\di x
 = \sum_{k=1}^\infty \bar c_k d_k 
 \]
+\end{Porb}
 
-\hrule
-\item
+
+\begin{Porb}
+\begin{Boxed}
+
+
 \[
 T f(\omega, t) = 
 \int_{-\infty}^\infty \bar g(x-t) e^{-i\omega x} f(x) \di x
@@ -123,7 +158,7 @@ in terms of
 \intinf \bar f_1 f_2 \di x
 \]
 
-\hrule
+\end{Boxed}
 \[
 \langle Tf_1, Tf_2 \rangle 
 =
@@ -237,19 +272,25 @@ e^{i\omega u}
 = |g|^2 \langle f_1, f_2 \rangle
 \]
 
-\hrule
-\item 1.5.3
-\hrule
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+
+1.5.3
     
+\end{Boxed}
     ************************************
     [This seems tedious and maybe not worth it]
+\end{Porb}
 
-\hrule
+
 
 \section{Chapter 2}
 \subsection{Subsection 1}
-\hrule
-\item 2.1.1
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
 Suppose $f(x) =f(x+2\pi) \ \forall x$ is periodic with period $2\pi$.
 Show 
 \[
@@ -258,7 +299,7 @@ Show
 \int_0^{2\pi} f(x) \di x
 , \ \forall a \in \RR
 \]
-\hrule
+\end{Boxed}
 As all great math proofs, no words are needed just equalities and beautiful integrals.
 Let a be given then:
 \[
@@ -278,8 +319,9 @@ Let a be given then:
 \int_0^{2\pi} f(x) \di x
 \]
 
-\hrule
-\item 2.1.2
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 	{\bf Dirichelet Basis}
 	\[
 		W_{2N+1} = \text{span} \left\{ \frac 1 {\sqrt{2\pi} } e^{ikt} \right\} _{k=\pm N}
@@ -294,7 +336,7 @@ g_k(t) = \frac {2 \pi} { 2 N+1} \delta_N (t-x_k) =
 		\item $B = \{ g_k , k \in 1,2, \cdots \}$ is linearly independent.
 		\item B spans $W_{2N+1}$
 	\end{enumerate}
-\hrule
+\end{Boxed}
 	\begin{enumerate}[A)]
 	\item
 		It suffices to notice that $g_k(x_l) = \delta_{kl}$. Thus we can see for any given k that $g_k$ is independent of all the other's as $\sum_{k' \neq k} \lambda_{k'} g_{k'} (x_k) = 0$. Thus we can not have a non trivial linear relationship between the functions. 
@@ -306,17 +348,16 @@ g_k(t) = \frac {2 \pi} { 2 N+1} \delta_N (t-x_k) =
 		To actually exhibit coefficents one would use $f(t) = \sum_k f(x_k) g_k(t)$. 
 		
 	\end{enumerate}
-\hrule
 
-
-\hrule
-\item 2.1.3
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 	{\bf Riemann-Lebesgue Lemma}\\
 $G(u)$ piecewise continuous and has left and right derivatives on $[0,2\pi]$. Show that 
 \[
 \lim_{N \rw \infty} \int_0^{2\pi} G(u) \sin ( N +\frac 1 2)u \di u=0
 \]
-\hrule
+\end{Boxed}
 WLOG $\exists a,b \in [0,\pi]$ st. $\forall x \in [a,b]$ $G(x) >0$ or $G(x) <0$.
 
 Now it suffices to show 
@@ -345,10 +386,10 @@ Let $G_m$ be the max above, then we have
 \leq 0
 \]
 Thus we get the 0 value for the limit as desired.
-\hrule
 
-
-\item 2.1.4
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 Prove or disprove:
 \[
 \suminf{m} 
@@ -363,8 +404,8 @@ Prove or disprove:
 \frac 1 {(2 \pi m+x)^2} = \frac {1} { 4 \sin^2 x/2 }
 \]
 
-\hrule
 
+\end{Boxed}
 Let $f(m) = \frac 1 { (m+x)^2 +a^2} $, then we wish to find $\sum f(m)$. 
 To this end we consider $F(k) = \intinf e^{-ikm} f(m) \di m$. To find this we use the u sub: $u = m+x$
 \[
@@ -515,10 +556,11 @@ Besides as any good student of Bergelson knows: $\sum 1/n^2 = \frac {\pi^2} 6$
 
 For the final one we again have issues with $\sin (0 ) = 0$
 in the denominator.
-\hrule
 
 
-\item 2.1.5
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 My man Stephane G. Mallat claims the following:
 The family of funcitons $\phi(x-k) k = 0 ,\pm 1, \pm 2, \cdots$ is orthonormal iff 
 \[
@@ -526,7 +568,8 @@ The family of funcitons $\phi(x-k) k = 0 ,\pm 1, \pm 2, \cdots$ is orthonormal i
 \]
 is constant wrt $\omega$.
 Prove my boy wrong or right.
-\hrule
+
+\end{Boxed}
 Stephane is no chump and said a true thing. 
 Lets investigate the sum:
 \[
@@ -596,11 +639,12 @@ Thus the sum above is in fact a Fourier series with $c_k =
 Now this series being constnat is equivalent to $c_k = \delta_{0k}$, which is equivalent to the $\phi(v+k)$'s being an orthogonal system.
 
 Moreover if $c_0 =1$ then we have an orthonormal system aswell. Thus the system is orthonormal if the series is constant and equal to 1.
-Now in actuallity we rememeber that we have a secret factor of $\frac 1 { \sqrt{ 2 \pi} }$ hanging around. Thus the constants value is actually that.
+Now in actuallity we rememeber that we have a secret factor of $\frac 1 {  2 \pi }$ hanging around. Thus the constants value is actually that.
 
 
-\hrule
-\item 2.1.6
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 Prove or Disprove the following identities:
 \begin{enumerate}[i)]
 \item
@@ -627,7 +671,7 @@ Prove or Disprove the following identities:
 		\]
 \end{enumerate}
 
-\hrule
+\end{Boxed}
 The main equation to keep in mind here is the general Poisson formula:
 \[
 	\frac 1 {2 \pi} \suminf{n} \intinf e^{in(x-t)} f(t) \di t = \suminf{m} f(x+ 2 \pi m)
@@ -692,18 +736,19 @@ The main equation to keep in mind here is the general Poisson formula:
 		Similar to 3) we note that this is just an earlier identity. A constant is shifted around but this is basicly just 4).
 		
 \end{enumerate}
+\end{Porb}
 
-\hrule
+\subsection{Dirac Delta Distribution}
+\setcounter{Prb}{0}
 
-
-\hrule
-\item 2.2.1
+\begin{Porb}
+\begin{Boxed}
 	Show that 
 	\[
 		\lim_{\omega \rw \infty} \frac { \sin 2 \pi \omega x } { \pi x}, \ \omega >0
 	\]
 	is a representation of the Dirac $\delta$ DISTRIBUTION.
-\hrule
+\end{Boxed}
 This equality can only be expressed inside of an integral, thus we must apply the above to test functions and see that the answer is the same as with the delta \emph{distribution}.
 
 Thus if we consider f continuous on some $[-a,a]$ then we get:
@@ -761,11 +806,12 @@ as $\omega \rw \infty$. Thus we only have:
 	\frac {f(0)} 2
 \]
 Using a isomorphic version of the logic above one can get the $f(0^-)$ term and complete the proof.
-\hrule
 
 
-\hrule
-\item 2.2.2
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
 	Assuming that $f(x)$ is nearlly linear, that is to say that 
 	\[
 		f(-a) = f(0) - a f'(0) + \text{ H.O.T.}
@@ -778,7 +824,8 @@ Using a isomorphic version of the logic above one can get the $f(0^-)$ term and 
 	\[
 	\delta(x+a) = \delta(x) + a \delta'(xx)
 	\]
-\hrule
+
+\end{Boxed}
 
 By the definition of the $\delta$ funciton we have:
 \[
@@ -808,53 +855,106 @@ Putting stuff together:
 	= 
 	\intinf  \left[\delta (x)+ a \delta'(x)\right]f(x) \di x 
 \]
-Thus it makes some sense to claim $\delta (x +a ) = \delta(x) + \delta'(x)$
-\hrule
+Thus it makes some sense to claim $\delta (x +a ) = \delta(x) + a\delta'(x)$
+
+\end{Porb}
+
+\subsection{The Fourier Integral}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	\begin{enumerate}[a)]
+		\item Consider the LInear Operator $\mathfrak{F}^2$ and its eigenvalue equatio
+			\[
+				\mathfrak{F}^2 f = \lambda f
+				\]
+				What are the eigenvalues and eigenfunctions of $\mathfrak{F}^2$?
+		\item Same with $\mathfrak{F}^4$?
+		\item Same with $\mathfrak{F}$?
+	\end{enumerate}
+
+\end{Boxed}
+	\[
+		\mathfrak{F} (f) =\frac 1 {\sqrt{2 \pi}}  \intinf e^{-ikx} f(x) \di x
+		\]
+		\begin{enumerate}[a)]
+			\item
+			\item
+			\item
+		\end{enumerate}
+\end{Porb}
 
 
-\hrule
-\item 2.3.1
-\hrule
-\hrule
+\begin{Porb}
+\begin{Boxed}
+
+\end{Boxed}
+
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
+
+\end{Porb}
+\begin{Porb}
+\begin{Boxed}
+\end{Boxed}
 
 
-\hrule
-\item 2.3.2
-\hrule
-\hrule
 
 
-\hrule
-\item 2.3.3
-\hrule
-\hrule
+\end{Porb}
+\begin{Porb}
+	****************THIS SHOULD BE PROBLEM 8
+\begin{Boxed}
+	Show that any periodic function $f(\xi) = f(\xi +a)$ is the convolution of a nonperiodic function with a train of Dirac delta DISTRIBUTIONS.
+\end{Boxed}
+[I was very stuck on this and stack exchange provided an answer.]\\
+Let $a>0$ be the length of the period of the function $f(x)$. Then let $g(x) = \one_{[0,a)} (x) f(x)$ have value in the 'first' period of f and then be 0 elsewhere.
+Obviously g is non periodic unless $f=0$ (that case being triival and not relavent). Now consider:
+\[
+	g \star \left( \suminf n \delta(x-an) \right)	 = 
+\suminf n g \star \delta(u-(x-an))  = 
+\suminf n g(x-an) = f(x) 
+\]
+Thus we have written f as a convlution of a non periodic function and a train of delta distributions.
 
+\end{Porb}
 
-\hrule
-\item 2.3.4
-\hrule
-\hrule
-
-
-\hrule
-\item 2.3.5
-\hrule
-\hrule
-
-
-
-
-
-
+\begin{Porb}
+	Z
+\begin{Boxed}
+\end{Boxed}
+\end{Porb}
 
 
 
-\hrule
-\item 8.8.8
-\hrule
-\hrule
 
-\end{enumerate}
+
+
+
 
 
 
