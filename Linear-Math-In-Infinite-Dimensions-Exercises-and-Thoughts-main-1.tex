@@ -23,6 +23,7 @@
 \DeclareMathOperator{\Ann}{Ann}	
 \DeclareMathOperator{\spn}{span}	
 \DeclareMathOperator{\sgn}{sgn}	
+\DeclareMathOperator{\sinc}{sinc}	
 
 
 \newcommand{\CC}{\mathbb{C}}	
@@ -33,6 +34,7 @@
 \newcommand{\QQ}{\mathbb{Q}}	
 \newcommand{\RR}{\mathbb{R}}	
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathfrak{F}}	
 \newcommand{\one}{\mathds{1}}
 \newcommand{\eps}{\epsilon}
 
@@ -58,6 +60,7 @@
 \newcommand{\dd}[2]{\frac{\di #1}{\di #2}}
 \newcommand{\intinf}{\int_{-\infty}^\infty}	
 \newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
+\newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
 
 \newtheorem{thm}{Theorem}
 \theoremstyle{definition}
@@ -275,12 +278,75 @@ e^{i\omega u}
 \end{Porb}
 \begin{Porb}
 \begin{Boxed}
+\begin{enumerate}[i)]
+	\item
+	Show that the set of functions
+	\[
+		\left\{
+			\frac{ \sin \pi ( 2 \omega z - k) } { \pi 2 \omega z -k)} = \sinc(2 \omega z-k), \ k \in \ZZ
+			\right\}
+		\]
+		is an orthognal set satisfying:
+		\[
+			\intinf \sinc(2 \omega z -k) \sinc( 2 \omega z -l) \di z = A \delta_{kl}
+			\]
+			What is A?
 
-1.5.3
-    
+\begin{enumerate}[a)]
+	\item
+		\[
+			\int_{-\pi}^\pi \delta_N \left( t - \frac{ 2\pi} {2N+1}k \right)
+	\delta_N \left( t - \frac{ 2\pi} {2N+1}l \right) \di t
+	=	
+		\frac{2N+1}{2 \pi} \delta_{kl}
+		\]
+		where 
+		\[
+			\delta_N(u) = \frac 1 {2\pi} \frac{ \sin( N+\frac 1 2)u } { \sin \frac u 2} = \frac 1 {2\pi} \sum_{n=-N}^N e^{inu}
+			\]
+	\item
+		Then rescaling the integration domain by using $z= \frac{ N+ \frac 12 } { 2\pi \omega} t$.
+
+
+	\item
+		and finally going to the limit $N \rw \infty$.
+\end{enumerate}
+
+\item
+	This set of functions 
+		\[
+			\left\{
+				u_k = \frac 1 {\sqrt A} \sinc ( 2 \omega z - k), \ k \in \ZZ
+			\right\}
+		\]
+		is not complete on $L^2$, but is complete on a specific subset. What is this subset, ie what property must a function $f(t)$ satisfy in order to be in this subset?
+\end{enumerate}
 \end{Boxed}
+
+
+*****************************************************
+\begin{enumerate}[i)]
+	\item
+		If we take $k=0=l$ then we can calculate A:
+\begin{enumerate}[i)]
+	\item
+		\[
+			\int_{-\pi}^\pi \delta_N \left( t - \frac{ 2\pi} {2N+1}k \right)
+	\delta_N \left( t - \frac{ 2\pi} {2N+1}l \right) \di t
+	=	
+		\frac{2N+1}{2 \pi} \delta_{kl}
+		\]
+
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
     ************************************
-    [This seems tedious and maybe not worth it]
 \end{Porb}
 
 
@@ -859,6 +925,7 @@ Thus it makes some sense to claim $\delta (x +a ) = \delta(x) + a\delta'(x)$
 
 \end{Porb}
 
+
 \subsection{The Fourier Integral}
 \setcounter{Prb}{0}
 
@@ -875,59 +942,352 @@ Thus it makes some sense to claim $\delta (x +a ) = \delta(x) + a\delta'(x)$
 	\end{enumerate}
 
 \end{Boxed}
+For the sake of clarity:
 	\[
-		\mathfrak{F} (f) =\frac 1 {\sqrt{2 \pi}}  \intinf e^{-ikx} f(x) \di x
+		\FF (f) =\frac 1 {\sqrt{2 \pi}}  \intinf e^{-ikx} f(x) \di x
 		\]
 		\begin{enumerate}[a)]
 			\item
-			\item
-			\item
+				Obviously we begin with the calculation in question
+	\[
+		\FF^2 (f)[k] 
+				=\frac 1 {2 \pi}  \intinf e^{-iky}  \intinf e^{-iyx} f(x) \di x\di y
+				=\frac 1 {2 \pi}  \intinf  \intinf e^{-i(ky+yx)} f(x) \di x\di y
+	\]
+				This looks close to the idenity we are given on page 70, namely:
+		\[
+		\delta(x-t) = \intinf \frac 1 {2\pi} e^{ik(x-t)} dk
+		\]
+	which carries the note that we must inegrate on the outside with $\di t$ for this to make sense. 
+		Now rearranging some integrals and swapping x with $-x$ we arive at:
+
+	\[
+	  \intinf f(-x)  \intinf\frac 1 {2 \pi} e^{-iy(k-x)} \di y \di x
+	=
+	  \intinf f(-x)  \delta(k-x) \di x
+	=
+	f(-k)  	\]
+				
+
+Now we can see that the constraint: $ \mathfrak{F}^2 f = \lambda f$
+is really just $f(-x) = \lambda f(x)$. 
+Two obvious cases come to mind, namely even and odd functions for the eigenvalues $\pm 1$. 
+				For any other value of $\lambda$ one could apply the relation twice to get $f(x) = \lambda^2 f(-x)$ which only has 2 roots. 
+				Thus those are the only eigenvalues of $\FF^2$.
+
+
+	\item
+		Thanks to $ \mathfrak{F}^2 f[x] = f(-x)$ from the previous problem we know that $\FF^4 = \FF^2\FF^2 f [x] = f(-(-x)) =f(x)$.
+				Thus every function is an eigen function of $\FF^4 = $I$\di$, with eigenvalue 1.
+
+	\item
+		We know that $\FF^4=$I$\di$, and thus if $\lambda$ is an eigenvalue of $\FF$ then $\lambda^4=1$. Thus the only possible eigenvalules of $\FF$ are 4th roots of unity. 
+		Thus the only possible eigenvalues are $\pm1, \pm i$. 
+
+		****************NEED TO DEMONSTRATE VALUES?********************
+
 		\end{enumerate}
 \end{Porb}
 
 
 \begin{Porb}
 \begin{Boxed}
-
+	Let 
+	\[
+		W = \text{span}\{ \phi, \FF \phi, \FF^2 \phi, \dots\}
+		\]
+	\begin{enumerate}[a)]
+		\item Show that W is finite dimensional, and what is its dimension?
+		\item Exhibit a basis for W.
+		\item It is evident that $\FF$ is a unitary transform of W. Find the bassis representation matrx $[\FF]_B$ relative to the basis B found in part b).
+		\item Find the secular determinant, the eigenvalues and the corresponding eigenvectors of $[\FF]_B$.
+		\item For W exhibit an alternative basis which consists entirely of eigenvectors of $\FF$, each one labelled by its respective eigenvalue.
+		\item What can you say about the eigenvalues of $\FF$ as a transformation on $L^2$ as compared to $[\FF]_B$ which acts ona finite dim. vector space
+	\end{enumerate}
 \end{Boxed}
 
+	\begin{enumerate}[a)]
+	\item
+		W clearly has dimension $\leq 4$ by the previous problem since $\FF^4 =$I$\di$. In fact if $\phi$ is even, we have only dimension 2 and the two basis elements of the space are just $\phi$ and $\FF \phi$. Due to the limits of the roots of unity argument above we know that the only number of dimensions can be those two or 1, namely dim = 1,2, or 4.
+
+	\item The possible basis are $\phi$, or $\phi, \FF \phi$, or all 4: $\phi, \FF \phi, \FF^2 \phi, \I \FF \phi$.
+
+	\item
+		With the basis: $\phi, \FF \phi, \FF^2 \phi, \I \FF \phi$
+		\[
+		[\FF]_B 
+		=
+		\begin{bmatrix}
+			0 &1 & 0 & 0\\
+			0 &0 & 1 & 0\\
+			0 &0 & 0 & 1\\
+			1 &0 & 0 & 0
+		\end{bmatrix}
+		\]
+			A classic style of shifting operator on a finite dimensional space.
+	\item
+		*******************************************************************8
+		
+	\item
+
+	\end{enumerate}
 \end{Porb}
+
 
 \begin{Porb}
 \begin{Boxed}
+	Define the equivalent width as 
+	\[
+		\Delta_t = \left| \frac{ \intinf f(t) \di t } {f(0)} \right|
+		\]
+	Define the equivalent Fourier width as 
+	\[
+		\Delta_\omega = \left| \frac{ \intinf \hat f(t) \di t } {\hat f(0)} \right|
+		\]
+	\begin{enumerate}[a)]
+		\item Show that $\Delta_t \Delta_\omega = $const, is independent of the function f, and find its value.
+		\item Determine the equivalent width and Fourier width of 
+		\[
+			e^{-x^2/2b^2}
+		\]
+			and compare them with its full width as defined by its inflection points.
+	\end{enumerate}
 \end{Boxed}
+	\begin{enumerate}[a)]
+		\item
+			\[
+		\Delta_t \Delta_\omega 
+			= \left| \frac{ \intinf \hat f(t) \di t } {\hat f(0)} \right|
+			\left| \frac{ \intinf f(t) \di t } {f(0) }\right|
+			= \left| \frac{ \intinf \hat f(t) \di t  \intinf f(t) \di t } {\hat f (0) f(0)} \right|
+			\]
+			\[
+			= \left| \frac{ \intinf\intinf \hat f(x) f(y)\di x \di y } {\hat f (0) f(0)} \right|
+			= \left| \frac{ \intinf\intinf \intinf f(y) \ispi e^{-ixz} f(z)\di z \di x \di y } {\hat f (0) f(0)} \right|
+			=
+			\]
+			\[
+			 \left| \frac{ \intinf\intinf f(y)f(z) \intinf \ispi e^{-ixz} \di x \di z \di y } {\hat f (0) f(0)} \right|
+			= \left| \frac{\sqrt{2\pi} \intinf\intinf f(y)f(z) \delta(z) \di z \di y } {\hat f (0) f(0)} \right|
+			= \sqrt{2\pi} \left| \frac{\intinf f(y) \di y } {\hat f (0) } \right|
+			\]
+			\[
+			= \sqrt{2\pi} \left| \frac{\intinf f(y) \di y } {\ispi \intinf e^{-i*0*x} f(y) \di y  } \right|
+			= \sqrt{2\pi}  \sqrt{2\pi} 
+			= 2\pi 
+			\]
 
+		\item
+			With $f(x) = e^{-x^2/2b^2}$
+
+		Since I stared at completing the squares for way too long to justify not writing this down, here is the Fourier transform of the Gaussian:
+			\[
+			\hat f(\omega ) 
+			= \ispi \intinf  e^{-x^2/2b^2} e^{-i\omega x} \di x 
+			= \ispi \intinf  e^{-1/2b^2 \left[x^2+2b^2i\omega x\right]} \di x 
+				\]
+
+				We complete the square in the exponent:
+			\[
+			= \ispi \intinf  e^{-1/2b^2 \left[x^2+2b^2i\omega x  - \omega^2 b^4\right] - \omega^2 b^2/2} \di x 
+			= \ispi e^{-\omega^2 b^2/2} \intinf  e^{-1/2b^2 \left[x- \omega b^2\right]^2} \di x 
+			\]
+			Now with $ |b| u = x - \omega b^2,  |b| \di u = \di x $ we get:
+			\[
+			= |b| e^{-\omega^2 b^2/2} \intinf \ispi  e^{-u^2/2} \di u 
+			= |b| e^{-\omega^2 b^2/2} 
+			\]
+
+			So we have:
+			$
+			\hat f(\omega ) 
+			= |b| e^{-\omega^2 b^2/2} 
+			$
+			and can now do our calculations. 
+			(we could before and actually don't need this at all but I'ill be damned if I didn't spend too much time on this part to not just write something)
+
+			The $\Delta_\omega$ is actually the famous Gaussian integral:
+			\[
+			\Delta_\omega 
+			=
+			\left| \frac{ \intinf e^{-t^2/2b^2} \di t } {1 }\right|
+			=
+			\left|  \intinf e^{-t^2/2b^2} \di t \right|
+			= 
+			\sqrt{ \frac \pi {1/2b^2}}
+			=
+			\sqrt{ \pi 2b^2}
+			=
+			|b|\sqrt{ \pi 2}
+			\]
+
+			Thanks to the relation
+			$
+		\Delta_t \Delta_ \omega	= 2 \pi
+		$ 
+		we see that $\Delta_t$ must be $1/|b| \sqrt{ 2 \pi} $. 
+
+		I am too stuburn to not write this after the above
+			\[
+		\Delta_t 	
+			= \left| \frac{ \intinf \hat f(t) \di t } {\hat f(0)} \right|
+			= \left| \frac{ \intinf |b| e^{-\omega^2 b^2/2} \di \omega } {|b|} \right|
+			= \left| \intinf  e^{-\omega^2 b^2/2} \di \omega  \right|
+			\]
+			\[
+			= \left| \intinf  e^{-\omega^2 b^2/2} \di \omega  \right|
+			= \sqrt{ 2 \pi / b^2} 
+			= \frac 1 {|b|} \sqrt{ 2 \pi } 
+			\]
+
+			The inflection points are at $\pm b$ and thus its 'inflection witdth' is $2|b|$
+
+	\end{enumerate}
 \end{Porb}
+
+
 \begin{Porb}
 \begin{Boxed}
+	Define the auto-correlation h of the funciton f:
+	\[
+		h(y):= \intinf f(x) f(x-y) \di x
+	\]
+	Compute the Fourier transform of the auto correlation funcation and show that it equals the "spectral intensity" (aka power spectrum) of f whenever f is real valued. 
 \end{Boxed}
-
+	\[
+	\hat h(k)
+	= \frac 1 {\sqrt{ 2\pi}} \intinf e^{-iky}  \intinf f(x) f(x-y) \di x \di y
+	= \frac 1 {\sqrt{ 2\pi}} \intinf \intinf e^{-iky} f(x) f(x-y) \di x \di y
+	\]
+	\[
+	= \frac 1 {\sqrt{ 2\pi}} \intinf f(x) \intinf e^{-ik(x-u)} f(u) \di u \di x 
+	=  \intinf e^{-ikx}f(x) \hat f (-k) \di x 
+	=\hat f (-k)   \intinf e^{-ikx}f(x) \di x 
+	\]
+	\[
+	=\hat f (-k)  \hat f(k) 
+	=|\hat f(k)| ^2
+	\]
+	The $\hat f(-k)= \overline{\hat f(k)} $ is implied by f being real valued and is the only point we make use of this fact. 
 \end{Porb}
+
+
+
 \begin{Porb}
 \begin{Boxed}
+	\begin{enumerate}[a)]
+		\item
+			Compute the total energy \[ \intinf |h(T)|^2 \di T\]
+			of the cross correlation $h(T)$ in terms of the Fourier amplitudes of $f_0$ and $f$.
+		\item
+			*********************************
+	\end{enumerate}
 \end{Boxed}
-
+************************************
 \end{Porb}
+
+
 \begin{Porb}
 \begin{Boxed}
+What functions are eigenvectors of $\FF^2$ with eigenvalue $\lambda= 1$?
 \end{Boxed}
-
+Already did this.
 \end{Porb}
+
+
 \begin{Porb}
 \begin{Boxed}
+	Let $\hat g(k) = \FF [g(x)](k)$ and $H(k)= \FF[h](k)$ be the Fourier transforms of g and h.
+	Express the following in terms of $\hat g$ and $\hat f$.
+	\begin{enumerate}[i)]
+		\item $\FF [ \alpha g + \beta h]$ for some constants $\alpha, \beta$
+		\item $\FF[ g(x- \xi)]$
+		\item $\FF [ e^{i k_0 x} g]$
+		\item $\FF [g(ax)]$
+		\item $\FF [ \frac{d g}{dx}]$
+		\item $\FF[ x g(x)]$
+	\end{enumerate}
 \end{Boxed}
+	\begin{enumerate}[i)]
+		\item 
+			It is clear by the linearity of the integrals that we have:
+			\[
+			\FF [ \alpha g + \beta h] 
+			=
+			\FF [ \alpha g] +\FF[ \beta h] 
+			=
+			 \alpha \FF [g] +\beta \FF[ h] 
+			\]
 
+		\item 
+			\[
+			\FF[ g(x- \xi)]
+			=
+			\intinf e^{-ikx} g(x- \xi) \di x
+			=
+			\intinf e^{-ik(u+\xi)} g(u) \di u 
+			=
+			e^{-ik(\xi)} \intinf e^{-iku} g(u) \di u 
+			=
+			e^{-ik(\xi)} \hat g
+			\]
+
+		\item 
+			\[
+			\FF [ e^{i k_0 x} g]
+			=
+			\intinf e^{-ikx}e^{i k_0 x} g(x) \di x
+			=
+			\intinf e^{-i(k-k_0)x} g(x) \di x
+			=
+			\hat g(k-k_0)
+			\]
+
+		\item 
+			\[
+				\FF [g(ax)]
+			=
+			\intinf e^{-ikx}g(ax) \di x
+			=
+			\intinf \frac 1 a e^{-iku/a}g(u) \di u
+			=
+			\frac 1 a \hat g (k/a)
+			\]
+
+		\item 
+			Using integration by parts:
+			\[
+			\FF [ \frac{d g}{dx}]
+			=
+			\intinf e^{-ikx} \frac{d g}{dx}\di x
+			=
+			- \intinf  g\frac{d e^{-ikx}}{dx}\di x
+			=
+			\intinf ik ge^{-ikx}\di x
+			=
+			ik \hat g(k)
+			\]
+
+		\item 
+			\[
+			\FF[ x g(x)]
+			=
+			\intinf e^{-ikx} x g \di x
+			=
+			\intinf x e^{-ikx}  g \di x
+			=
+			\intinf \left[ \frac 1 {-i} \frac d {dk}  e^{-ikx}\right]  g \di x
+			\]
+			\[
+			=
+			\frac 1 {-i} \frac d {dk} \intinf  e^{-ikx} g \di x
+			=
+			\frac 1 {-i} \frac d {dk} \hat g(k)
+			\]
+	\end{enumerate}
 \end{Porb}
+
 \begin{Porb}
-\begin{Boxed}
-\end{Boxed}
-
-
-
-
-\end{Porb}
-\begin{Porb}
-	****************THIS SHOULD BE PROBLEM 8
 \begin{Boxed}
 	Show that any periodic function $f(\xi) = f(\xi +a)$ is the convolution of a nonperiodic function with a train of Dirac delta DISTRIBUTIONS.
 \end{Boxed}
@@ -940,12 +1300,407 @@ Obviously g is non periodic unless $f=0$ (that case being triival and not relave
 \suminf n g(x-an) = f(x) 
 \]
 Thus we have written f as a convlution of a non periodic function and a train of delta distributions.
+\end{Porb}
+
+
+\begin{Porb}
+\begin{Boxed}
+	Find the Fourier specturm of a finite train of identical coherent pulses of the kind shown in Fig. 2.9.
+\end{Boxed}
+The function in reference is of the form:
+	\[
+		f_n(t) = e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} e^{i\delta_n}
+	\]
+	Which in our specific case is:
+	\[
+		f_n(t) = e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+	\]
+	So our sum is:
+	\[
+		\sum_{n=-N}^N	f_n(t) 
+		=
+	\sum_{n=-N}^N	e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+	\]
+	*****************
 
 \end{Porb}
 
+
 \begin{Porb}
-	Z
 \begin{Boxed}
+	Verify that
+	\[
+		f(t) =
+		\suminf n 
+		e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+		\]
+		is a periodic function of t, and that $f(t+T)=f(t)$.
+		Find the full 4-ier representation
+		\[
+			f(t) = \suminf m c_m e^{i\omega_m t}
+			\]
+			of f by determing $\omega_m$ and $c_m$.
+\end{Boxed}
+*********************
+\end{Porb}
+
+
+
+
+
+\subsection{Orthonormal Wave Packet Representation}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	Consider the set of functions:
+	\[
+		\left\{
+			P_{jl}(t) = \frac 1 {\sqrt \eps} \int_{j\eps}^{(j+1)\eps} e^{2\pi i l \omega/\eps} 	
+			\ispi e^{-i\omega t} \di \omega
+			, \quad j,l = 0,\pm1, \pm 2 , \dots
+			\right\}
+		\]
+	\begin{enumerate}[a)]
+		\item Show that these wave packets are orthonormal
+		\item Show that these wave packets form a complete set.
+	\end{enumerate}
+\end{Boxed}
+
+\end{Porb}
+
+
+\begin{Porb}
+\begin{Boxed}
+	Consider the wave packet
+	\[
+		Q_{jl}(t) = \ispi \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+		e^{i \omega t} e^{-2 \pi i l \omega/\eps} \di \omega
+		\]
+		Express the summed wave packets:
+	\begin{enumerate}[a)]
+	\item 
+		\[
+			\suminf j Q_{jl} (t)
+			\]
+	\item
+		\[
+			\suminf l Q_{jl} (t)
+			\]
+	\item
+		\[
+			\suminf l\suminf j Q_{jl} (t)
+			\]
+	\end{enumerate}
+	in terms of appropriate Dirac delta DISTRIBUTIONS if necessary.
+\end{Boxed}
+	\begin{enumerate}[a)]
+	\item 
+		\[
+			\suminf j Q_{jl} (t)
+			=
+\ispi \frac 1 {\sqrt \eps} 	\suminf j	\int_{(j-1/2)\eps}^{(j+1/2)\eps}
+		e^{i \omega t} e^{-2 \pi i l \omega/\eps} \di \omega
+			=
+\ispi \frac 1 {\sqrt \eps} \intinf	e^{i \omega t} 
+			e^{-2 \pi i l \omega/\eps} \di \omega
+			\]
+			\[
+			=
+			 \frac 1 {\sqrt \eps} \intinf	\ispi e^{i \omega (t-2 \pi l/ \eps)} \di \omega
+			=
+			 \frac 1 {\sqrt \eps} \sqrt{2\pi} \delta ( t-2 \pi l/ \eps)
+			\]
+	\item
+		\[
+			\suminf l Q_{jl} (t)
+			=
+	\suminf l  \ispi \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+		e^{i \omega t} e^{-2 \pi i l \omega/\eps} \di \omega
+			=
+	 \ispi \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+		e^{i \omega t} \suminf l e^{-2 \pi i l \omega/\eps} \di \omega
+			\]
+			Now letting $y= -2 \pi \omega/\eps, \di y = -2\pi /\eps \di \omega$, we can change variables and evaluate the sum:
+			\[
+			=
+	  \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+			e^{i \omega t} \sqrt{2 \pi}  \suminf l e^{i l(-2 \pi  \omega/\eps) } \di \omega
+			=
+			\frac 1 {\sqrt \eps} \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
+			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \suminf l e^{i ly } \di y  \frac \eps {-2\pi }
+			\]
+			\[
+			=
+		\frac 1 {-2\pi }\sqrt \eps \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
+			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \delta(y) \di y  
+			=
+		\frac 1 {-2\pi }\sqrt \eps \sqrt{2 \pi}
+			\sum_{|j|\leq 3}
+			\delta_{j,0}
+			\]
+			Since $0\in [j-\frac 1 2, j +\frac 1 2]$ iff $j=0,\pm1,\pm2,\pm3$.
+
+	\item
+		By the first part we immediatly see:
+		\[
+			\suminf l\suminf j Q_{jl} (t)
+			=
+			\suminf l
+			 \frac 1 {\sqrt \eps} \sqrt{2\pi} \delta ( t-2 \pi l/ \eps)
+			=
+			\sqrt{ \frac {2\pi} {\eps} }
+			\suminf l
+			 \delta ( t-2 \pi l/ \eps)
+		\]
+
+
+
+	\end{enumerate}
+	*******************DOUBLE CHECK
+\end{Porb}
+
+
+
+\subsection{Orthonormal Wavelet Representation}
+
+\subsection{Multiresolutions Analysis}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	Show that
+	\[
+		\overline{ \bigcup_{k=-\infty}^\infty V_k} = L^2 \iff
+		\lim_{k\rw \infty} \norm{ P_{V_k} f - f } =0 
+	\]
+	where $P_{V_k}$ is the projection onto $V_{-k}$ (the sign is fliped to make the limits easier to write) and the norm is the $L^2$ norm.
+\end{Boxed}
+We go forward first:
+	\[
+		\overline{ \bigcup_{k=-\infty}^\infty V_k} = L^2
+		\]
+		Thus given an $f\in L^2, \exists h_n,\ st.$ $\lim_{n \rw \infty} \norm{h_n -f} =0, h_n \in \bigcup V_k$.
+		Now $\forall n$ $\exists k \ st. h_n \in V_k$. Now either $h_n = P_{V_k} f$ or $\norm{ h_n - f} \geq \norm{P_{V_k} -f}$ and we can replace $h_n$ with the actual projection without making the approximation any worse. 
+		Obviously our new $\bar h_n$ still converges and is made entirly of projections onto subspaces. Thus we have constructed the desired sequence. (We may need to additonally doctor the sequence and insert terms if $h_k$ skipped many subspaces.)
+		***********************HATE HOW THIS IS WRITTEN************************8
+	
+Now we go backwards:
+	Let f again be some funciton in $L^2$, then $\norm{ P_{V_k} f -f } \rw 0 $ as $ k \rw \infty$. Thus there exists some sequence $h_k = P_{V_k} f$ where $\norm{h_k -f } \rw 0$ as $k \rw \infty$. 
+	Additionally $h_k\in V_k \forall k$ thus $\forall f \in L^2, f \in \overline{ \bigcup V_kk}$.
+	The reverse inclusion is obvious and we are done. 
+\end{Porb}
+
+
+
+\begin{Porb}
+\begin{Boxed}
+	Show that
+	\[
+		\bigcap_{k=-\infty}^\infty V_k =\{0\} \iff
+		\lim_{k\rw \infty} \norm{ P_{V_k} f } =0 
+	\]
+
+\end{Boxed}
+First we go forward:\\
+	Notice that $\norm{P_{V_k} f}$ is a decreasing sequence and thus has some limit. Now suppose for controdiciton that
+	$\norm{P_{V_k} f} \rw \eps >0$ as $k \rw \infty$.
+	Notice now that this is a Cauchy sequence in $L^2$ and thus there is some function $g \in L^2$ st. 
+	$ \norm{P_{V_k} f -g } \rw 0$.
+	Now we wish to show that $g \in V_k, \forall k$. Suppose it is not, there is some $k_0$ st. g is no longer in any of the $V_k$'s after $k_0$.
+	But then (since $\overline{\bigcap V_k} = \{0\}$) there would be some nonzero gap that emerges between $P_{V_k}f$ and g, namely that:
+	$ \norm{P_{V_k} f -g } \geq d(V_k, g) = \eps_g >0$.
+	Thus $g\in V_k, \forall k$ but then $g \in \bigcap V_k$ which then means $g=0$ and thus 
+	$ \norm{P_{V_k} f } \rw \norm g =0$.
+
+
+
+Then we go back:\\
+We do this by controdiciton, so suppose that 
+		$\bigcap_{k=-\infty}^\infty V_k \supseteq \{0, g\} $ for some nonzero functions $g$. 
+		Then $\norm{g} >0$ and since $g\in \bigcap_{k=-\infty}^\infty V_k, \rw g \in V_k \forall k$. 
+		Thus $g \in P_{V_k}$ for all k and $\lim_{k \rw \infty} \norm{ P_{V_k} g} =\norm g >0$.
+		This is a controdicition and we see that there is no g.
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	\begin{enumerate}[a)]
+		\item Show that $V_0$ is discrete translation invarient, ie. whenever $l \in \ZZ$  that:
+			\[
+				f(t) \in V_0 \iff f(t-l) \in V_0
+				\]
+		\item Show that $V_k$ is $2^k$ shift invariant, ie with $l,k \in \ZZ$ that:
+			\[
+				f(t) \in V_0 \iff f(t-2^kl) \in V_0
+				\]
+	\end{enumerate}
+\end{Boxed}
+	\begin{enumerate}[a)]
+		\item 		
+			Suppose $f \in V_0$ then $\exists \alpha_l$ st. $f(t) = \sum_l \alpha_l \phi(t-l)$.
+			By the construction of the basis of $V_0$.
+			Notice that for $k \in \ZZ$
+			\[
+				f(t-k) = \sum_l \alpha_l \phi(t-k-l)
+				= \sum_{m= k+l} \alpha_{m-k} \phi(t-m)
+				= \sum_{m= k+l} \alpha_m' \phi(t-m)
+				\]
+				Thus we still have an expansion for $f(t-l)$ in terms of the original basis.
+		\item Similar tricks:
+			\[
+				f(t) \in V_k \Rw 
+				f(2^kt) \in V_0 \Rw 
+				\]
+				Now we remember that shifting by a constant value keeps you in $V_0$.
+				$
+					f(2^k(t-j)) = f(2^kt-2^kj) \in V_0
+				$\\
+				Now scaling the $t$ by $2^{-k}$ will get us back to $V_k$, that is: $f(t - 2^kj) \in V_k$.
+	\end{enumerate}
+\end{Porb}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\section{Strum-Liouville Theory}
+\setcounter{subsection}{2}
+\subsection{Strum-Liouville Systems}
+\setcounter{Prb}{0}
+
+
+\begin{Porb}
+\begin{Boxed}
+	\begin{enumerate}[a)]
+		\item Show that any equation of the form
+	\[
+		u''+ b(x) u'+ c(x) u=0
+	\]
+		can always be brought into the Shrodinger form:
+		\[
+			v'' + Q(x) v=0
+		\]
+	Apply this result to obtain the Schrodinger form for:
+	\item 
+		\[
+			u''-2xu' +\lambda u=0
+		\]
+	\item 
+		\[
+			x^2u''+xu'+(x^2-\nu^2)u=0
+		\]
+	\item 
+		\[
+			xu''+(1-x)u'+\lambda u=0
+		\]
+	\item 
+		\[
+			(1-x^2)u''- xu'+\alpha^2 u=0
+		\]
+	\item 
+		\[
+			(pu')'+ (q+\lambda r) u=0
+		\]
+	\item 
+		\[
+			\left[ \frac 1 {\sin \theta} \frac \di {\di \theta} \sin \theta  \frac \di {\di \theta} 
+			+ l (l+1) - \frac {m^2} {\sin^2\theta} 
+			\right]u =0
+		\]
+
+	\end{enumerate}
+	
+\end{Boxed}
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	Consider the S-L eigenvalue problem:
+	\[
+		[Lu_n] (x) = \left( - \frac{ d^2} { dx^2} + x^2\right)u_n(x) = \lambda_n u_n(x), \quad \lim_{x\rw \pm \infty} u(x)= 0
+		\]
+	Show that the eigenvalues $\lambda_n$ are nondegenerate, ie. show that, except for a constant multiple, the correpsonding eigenfunctions are unique.
+\end{Boxed}
+*************************************************
+\end{Porb}
+
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
+\section{Green's Function Theory}
+\setcounter{subsection}{2}
+\subsection{Pictorial Definition of a Green's Function}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	\begin{enumerate}[a)]
+		\item 
+		\item
+	\end{enumerate}
+\end{Boxed}
+\end{Porb}
+
+
+\setcounter{subsection}{2}
+\subsection{The Totally Inhomogeneous Boundary Value Problem}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	Let $L = -\frac{d^2}{dx^2}$ with boundary
 \end{Boxed}
 \end{Porb}
 
@@ -960,42 +1715,11 @@ Thus we have written f as a convlution of a non periodic function and a train of
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
 
 \end{document}
 
