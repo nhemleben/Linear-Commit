@@ -1,7 +1,6 @@
 
 \documentclass[12pt]{article} 
 \usepackage{graphicx,relsize, verbatim, amssymb, amsmath, amsthm, mathabx,dcolumn,mathrsfs, dsfont, enumerate, soul, titlesec}
-
 \newcolumntype{2}{D{.}{}{2.0}}
 \textwidth = 7 in
 \textheight = 9.5 in
@@ -16,7 +15,6 @@
 {0pt}{0ex plus .1ex minus .2ex}{.1ex plus .1ex}
 \titlespacing*{\subsection}
 {0pt}{.5ex plus .1ex minus .2ex}{.3ex plus .2ex}
-
 \DeclareMathOperator{\Gal}{Gal}	
 \DeclareMathOperator{\gal}{Gal}	
 \DeclareMathOperator{\im}{Image}
@@ -24,8 +22,6 @@
 \DeclareMathOperator{\spn}{span}	
 \DeclareMathOperator{\sgn}{sgn}	
 \DeclareMathOperator{\sinc}{sinc}	
-
-
 \newcommand{\CC}{\mathbb{C}}	
 \newcommand{\GG}{\mathbb{G}}	
 \newcommand{\LL}{\mathbb{L}}	
@@ -37,7 +33,6 @@
 \newcommand{\FF}{\mathfrak{F}}	
 \newcommand{\one}{\mathds{1}}
 \newcommand{\eps}{\epsilon}
-
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\s}[1]{\sqrt{#1}}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -61,12 +56,10 @@
 \newcommand{\intinf}{\int_{-\infty}^\infty}	
 \newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
 \newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
-
 \newtheorem{thm}{Theorem}
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}[section]
 \newtheorem{lem}{Lemma}[section]
-
 \newcounter{Prb}%[subsection]
 \newenvironment{Porb}[1][]{
 	\refstepcounter{Prb}\par\medskip 
@@ -115,7 +108,6 @@
 \begin{Porb}
 \begin{Boxed}
 {\large 
-
 Show that 
 \vspace{-2mm}
 \[
@@ -127,9 +119,7 @@ with
 \langle f , g \rangle = \int_a^b \bar f (x) g(x) \rho(x) \di x
 \]
 \end{Boxed}
-
 Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and get:
-
 \[
 = \int_a^b \overline { \sum_{k=1}^\infty u_k(x) c_k } g(x) \rho(x) \di x
 =  \sum_{k=1}^\infty \int_a^b \bar u_k(x) \bar c_k  g(x) \rho(x) \di x
@@ -144,8 +134,6 @@ Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and 
 
 \begin{Porb}
 \begin{Boxed}
-
-
 \[
 T f(\omega, t) = 
 \int_{-\infty}^\infty \bar g(x-t) e^{-i\omega x} f(x) \di x
@@ -227,13 +215,14 @@ e^{i\omega u}
 \di t
 \]
 
+Subbing in the following identity for $\delta$
 \[
 \intinf
 e^{i\omega u}
 \di \omega 
 = \delta( u)
 \]
-
+we see:
 \[
 =
 \intinf \intinf 
@@ -283,15 +272,15 @@ e^{i\omega u}
 	Show that the set of functions
 	\[
 		\left\{
-			\frac{ \sin \pi ( 2 \omega z - k) } { \pi 2 \omega z -k)} = \sinc(2 \omega z-k), \ k \in \ZZ
+			\frac{ \sin \pi ( 2 \omega z - k) } { \pi( 2 \omega z -k)} = \sinc(2 \omega z-k), \ k \in \ZZ
 			\right\}
 		\]
 		is an orthognal set satisfying:
 		\[
 			\intinf \sinc(2 \omega z -k) \sinc( 2 \omega z -l) \di z = A \delta_{kl}
-			\]
+		\]
 			What is A?
-
+			To show orthogonality follow this 3 step outline:
 \begin{enumerate}[a)]
 	\item
 		\[
@@ -322,31 +311,319 @@ e^{i\omega u}
 		is not complete on $L^2$, but is complete on a specific subset. What is this subset, ie what property must a function $f(t)$ satisfy in order to be in this subset?
 \end{enumerate}
 \end{Boxed}
-
-
-*****************************************************
 \begin{enumerate}[i)]
 	\item
 		If we take $k=0=l$ then we can calculate A:
-\begin{enumerate}[i)]
+		\[
+			 A = \intinf \sinc(2 \omega z) \sinc( 2 \omega z) \di z  		
+			 =
+			 \intinf \sinc(2 \omega z)^2  \di z  		
+			 =
+			 \intinf   		
+		\left( \frac{ \sin \pi ( 2 \omega z) } { \pi 2 \omega z)} \right)^2 
+		\di z 
+		\]
+		Now with $u= 2\pi \omega z$, $\di u = 2\pi \omega \di z$ we can change variables and see:
+		\[
+			 =
+			 \intinf   		
+		\left( \frac{ \sin (u) } {u} \right)^2 
+		\frac 1 {2 \pi\omega} \di u 
+			 =
+		\frac 1 {2\pi \omega} 
+		 \intinf   		
+		\left( \frac{ \sin (u) } {u} \right)^2 
+		\di u 
+		\]
+		Now we can apply integration by parts with
+		\[
+			\begin{cases}
+				u = \sin ^2 x & \di u = 2 \sin x \cos x = \sin (2x) \\
+				v= - \I x     & \di v = - x^{-2}
+			\end{cases}
+			\]
+		and arrive at:
+		\[
+			 =
+		\frac 1 {2\pi \omega} 
+		\left[
+			\frac{ -\sin ^2 x } x |_{\pm \infty}
+			-
+		 \intinf   		
+		 \frac{ \sin (2x)} {-x} 
+		 \di x
+		\right]
+			 =
+		\frac 1 {2\pi \omega} 
+		\left[
+		 \intinf   		
+		 \frac{ \sin (2x)} {x} 
+		 \di x
+		\right]
+		\]
+
+		With another change of variables $ 2x \rw x$, and noticing that $sinc(x)$ is an even function we get:
+		\[
+		\frac 1 {2 \pi \omega} 
+		 \intinf   		
+		 \frac{ \sin (x)} {x} 
+		 \di x
+		 =
+		\frac 1 {\pi \omega} 
+		 \int_0^\infty  		
+		 \frac{ \sin (x)} {x} 
+		 \di x
+		 =
+		\frac 1 {\pi \omega} 
+		\frac \pi 2
+		 =
+		 \frac 1 2 \I \omega
+		 =
+		 A
+		\]
+
+\begin{enumerate}[a)]
 	\item
+		Let $u_k = t - \frac{ 2\pi} {2N+1}k $, then
 		\[
 			\int_{-\pi}^\pi \delta_N \left( t - \frac{ 2\pi} {2N+1}k \right)
 	\delta_N \left( t - \frac{ 2\pi} {2N+1}l \right) \di t
 	=	
-		\frac{2N+1}{2 \pi} \delta_{kl}
+			\int_{-\pi}^\pi \delta_N \left(u_k \right)
+	\delta_N \left(u_l \right) \di t
+		\]
+		\[
+	=	
+			\int_{-\pi}^\pi
+			\left(
+ \frac 1 {2\pi} \sum_{n=-N}^N e^{inu_k}
+		\right) \left(	
+ \frac 1 {2\pi} \sum_{n=-N}^N e^{inu_l}
+		\right)
+		\di t
+		\]
+		\[
+			=
+			\int_{-\pi}^\pi
+ \frac 1 {4\pi^2} \sum_{n_1=-N}^N \sum_{n_2=-N}^N 
+		e^{i(n_1u_k+ n_2u_l)}
+		\di t
+			=
+ \frac 1 {4\pi^2} 
+\sum_{n_1=-N}^N \sum_{n_2=-N}^N 
+\int_{-\pi}^\pi
+		e^{i(n_1u_k+ n_2u_l)}
+		\di t
+		\]
+		Considering now just the integral:
+		\[
+\int_{-\pi}^\pi
+		e^{i(n_1u_k+ n_2u_l)}
+		\di t
+		=
+\int_{-\pi}^\pi
+		\exp\left\{
+			i\left(
+		n_1\left[t - \frac{ 2\pi} {2N+1}k\right]
+		+
+		n_2\left[t - \frac{ 2\pi} {2N+1}l\right]
+			\right)
+			\right\}
+		\di t
 		\]
 
+		\[
+		=
+\int_{-\pi}^\pi
+		\exp\left\{
+		i (n_1 + n_2) t 		
+		-
+i\left[
+		n_1\frac{ 2\pi} {2N+1}k
+		+
+n_2\frac{ 2\pi} {2N+1}l\right]
+			\right\}
+		\di t
+		\]
+
+		If we let $C_{n_1n_2lk}= 
+		\exp\left\{
+		-i\frac{ 2\pi} {2N+1}\left[
+		n_1k+
+n_2l\right]	\right\}
+			$
+			then we see get:
+		\[
+		=
+		\frac {C_{n_1n_2 lk}} {i(n_1+n_2)}
+		\exp\left\{
+			i (n_1 + n_2) t \right\}
+		|_{t = \pm \pi }
+		=
+	C_{n_1n_2 lk} 
+		\delta_{-n_1,n_2} 2\pi
+		\]
+		Plugging this back into the above we get:
+		\[
+			=
+ \frac 1 {2\pi} 
+\sum_{n_1=-N}^N \sum_{n_2=-N}^N 
+		C_{n_1n_2 lk}
+		\delta_{-n_1,n_2}
+			=
+ \frac 1 {2\pi} 
+\sum_{n=-N}^N  C_{n,-n lk}
+=
+ \frac 1 {2\pi} 
+\sum_{n=-N}^N  
+		\exp\left\{
+		-i n \frac{ 2\pi} {2N+1}\left[
+		k-l\right]	\right\}
+\]
+
+\[
+=
+ \frac 1 {2\pi} 
+\sum_{n=-N}^N  
+		\exp\left\{
+		-i n \frac{ 2\pi} {2N+1}\left[
+		k-l\right]	\right\}
+\]
+Clearly when $k=l$ then we get $
+ \frac 1 {2\pi} 
+\sum_{n=-N}^N  1 = \frac { 2N+1} {2\pi}$.
+Now for $k \neq l$ we see that this is just 
+\[
+	\delta_N(\frac{2\pi} { 2N+1} (k-l)) 
+	=
+	\frac 1 {2\pi} \frac{ \sin(\pi (k-l)) } { \sin \frac \pi {2N+1} (k-l)} 
+	\]
+	Notice that the denominator is never zero and that the top always is. Thus we arrive at:
+	\[
+			\int_{-\pi}^\pi \delta_N \left( t - \frac{ 2\pi} {2N+1}k \right)
+	\delta_N \left( t - \frac{ 2\pi} {2N+1}l \right) \di t
+	=	
+	\frac{2N+1} {2\pi} \delta_{kl}
+	\]
+	\item
+		Now we wish to make the change of variable $z = \frac{N+\frac 1 2}{ 2 \pi \omega} t$.
+	\[
+		\int_{-\frac{N+\frac 1 2}{ 2  \omega} }^{\frac{N+\frac 1 2}{ 2 \omega}}
+	\delta_N \left( \frac{ 2\pi} {2N+1} (2z\omega - k) \right) 
+	\delta_N \left( \frac{ 2\pi} {2N+1} (2z\omega - l) \right) 
+ 	\frac{ 4 \pi \omega}{2N+ 1 } \di z
+	=	
+	\frac{2N+1} {2\pi} \delta_{kl}
+	\]
+	\[
+		\int_{-\frac{N+\frac 1 2}{ 2  \omega} }^{\frac{N+\frac 1 2}{ 2 \omega}}
+	\delta_N \left( \frac{ 2\pi} {2N+1} (2z\omega - k) \right) 
+	\delta_N \left( \frac{ 2\pi} {2N+1} (2z\omega - l) \right) 
+	\di z  
+	=	
+        \frac 1 2 \left( \frac{2N+1} {2\pi} \right)^2   \I \omega \delta_{kl}
+	\]
+	\[
+	\delta_N \left( \frac{ 2\pi} {2N+1} (2z\omega - k) \right) 
+	=
+	\frac 1 {2\pi}
+	\frac{ 
+		\sin\left(( N+\frac 1 2) 
+		 \frac{ 2\pi} {2N+1} (2z\omega - k) \right) 
+		}
+	{
+		\sin \left( \frac{ 2\pi} {2N+1} (2z\omega - k) \right) /2	
+	}
+	\]
+	\[
+	=
+	\frac 1 {2\pi}
+	\frac{ 
+		\sin\left(\pi (2z\omega - k) \right) 
+		}
+	{
+		\sin \left( \frac{1} {2N+1} \pi(2z\omega - k) \right) 	
+	}
+		\]
+	\item
+		Now since we are taking the limit as $N \rw \infty$ we can ignore all higher terms in the $\sin$ expansion and just leave the linear factor.
+	\[
+	\sim
+	\frac 1 {2\pi}
+	\frac{ 
+		\sin\left(\pi (2z\omega - k) \right) 
+		}
+	{
+		 \frac{1} {2N+1} \pi(2z\omega - k)  	
+	}
+		\]
+	Putting this back into our integral equation yields:
+	\[
+		\int_{-\frac{N+\frac 1 2}{ 2  \omega} }^{\frac{N+\frac 1 2}{ 2 \omega}}
+	\frac 1 {2\pi}
+	\frac{ 
+		\sin\left(\pi (2z\omega - k) \right) 
+		}
+	{
+		 \frac{1} {2N+1} \pi(2z\omega - k)  	
+	}
+	\frac 1 {2\pi}
+	\frac{ 
+		\sin\left(\pi (2z\omega - l) \right) 
+		}
+	{
+		 \frac{1} {2N+1} \pi(2z\omega - l)  	
+	}
+	\di z  
+	=	
+        \frac 1 2 \left( \frac{2N+1} {2\pi} \right)^2   \I \omega \delta_{kl}
+	\]
+ With some simplificiation gives us:
+	\[
+		\int_{-\frac{N+\frac 1 2}{ 2  \omega} }^{\frac{N+\frac 1 2}{ 2 \omega}}
+	\frac{ 
+		\sin\left(\pi (2z\omega - k) \right) 
+		}
+	{
+		  \pi(2z\omega - k)  	
+	}
+	\frac{ 
+		\sin\left(\pi (2z\omega - l) \right) 
+		}
+	{
+		  \pi(2z\omega - l)  	
+	}
+	\di z  
+	=	
+        \frac 1 2 \I \omega \delta_{kl}
+	\]
+
+	Now taking limits we get the desired equality and see that A was in fact $\frac 1 {2 \omega}$
+	\[
+		\int_{-\infty}^{\infty}
+	\frac{ 
+		\sin\left(\pi (2z\omega - k) \right) 
+		}
+	{
+		  \pi(2z\omega - k)  	
+	}
+	\frac{ 
+		\sin\left(\pi (2z\omega - l) \right) 
+		}
+	{
+		  \pi(2z\omega - l)  	
+	}
+	\di z  
+	=	
+        \frac 1 2 \I \omega \delta_{kl}
+	\]
+	Thus the set is in fact an orhtogonal set satisfying the above.
 \end{enumerate}
-\end{enumerate}
 
-
-
-
-
-
-
+	\item Limited bandwith functions????
     ************************************
+
+\end{enumerate}
 \end{Porb}
 
 
@@ -982,10 +1259,7 @@ Two obvious cases come to mind, namely even and odd functions for the eigenvalue
 
 	\item
 		We know that $\FF^4=$I$\di$, and thus if $\lambda$ is an eigenvalue of $\FF$ then $\lambda^4=1$. Thus the only possible eigenvalules of $\FF$ are 4th roots of unity. 
-		Thus the only possible eigenvalues are $\pm1, \pm i$. 
-
-		****************NEED TO DEMONSTRATE VALUES?********************
-
+		Thus the eigenvalues are $\pm1, \pm i$. 
 		\end{enumerate}
 \end{Porb}
 
@@ -1026,13 +1300,36 @@ Two obvious cases come to mind, namely even and odd functions for the eigenvalue
 		\]
 			A classic style of shifting operator on a finite dimensional space.
 	\item
-		*******************************************************************8
-		
+		Easily enough we see:
+		\[
+		\det \left( [\FF]_B  - \lambda I\right)
+		=
+			\det \left(
+		\begin{bmatrix}
+			-\lambda &1 & 0 & 0\\
+			0 &-\lambda & 1 & 0\\
+			0 &0 & -\lambda & 1\\
+			1 &0 & 0 & -\lambda
+		\end{bmatrix}
+			\right)
+			= \lambda^4 -1
+		\]
+		Thus the eigenvalues are $\pm 1, \pm i$. The corresponding vectors are listed below:
+			\[
+		\begin{matrix}
+			\lambda = 1 & \phi + \FF \phi + \FF^2 \phi + \I \FF \phi \\
+			\lambda = -1 & \phi - \FF \phi + \FF^2 \phi - \I \FF \phi \\
+			\lambda = i & \phi +i \FF \phi - \FF^2 \phi -i \I \FF \phi \\
+			\lambda = -i & \phi -i \FF \phi - \FF^2 \phi +i \I \FF \phi \\
+		\end{matrix}
+				\]
+				(Something something permutation matricies)
 	\item
+		The eigenvalues of $\FF$ are the same viewed as a finite-dimensional vecotr space and as an infinte dimensional one. 
+			This seems to have been forced by the simpliity of the characterisitc polynomial more than anything else.
 
 	\end{enumerate}
 \end{Porb}
-
 
 \begin{Porb}
 \begin{Boxed}
@@ -1180,10 +1477,71 @@ Two obvious cases come to mind, namely even and odd functions for the eigenvalue
 			Compute the total energy \[ \intinf |h(T)|^2 \di T\]
 			of the cross correlation $h(T)$ in terms of the Fourier amplitudes of $f_0$ and $f$.
 		\item
-			*********************************
+			Consider
+			\[
+				h_k(T) = \frac {\intinf \bar f_0 (t-T) f_k(t) \di t}
+				{ \left[ 
+				\intinf |f_k(t)|^2 \di t
+				\right] ^{1/2} }
+				\]
+	\begin{enumerate}[i)]
+		\item
+			Show that $h_0(t)$ is the peak intensity, ie $|h_k(T)|^2 \leq |h_0(T)|^2$.
+		\item
+			Show that equality holds if $f_k(t) = \kappa f_0(t) $ for $\kappa$ some constant.
+	\end{enumerate}
 	\end{enumerate}
 \end{Boxed}
-************************************
+
+\begin{enumerate}[a)]
+	\item
+		For a matchd filter we have that $\intinf \bar f_0 (t-T) f(t) \di t = h(T)$, using this:
+		\[
+			\intinf |h(T)|^2 \di T
+			=
+			\intinf |
+			\intinf \bar f_0 (t-T) f(t) \di t
+			|^2 \di T
+			=
+			\intinf 
+			\intinf \bar f_0 (t-T) f(t) \di t
+			\overline{
+			\intinf \bar f_0 (t-T) f(t) \di t
+			}
+			 \di T
+		\]
+		\[
+			=
+			\intinf 
+			\intinf 
+			\intinf 
+			\bar f_0 (x-T) f(x) 
+			\overline{
+			\bar f_0 (y-T) f(y) 
+			}\di x
+			\di y
+			 \di T
+			=
+			\intinf 
+			\intinf 
+			\intinf 
+			\bar f_0 (x-T) f(x) 
+			f_0 (y-T)
+			\bar  f(y) 
+			\di x
+			\di y
+			 \di T
+		\]
+		*************************************************
+
+	\item
+\begin{enumerate}[i)]
+	\item
+	\item
+
+\end{enumerate}
+\end{enumerate}
+
 \end{Porb}
 
 
