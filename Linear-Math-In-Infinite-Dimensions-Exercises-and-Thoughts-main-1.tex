@@ -1132,11 +1132,9 @@ as $\omega \rw \infty$. Thus we only have:
 	y = 2 \pi \omega x, \quad 
 	dy = 2 \pi \omega dx
 	\]
-
-	\[
-	\frac y {2 \pi \omega } = x, \quad 
-	\frac {dy} { 2 \pi \omega } = dx
-	\]
+%	\quad 
+%	\frac y {2 \pi \omega } = x, \quad 
+%	\frac {dy} { 2 \pi \omega } = dx
 
 \[
 	=
@@ -1496,48 +1494,203 @@ Two obvious cases come to mind, namely even and odd functions for the eigenvalue
 \begin{enumerate}[a)]
 	\item
 		For a matchd filter we have that $\intinf \bar f_0 (t-T) f(t) \di t = h(T)$, using this:
+		Using the fact that $\FF$ is an isometery of $L^2$:
 		\[
 			\intinf |h(T)|^2 \di T
 			=
+			\norm{ h}_2
+			=
+			\norm{ \hat h}_2
+			=
+			\intinf |\FF h(\omega)|^2 \di \omega
+			\]
+
+
+			\[
+			=
 			\intinf |
-			\intinf \bar f_0 (t-T) f(t) \di t
-			|^2 \di T
+			\intinf e^{-i  T \omega}
+			h(T)
+			\di T
+			|^2 \di \omega
 			=
-			\intinf 
+			\intinf |
+			\ispi
+			\intinf e^{-i  T \omega}
 			\intinf \bar f_0 (t-T) f(t) \di t
-			\overline{
-			\intinf \bar f_0 (t-T) f(t) \di t
-			}
-			 \di T
-		\]
-		\[
+			\di T
+			|^2 \di\omega 
+			\]
+			\[
 			=
+			\intinf |
+			\ispi
 			\intinf 
+			f(t) 
 			\intinf 
-			\intinf 
-			\bar f_0 (x-T) f(x) 
-			\overline{
-			\bar f_0 (y-T) f(y) 
-			}\di x
-			\di y
-			 \di T
+			e^{-i  T \omega}
+			\bar f_0 (t-T) 
+			\di T
+			\di t
+			|^2 \di\omega 
+			\]
+			Let $u= t-T, \ \di u = - \di T$ (the negative sign is lost in the $||$).
+			\[
 			=
+			\intinf |
+			\ispi
 			\intinf 
+			f(t) 
 			\intinf 
+			e^{-i (t-u) \omega}
+			\bar f_0 (u) 
+			\di u
+			\di t
+			|^2 \di\omega 
+			=
+			\intinf |
+			\ispi
 			\intinf 
-			\bar f_0 (x-T) f(x) 
-			f_0 (y-T)
-			\bar  f(y) 
-			\di x
-			\di y
-			 \di T
-		\]
-		*************************************************
+			e^{-i t \omega}
+			f(t) 
+			\intinf 
+			e^{i u \omega}
+			\bar f_0 (u) 
+			\di u
+			\di t
+			|^2 \di\omega 
+			\]
+			Thanks to the relationship between conjugates and the fourier transform, namely $\FF \bar f [k] = \FF f[-k]$ we get:
+			\[
+			=
+			\intinf |
+			\ispi
+			\hat f_0 (\omega) 
+			\intinf 
+			e^{-i t \omega}
+			f(t) 
+			\di t
+			|^2 \di\omega 
+			=
+			\intinf |
+			\ispi
+			\hat f_0 (\omega) 
+			\hat	f(\omega) 
+			|^2 \di\omega 
+			\]
+
+			\[
+			=
+			\frac 1 {2 \pi}
+			\intinf |
+			\hat f_0 (\omega) 
+			\hat f(\omega) 
+			|^2 \di\omega 
+			\]
+
 
 	\item
 \begin{enumerate}[i)]
 	\item
+		This problem is actually wrong, consider $f_0(t) = \one_{[0,1]} (t)$ and $f_1(t) = \one_{[2,3]} (t)$ and $T=2$.
+
+		Then $\norm{f_1}_2 =1 = \norm{f_0}$ but 
+		\[
+			\intinf \bar f_0 (t-T) f_0(t) \di t
+			=0
+		\]
+		
+		\[
+			\intinf \bar f_0 (t-T) f_k(t) \di t
+			=1
+		\]
+		Which gives $h_1(T)>h_0(T)$, contrary to the statment of the problem.
+
+%		$\forall k$ and fixed T we can write 
+%		\[
+%			f_k(t) = 
+%			\frac{ \intinf \bar f_0 (t-T) f_k(t) \di t} 
+%			{ \intinf \bar f_0 (t-T) f_0(t) \di t} 
+%			f_0(t) + g(t) 
+%			\]
+%			where $\intinf \bar g(t-T) f_0(t) \di t = 0$
+%			By orthogonality of these functions we see that:
+%		\[
+%			\intinf f_k(t-T) f_k(t) \di T = 
+%			\frac{ \intinf \bar f_0 (t-T) f_k(t) \di t} 
+%			{ \intinf \bar f_0 (t-T) f_0(t) \di t} 
+%			f_0(t) + g(t) 
+%			\]
+%
+%		\[
+%			|h_k(T)|^2 
+%			=
+%			\norm{ 
+%			\frac {\intinf \bar f_0 (t-T) f_k(t) \di t}
+%			{ \left[ 
+%			\intinf |f_k(t)|^2 \di t
+%			\right] ^{1/2} }
+%			}^2
+%			=
+%			\frac {\norm{ \intinf \bar f_0 (t-T) f_k(t) \di t }^2 }
+%			{ 
+%			\intinf |f_k(t)|^2 \di t
+%			 }
+%		\]
+%
+%
+%
+%		\[
+%			\leq
+%			\frac { \left( \intinf \norm{\bar f_0 (t-T) f_k(t) }\di t \right)^2 }
+%			{ 
+%			\intinf |f_k(t)|^2 \di t
+%			 }
+%			 =
+%			\frac {  \norm{\bar f_0 (t-T) f_k(t) }_1^2 }
+%			{ 
+%			\norm{ f_k(t)}_2^2
+%			 }
+%		\]
+%		Since this is true for any k we notice that we can see it is sufficent to show:
+%	\[
+%			 \norm{\bar f_0 (t-T) f_k(t) }_1 ^2
+%			 \leq
+%			 \norm{\bar f_0 (t-T) f_0(t) }_1 ^2
+%	\]
+%		**************************************************\\
+%		Or even simplier after taking square roots:
+%	\[
+%			 \norm{\bar f_0 (t-T) f_k(t) }_1 
+%			 \leq
+%			 \norm{\bar f_0 (t-T) f_0(t) }_1 
+%	\]
+
+		**********************MESSGE GERLACH****************************\\
 	\item
+		Oddly enough the equality still holds.
+		If we have $f_k(t) = \kappa f_0(t)$ then we see:
+		\[
+			|h_k(T)|^2 
+			=
+			\norm{ 
+			\frac {\intinf \bar f_0 (t-T) \kappa f_0(t) \di t}
+			{ \left[ 
+			\intinf |\kappa f_0(t)|^2 \di t
+			\right] ^{1/2} }
+			}^2
+			=
+			\norm{ 
+			\frac {\intinf \bar f_0 (t-T) f_0(t) \di t}
+			{ \left[ 
+			\intinf |f_0(t)|^2 \di t
+			\right] ^{1/2} }
+			}^2
+			= |h_0(T)|^2
+		\]
+
+
+
 
 \end{enumerate}
 \end{enumerate}
@@ -1642,6 +1795,7 @@ Already did this.
 			=
 			\frac 1 {-i} \frac d {dk} \hat g(k)
 			\]
+			***************************DOUBLE CHECK LAST COUPLE\\
 	\end{enumerate}
 \end{Porb}
 
@@ -1679,8 +1833,85 @@ The function in reference is of the form:
 		=
 	\sum_{n=-N}^N	e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
 	\]
-	*****************
+%	Now we wish to calculate the Fourier transform:
+%	\[
+%	\sum_{n=-N}^N	\FF e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+%	=
+%	\ispi
+%	\sum_{n=-N}^N	
+%	\intinf
+%	e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+%	e^{-i \omega t} \di t 
+%	\]
 
+	We could in theory calculate the Fourier transform of each of the elmeents of the sum and then combine. However the text has outlined a process we can just semi blindly follow with less work.
+
+	To this end we notice that with $\delta_n=0= n \Delta \phi $ we have the same form as page 90 with:
+	\[
+		f(t) = 
+		=
+	\sum_{n=-N}^N	e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} e^{in \Delta \phi}
+	\]
+	but with finite bounds on our sum. Thankfully we can still rewrite it as a convolution:
+	\[
+		f(t) = 
+		\intinf
+	e^{-(t-\xi)^2/2b^2} e^{i\omega_0(t-\xi)} 
+	\sum_{n=-N}^N	
+	\delta ( \xi - n T ) \di \xi
+	\]
+
+	Our pulses have the same form as before, but our comb is much shorter this time.
+	\[
+		\FF[ \text{pulse} ](\omega) 
+		=
+		\intinf 
+	e^{-t^2/2b^2} e^{i\omega_0t} 
+	\di t
+		=
+		b e^{-(\omega-\omega_0)^2/2b^2} 
+	\]
+
+	\[
+		\FF[ \text{small comb} ](\omega) 
+		=
+	\sum_{n=-N}^N	
+	\FF
+	\delta ( \xi - n T ) 
+		=
+	\sum_{n=-N}^N	
+	\ispi
+	\intinf
+	e^{-i \omega \xi}
+	\delta ( \xi - n T ) 
+	\di \xi
+	\]
+
+	\[
+		=
+	\ispi
+	\sum_{n=-N}^N	
+	e^{-i n \omega T }
+	=
+	\sqrt{2 \pi}
+	\frac{ \sin (N+\frac 1 2) \omega T}
+	{\sin \omega T/2}
+	\]
+	In the book they use Poisson's sum formula, here we are not so lucky as the bounds are finite.
+
+	Combining now our expressions for the Fourier transform we get:
+
+	\[
+	\FF [f](\omega)
+	=
+	\sqrt{2 \pi}
+	b e^{-(\omega-\omega_0)^2/2b^2} 
+	\frac{ \sin (N+\frac 1 2) \omega T}
+	{\sin \omega T/2}
+	\]
+	Thus in the end the spectral envelope ends up being the same as it was determined by the amplidude.
+	The spectral lines portion though, is now just a finite approximation. Notably it is a function and has not achieved yet distribution status.
+	The spectral lines in this case wobbles much more and has support on the whole real line and not just at integerl multilpes of $2\pi$ plus a $\Delta \phi$ factors.
 \end{Porb}
 
 
@@ -1699,7 +1930,43 @@ The function in reference is of the form:
 			\]
 			of f by determing $\omega_m$ and $c_m$.
 \end{Boxed}
-*********************
+Verifying periodicity is straightforward:
+	\[
+		f(t+T) =
+		\suminf n 
+		e^{-(t+T-nT)^2/2b^2} e^{i\omega_0(t+T-nT)} 
+		=
+		\suminf n 
+		e^{-(t-(n-1)T)^2/2b^2} e^{i\omega_0(t-(n-1)T)} 
+		\]
+		\[
+		=
+		\suminf n 
+		e^{-(t-nT)^2/2b^2} e^{i\omega_0(t-nT)} 
+		=f(t)
+		\]
+
+		Now to find the 4-ier representation:
+		We know from the work done in the book that
+		\[
+			\FF [f](\omega) = 
+	\sqrt{2 \pi}
+	b e^{-(\omega-\omega_0)^2/2b^2} 
+	\suminf m  \delta \left( \omega T - 2 \pi m \right)
+		\]
+		\[
+			f(t) = 
+			\frac 1 {2\pi}
+			\suminf n
+			e^{-i 2 \pi n t} \FF f (2 \pi n)
+			=
+			\frac 1 {2\pi}
+			\suminf n 
+			e^{-i2 \pi n t} 
+			\]
+
+			*************************************************\\
+
 \end{Porb}
 
 
@@ -1724,7 +1991,11 @@ The function in reference is of the form:
 		\item Show that these wave packets form a complete set.
 	\end{enumerate}
 \end{Boxed}
-
+	\begin{enumerate}[a)]
+		\item
+		\item
+	\end{enumerate}
+************************************************\\
 \end{Porb}
 
 
@@ -1991,6 +2262,7 @@ We do this by controdiciton, so suppose that
 	\end{enumerate}
 	
 \end{Boxed}
+*************************************************
 \end{Porb}
 
 \begin{Porb}
