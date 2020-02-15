@@ -91,9 +91,8 @@
 {\large Linear Math In Infinte Dimensions}  
 \hfill  \today
 
-\section{Chapter 1}
-\setcounter{subsection}{4}
-\subsection{ Subsection 5}
+\tableofcontents
+\clearpage
 %\setcounter{Prb}{-1}
 %		\begin{Porb}
 %		\begin{Boxed}
@@ -102,9 +101,27 @@
 %		\end{Boxed}
 %			Outside a Box
 %		\end{Porb}
-
+\section{Infinite Dimensional Vector Spaces}
+\setcounter{subsection}{2}
+\subsection{Metric Spaces}
 %THe first hrule
 \hrule
+		\begin{Porb}
+		\begin{Boxed}
+			Show that a) the hamming distance, b) the Pythagorean distance and c) the Chebyshev distance each satisfy the triangle inequality.
+		\end{Boxed}
+			\begin{enumerate}[a)]
+		\item
+			\end{enumerate}
+		\end{Porb}
+
+
+
+
+
+\setcounter{subsection}{4}
+\setcounter{Prb}{0}
+\subsection{Hilber Spaces}
 \begin{Porb}
 \begin{Boxed}
 {\large 
@@ -1947,6 +1964,13 @@ Verifying periodicity is straightforward:
 		\]
 
 		Now to find the 4-ier representation:
+
+Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1 = \delta \ \Rw 1 = \suminf n \delta(n) e^{inx}$, we can do the same with this series.
+	(Note the $\delta$ distriutions outside of integrals is 'problematic' but not a problem)
+
+	Or for a more close situation: $\FF e^{iwx}[\omega] = \sqrt{2 \pi} \delta(\omega-w) \ \Rw  e^{iwx} = \suminf n \sqrt{2 \pi} \delta( n- w) e^{inx}$.
+
+
 		We know from the work done in the book that
 		\[
 			\FF [f](\omega) = 
@@ -1954,6 +1978,7 @@ Verifying periodicity is straightforward:
 	b e^{-(\omega-\omega_0)^2/2b^2} 
 	\suminf m  \delta \left( \omega T - 2 \pi m \right)
 		\]
+		The Fourier series is then:
 		\[
 			f(t) = 
 			\frac 1 {2\pi}
@@ -1962,15 +1987,29 @@ Verifying periodicity is straightforward:
 			=
 			\frac 1 {2\pi}
 			\suminf n 
-			e^{-i2 \pi n t} 
+			e^{-i n t} 
+	\sqrt{2 \pi}
+	b e^{-(n-\omega_0)^2/2b^2} 
+	\suminf m  \delta \left( n T - 2 \pi m \right)
 			\]
-
-			*************************************************\\
-
+			\[
+			=
+			b
+			\suminf n 
+			e^{-i n t-(n-\omega_0)^2/2b^2} 
+	\suminf m  \delta \left( n T - 2 \pi m \right)
+			\]
+			Thus we want $nT = 2 \pi m$ to have nonzero values from the infinite sum:
+			***************SKETCHY*********************\\
+			\[
+			=
+			\sum_{m \exists n, \ nT = 2 \pi m} 
+			b
+			e^{-(n-\omega_0)^2/2b^2}
+			e^{-i 2\pi m /T t} 
+			\]
+			$\omega_m = 2 \pi m /T, \ c_m = b e^{-(m-\omega_0)^2/2b^2}$.
 \end{Porb}
-
-
-
 
 
 \subsection{Orthonormal Wave Packet Representation}
@@ -1993,9 +2032,137 @@ Verifying periodicity is straightforward:
 \end{Boxed}
 	\begin{enumerate}[a)]
 		\item
+		\[
+			\intinf P_{jl} (t) P_{j'l'}(t) \di t	
+			=
+			\intinf 
+\frac 1 {\sqrt \eps} \int_{j\eps}^{(j+1)\eps} e^{2\pi i l \omega_1/\eps} 	
+			\ispi e^{-i\omega_1 t} \di \omega_1
+\frac 1 {\sqrt \eps} \int_{j'\eps}^{(j'+1)\eps}\ispi
+			\overline{e^{2\pi i l' \omega_2/\eps} 	
+			 e^{-i\omega_2t}} \di \omega_2
+\di t
+		\]
+		\[
+			=
+\frac 1 {\eps 2 \pi } 
+			\intinf 
+\int_{j\eps}^{(j+1)\eps} 
+ \int_{j'\eps}^{(j'+1)\eps}
+			e^{2\pi i l \omega_1/\eps} 	
+			e^{-i\omega_1 t} 
+ 	                e^{-2\pi i l' \omega_2/\eps} 	
+			e^{i\omega_2t} \di \omega_1 \di \omega_2
+\di t
+		\]
+		\[
+			=
+\frac 1 {\eps 2 \pi } 
+\int_{j\eps}^{(j+1)\eps} 
+ \int_{j'\eps}^{(j'+1)\eps}
+ 	                e^{-2\pi i l' \omega_2/\eps} 	
+			e^{2\pi i l \omega_1/\eps} 	
+			\intinf 
+			e^{-i(\omega_1-\omega_2)t} 
+\di t
+			\di \omega_1 \di \omega_2
+		\]
+
+		\[
+			=
+\frac 1 {\eps 2 \pi } 
+\int_{j\eps}^{(j+1)\eps} 
+ \int_{j'\eps}^{(j'+1)\eps}
+ 	                e^{-2\pi i l' \omega_2/\eps} 	
+			e^{2\pi i l \omega_1/\eps} 	
+			\delta(\omega_1-\omega_2)
+			\di \omega_1 \di \omega_2
+		\]
+			We see at this stage that we need $\omega_1 = \omega_2$ on some positive measure set, otherwise the whole endever will be 0. Thus to continue the calculation we can add in a $\delta_{jj'}$ to ensure that the integration domains coincde.
+
+		\[
+			=
+			\delta_{jj'}
+\frac 1 {\eps 2 \pi } 
+\int_{j\eps}^{(j+1)\eps} 
+ 	                e^{-2\pi i l' \omega_1/\eps} 	
+			e^{2\pi i l \omega_1/\eps} 	
+			\di \omega_1 	
+			=
+			\delta_{jj'}
+\frac 1 {\eps 2 \pi } 
+\int_{j\eps}^{(j+1)\eps} 
+			e^{2\pi i (l-l') \omega_1/\eps} 	
+			\di \omega_1 
+			=
+			\delta_{jj'}
+			\delta_{ll'}
+			\]
+			The last equality follows from considering the $1/\eps$ periodicity of 
+			$e^{2\pi i (l-l') \omega_1/\eps}$ whenever $l \neq l'$.
+
+			*************EAT CONSTANTS****************\\
+
+
 		\item
+			As a student I once had would say: "we write it down and bash"
+			\[
+			\suminf j \suminf l P_{jl} (t) \bar P_{jl}(t')
+			=
+			\suminf j \suminf l 
+\frac 1 {\sqrt \eps} \int_{j\eps}^{(j+1)\eps} e^{2\pi i l \omega/\eps} 	
+			\ispi e^{-i\omega t} \di \omega
+\frac 1 {\sqrt \eps} \int_{j\eps}^{(j+1)\eps} e^{-2\pi i l \omega/\eps} 	
+			\ispi e^{i\omega t'} \di \omega
+				\]
+\[
+			=
+			\frac 1 {\eps 2 \pi}
+			\suminf j \suminf l 
+ \int_{j\eps}^{(j+1)\eps} e^{2\pi i l \omega_1/\eps} 	
+    e^{-i\omega_1 t} \di \omega_1
+ \int_{j\eps}^{(j+1)\eps} e^{-2\pi i l \omega_2/\eps} 	
+			e^{i\omega_2 t'} \di \omega_2
+				\]
+		\[
+			=
+			\frac 1 {\eps 2 \pi}
+			\suminf j \suminf l 
+ \int_{j\eps}^{(j+1)\eps} 
+ \int_{j\eps}^{(j+1)\eps} 
+ e^{2\pi i l (\omega_1-\omega_2)/\eps} 	
+    e^{-i(\omega_1t-\omega_2t') } 
+    \di \omega_2 \di \omega_1
+				\]
+		\[
+			=
+			\frac 1 {\eps 2 \pi}
+		\intinf 
+		\intinf 
+    e^{-i(\omega_1t-\omega_2t') } 
+		\suminf l 
+ e^{2\pi i l (\omega_1-\omega_2)/\eps} 	
+    \di \omega_2 \di \omega_1
+				\]
+
+		\[
+			=
+			\frac 1 {\eps 2 \pi}
+		\intinf 
+		\intinf 
+    e^{-i(\omega_1t-\omega_2t') } 
+    \delta((\omega_1-\omega_2)/\eps)
+    \di \omega_2 \di \omega_1
+			=
+			\frac 1 {2 \pi}
+		\intinf 
+    e^{-i\omega (t-t') } 
+    \di \omega
+    =
+			\delta(t-t')
+				\]
+				Bashing complete, we arrive at the answer.
 	\end{enumerate}
-************************************************\\
 \end{Porb}
 
 
@@ -2095,7 +2262,7 @@ Verifying periodicity is straightforward:
 
 \subsection{Multiresolutions Analysis}
 \setcounter{Prb}{0}
-
+%1
 \begin{Porb}
 \begin{Boxed}
 	Show that
@@ -2121,7 +2288,7 @@ Now we go backwards:
 \end{Porb}
 
 
-
+%2
 \begin{Porb}
 \begin{Boxed}
 	Show that
@@ -2152,6 +2319,7 @@ We do this by controdiciton, so suppose that
 		This is a controdicition and we see that there is no g.
 \end{Porb}
 
+%3
 \begin{Porb}
 \begin{Boxed}
 	\begin{enumerate}[a)]
@@ -2207,12 +2375,61 @@ We do this by controdiciton, so suppose that
 
 
 
-
+%4
 \begin{Porb}
 \begin{Boxed}
-	zt
+	\begin{enumerate}[a)]
+		\item Point out why this inner product is the $(l,l')$th entry of the $\sqrt 2$- multilple of a unitary matrix, which is independent of k.
+		\item SHow that $\suminf l \bar h_l h_{l-2l'} = \delta_{0l'}$
+	\end{enumerate}
 \end{Boxed}
+
+	\begin{enumerate}[a)]
+		\item
+			***********************************
+		\item
+	\end{enumerate}
 \end{Porb}
+
+%5
+\begin{Porb}
+\begin{Boxed}
+
+\end{Boxed}
+
+\end{Porb}
+
+
+%6
+\begin{Porb}
+\begin{Boxed}
+
+\end{Boxed}
+
+\end{Porb}
+
+
+%7
+\begin{Porb}
+\begin{Boxed}
+
+\end{Boxed}
+
+\end{Porb}
+
+
+%8
+\begin{Porb}
+\begin{Boxed}
+	Validate Conclusion \# II of the theorem on page 145. Point out why, whenever $k \neq k'$, the funcitons in $O_k$ are orthogonal to $)_{k'}$.
+\end{Boxed}
+
+
+\end{Porb}
+
+
+
+
 
 \section{Strum-Liouville Theory}
 \setcounter{subsection}{2}
@@ -2350,6 +2567,200 @@ We do this by controdiciton, so suppose that
 	zt
 \end{Boxed}
 \end{Porb}
+
+
+%ch5
+\section{Special Function Theory}
+\subsection{The Helmholtz Equation}
+\setcounter{Prb}{0}
+
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%3
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%4
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\subsection{Properties of Hankel and Bessel Functions}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+\subsection{More Properties of Hankel and Bessel Functions}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
+
+\subsection{Applications of Hankel and Bessel Functions}
+\setcounter{Prb}{0}
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%3
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%4
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%5
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+\subsection{More Properties of Hankel and Bessel Functions}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+\subsection{The Method of Steepest Descent and Stationary Phase}
+\setcounter{Prb}{0}
+
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
+
+
+%ch6
+\section{Partial Differential Equations}
+\setcounter{subsection}{1}
+\subsection{System of Partial Differntial Equations: How to solve Maxwell's equations using Linear Algebra}
+\setcounter{Prb}{0}
+
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%3
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%4
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%5
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%6
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%7
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%8
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%9
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
 
 \end{document}
 
