@@ -1814,6 +1814,21 @@ Already did this.
 			\]
 			***************************DOUBLE CHECK LAST COUPLE\\
 	\end{enumerate}
+
+To make life easier to see, eveyrthin in a box gives:
+	\begin{enumerate}[i)]
+		\item $ \FF [ \alpha g + \beta h] = \alpha \FF g + \beta \FF h $ for some constants $\alpha, \beta$
+		\item $\FF[ g(x- \xi)] = e^{i k \xi} \FF g [k] $
+		\item $\FF [ e^{i k_0 x} g] = \FF g [ k - k_0]$
+		\item $\FF [g(ax)] =  \frac 1 a \hat g (k/a)$
+		\item $\FF [ \frac{d g}{dx}] = ik \FF g$
+		\item $\FF[ x g(x)] = 
+			\frac 1 {-i} \frac d {dk} \hat g(k)
+			$
+	\end{enumerate}
+
+
+
 \end{Porb}
 
 \begin{Porb}
@@ -1969,8 +1984,10 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 	(Note the $\delta$ distriutions outside of integrals is 'problematic' but not a problem)
 
 	Or for a more close situation: $\FF e^{iwx}[\omega] = \sqrt{2 \pi} \delta(\omega-w) \ \Rw  e^{iwx} = \suminf n \sqrt{2 \pi} \delta( n- w) e^{inx}$.
+	Now something to remmeber here is that we are no longer working with $L^2$ functions where $\FF$ gives us a bijective map to $l^2$. Now we know the specturm of the distribution from $\FF$ but it is not neccisarily true that $ \sum_n \FF f(n) e^{in x} = f(x)$ or that the left hand side even has a meaning.
 
 
+	So following $e^{iwx} \rw e^{i w x}$ even for $w \not \in \ZZ$. 
 		We know from the work done in the book that
 		\[
 			\FF [f](\omega) = 
@@ -1978,15 +1995,15 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 	b e^{-(\omega-\omega_0)^2/2b^2} 
 	\suminf m  \delta \left( \omega T - 2 \pi m \right)
 		\]
-		The Fourier series is then:
+		The Fourier 'type' series is then:
 		\[
 			f(t) = 
 			\frac 1 {2\pi}
-			\suminf n
+			\sum n
 			e^{-i 2 \pi n t} \FF f (2 \pi n)
 			=
 			\frac 1 {2\pi}
-			\suminf n 
+			\sum n 
 			e^{-i n t} 
 	\sqrt{2 \pi}
 	b e^{-(n-\omega_0)^2/2b^2} 
@@ -1998,17 +2015,22 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 			\suminf n 
 			e^{-i n t-(n-\omega_0)^2/2b^2} 
 	\suminf m  \delta \left( n T - 2 \pi m \right)
+			=
+			b
+			\suminf n 
+			e^{-i n t-(n-\omega_0)^2/2b^2} 
+	\suminf m   T \delta \left( n - \frac 2 T \pi m \right)
 			\]
-			Thus we want $nT = 2 \pi m$ to have nonzero values from the infinite sum:
+			Thus we want $n = \frac 2 T \pi m$ to have nonzero values from the infinite sum:
 			***************SKETCHY*********************\\
 			\[
 			=
-			\sum_{m \exists n, \ nT = 2 \pi m} 
-			b
-			e^{-(n-\omega_0)^2/2b^2}
+			\sum_{m} 
+			bT
+			e^{-(\frac 2 T \pi m -\omega_0)^2/2b^2}
 			e^{-i 2\pi m /T t} 
 			\]
-			$\omega_m = 2 \pi m /T, \ c_m = b e^{-(m-\omega_0)^2/2b^2}$.
+			$\omega_m = 2 \pi m /T, \ c_m = bT e^{-(m-\omega_0)^2/2b^2}$.
 \end{Porb}
 
 
@@ -2380,7 +2402,7 @@ We do this by controdiciton, so suppose that
 \begin{Boxed}
 	\begin{enumerate}[a)]
 		\item Point out why this inner product is the $(l,l')$th entry of the $\sqrt 2$- multilple of a unitary matrix, which is independent of k.
-		\item SHow that $\suminf l \bar h_l h_{l-2l'} = \delta_{0l'}$
+		\item Show that $\suminf l \bar h_l h_{l-2l'} = \delta_{0l'}$
 	\end{enumerate}
 \end{Boxed}
 
@@ -2394,8 +2416,21 @@ We do this by controdiciton, so suppose that
 %5
 \begin{Porb}
 \begin{Boxed}
-
+Verify the validity of the funcitonal constatin:
+	\[
+		|H(\omega)|^2+ |H(\omega+\pi)|^2 =1
+		\]
 \end{Boxed}
+Begin with :
+	\[
+		\suminf n | \hat \phi  ( \omega + 2\pi n)|^2 = \frac 1 {2\pi}
+		,
+		\hat \phi( 2 \omega) = H ( \omega) \hat \phi( \omega)
+		\]
+		\[
+			H( \omega ) = \frac{ \sqrt 2 } 2 \suminf l h_l e^{i\omega l}
+			\]
+		
 
 \end{Porb}
 
@@ -2403,8 +2438,24 @@ We do this by controdiciton, so suppose that
 %6
 \begin{Porb}
 \begin{Boxed}
+Consider a function $\phi (t)$ having the property
+	\[
+		\left|
+		\intinf \phi(t) \di t
+		\right|
+		\neq 0
+		\]
 
+		Find the solution to the scaling equation:
+		\[
+		\hat \phi( 2 \omega) = H ( \omega) \hat \phi( \omega)
+		\]
+	Answer/Hint: 
+	\[
+	\hat \phi (\omega) = \hat \phi (0) \prod_{k=1}^\infty H(\omega/2^k)
+	\]
 \end{Boxed}
+	
 
 \end{Porb}
 
@@ -2412,16 +2463,41 @@ We do this by controdiciton, so suppose that
 %7
 \begin{Porb}
 \begin{Boxed}
-
+	Let $\phi^+(t)$ be soltuion to the scaling equation
+	\[
+		\phi(t) = \sqrt 2 \suminf l h_l \phi( 2 t -l)
+		\]
+		\begin{enumerate}
+			\item
+				Point out why
+				\[
+					\hat \phi^- = \begin{cases}
+						\hat \phi^+ ( \omega) & \omega \geq 0 \\
+						-\hat \phi^+ ( \omega) & \omega \leq 0 
+					\end{cases}
+					\]
+					is the Fourier transform of a second independent solution to the above scaling equaiton.
+			\item
+				Show that these two solutions are orhtogonal:
+				\[
+					\intinf \bar \phi^+ \phi^- \di t = 0
+					\]
+					whenever $\phi(t)$ is a real funciton or whenever its Fourier transform is an even function of $\omega$.
+		\end{enumerate}
 \end{Boxed}
 
+
+
 \end{Porb}
+
+
+
 
 
 %8
 \begin{Porb}
 \begin{Boxed}
-	Validate Conclusion \# II of the theorem on page 145. Point out why, whenever $k \neq k'$, the funcitons in $O_k$ are orthogonal to $)_{k'}$.
+	Validate conclusion \# II of the theorem on page 145. Point out why, whenever $k \neq k'$, the funcitons in $O_k$ are orthogonal to $O_{k'}$.
 \end{Boxed}
 
 
@@ -2436,7 +2512,7 @@ We do this by controdiciton, so suppose that
 \subsection{Strum-Liouville Systems}
 \setcounter{Prb}{0}
 
-
+%1
 \begin{Porb}
 \begin{Boxed}
 	\begin{enumerate}[a)]
@@ -2480,57 +2556,308 @@ We do this by controdiciton, so suppose that
 	
 \end{Boxed}
 *************************************************
+	\begin{enumerate}[a)]
+		\item
+			We consider:
+	\[
+		u''+ b(x) u'+ c(x) u=0
+	\]
+			Let u be some solution, let us try $v(x) = F(x) u(x)$ 
+			then:
+			\[
+				v' = F' u + F u', 
+				v'' = F'' u + 2F'u' + F u''
+				\]
+
+			Now we plug this into $v''+Qv$ and find:
+			\[
+				 F'' u + 2F'u' + F u''
+				 +
+				 Fu
+				 =
+				 F'' u + 2F'u' + F (u'' +Qu)
+				\]
+				
+				\[
+				 =
+				 F \left[ 
+				  u'' +2F'/Fu' +(F''/F +Q)u 
+				  \right]
+				\]
+				We know that $u'' = -bu'-cu$
+				\[
+				 =
+				 F \left[ 
+				  (2F'/F-b)u' +(F''/F +Q-c)u 
+				  \right]
+				\]
+				If we let $Q = c- F''/F$ then all we have to do is solve $2F'/F =b$.
+				This leads to
+				\[
+					2 F'/F -b=0 \Rw 2 \int^x F'/F = \int^x b
+					\Rw 2 \ln F = \int^x b
+				\]
+
+					\[
+						\Rw F = \exp \{ \frac 1 2 \int^x b \}
+					\]
+
+			Thus our subsitition ends up being: $v(x) = \exp \{ \frac 1 2 \int^x b \} u(x)$. 
+			Note that $F' = \frac {b} 2 F, \ F'' = \frac {b'+ b^2/2} 2 F$
+ and our equation gets:
+			
+			\[
+				Q= c- F''/F 
+				=
+				 c- F''/F
+				 =
+				c- \frac {b'+ b^2/2} 2
+			\]
+
+
+	\item 
+		\[
+			u''-2xu' +\lambda u=0
+		\]
+
+		Thus the things we have to calcuate are:
+		\[
+F = \exp \{ \frac 1 2 \int^x b \}, \quad
+Q= c- \frac {b'+ b^2/2} 2
+\]
+		\[
+F = \exp \{ \frac 1 2 \int^x -2 y \di y \}, \quad
+Q= \lambda- \frac {-2+ 4 x^2/2} 2
+\]
+\[
+	v= \exp \{  -x^2/2   \} u, \quad
+v'' + \left(\lambda+1+ x^2 \right) v =0
+	\]
+
+
+
+
+
+
+
+
+
+	\item 
+		\[
+			x^2u''+xu'+(x^2-\nu^2)u=0
+		\]
+	\item 
+		\[
+			xu''+(1-x)u'+\lambda u=0
+		\]
+	\item 
+		\[
+			(1-x^2)u''- xu'+\alpha^2 u=0
+		\]
+	\item 
+		\[
+			(pu')'+ (q+\lambda r) u=0
+		\]
+	\item 
+		\[
+			\left[ \frac 1 {\sin \theta} \frac \di {\di \theta} \sin \theta  \frac \di {\di \theta} 
+			+ l (l+1) - \frac {m^2} {\sin^2\theta} 
+			\right]u =0
+		\]
+
+	\end{enumerate}
 \end{Porb}
 
+
+%2
 \begin{Porb}
 \begin{Boxed}
 	Consider the S-L eigenvalue problem:
 	\[
 		[Lu_n] (x) = \left( - \frac{ d^2} { dx^2} + x^2\right)u_n(x) = \lambda_n u_n(x), \quad \lim_{x\rw \pm \infty} u(x)= 0
 		\]
+		on the infinite interval $(-\infty, \infty)$\\
 	Show that the eigenvalues $\lambda_n$ are nondegenerate, ie. show that, except for a constant multiple, the correpsonding eigenfunctions are unique.
 \end{Boxed}
 *************************************************
 \end{Porb}
 
-
+%3
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the "parity" operator $P: L^2 \rw L^2$ ($L^2 = L^2(-\infty, \infty)$) defined by 
+	\[
+		P\psi (x) = \psi (-x)
+		\]
+		\begin{enumerate}
+			\item For a given function $\psi$ what are the eigenvlaues and eigenfunction of P?
+			\item Show that the eigenfunctions of the operator L defined in problem 3.3.2 are eigenfunctions of P. Do this by computing 
+				\[
+					\I P L P \psi (x) 
+					\]
+					for $\psi \in L^2$ and the pointing out how $\I P L P$ is related to L.
+						Next point out how this relationship applied to an eigenfunction $u_n$ of the previous problem leads ot the result $P  u_n = \mu u_n$.
+		\end{enumerate}
+\end{Boxed}
+		\begin{enumerate}
+			\item
+			\item
+		\end{enumerate}
+
+\end{Porb}
+
+%4
+\begin{Porb}
+\begin{Boxed}
+	Consider the S-L eigenvalue problem:
+	\[
+		[Lu_n] (x) = \left( - \frac{ d^2} { dx^2} + x^2\right)u_n(x) = \lambda_n u_n(x), \quad \lim_{x\rw \pm \infty} u(x)= 0
+		\]
+		on the infinite interval $(-\infty, \infty)$\\
+		We are now blessed with the knowledge that these eigenvalues are nondegenerate and are $\lambda_n = 2n +1$.
+		Consider now the Fourier transform on $L^2$
+		\[
+			\FF u = \ispi \intinf e^{-ikx } u \di x
+			\]
+		\begin{enumerate} [a)]
+			\item
+				By computing $\FF L \I \FF \hat \psi $ for an aribitary $\hat \psi \in L^2$, determine the Fourier represnetation of $\FF L \I \FF = \hat L$, of the operator $ L = - \frac{ d^2} {d x^2} + x^2$.
+			\item By viewing $\FF$ as a map from $L^2$ to itself, compare the operators $\hat L$ and $L$.
+				State in english senence and in math equation.
+			\item  Us the result of b to show that each eigenfunction $u_n$ of the S-L operator L is also an eigenfunction of $\FF$.
+				\[
+					\FF u_n = \mu u_n
+					\]
+					By applying the result (e) of the exercise on page 75, determine the only allowed values for $\mu$. What \emph{is} the 4-ier transform of a Hermite-Gauss polynomial?
+		\end{enumerate}
+\end{Boxed}
+
+
+\end{Porb}
+
+%5
+\begin{Porb}
+\begin{Boxed}
+Consider the S-L System:
+	\[
+		\left[ 
+		\frac d {dx} p \frac d {dx} + q + \lambda \rho
+		\right] u
+		=0
+		, \quad a < x <b 
+		\]
+		\[
+			\alpha u(a) + \alpha ' u' (a) =0; 
+			\quad
+			\beta u(a) + \beta ' u' (a) =0
+			\]
+		Let $\omega(x, \lambda)$ be that unqiue soltuion to the above with boundary conditions satisified. 
+		Then $\omega_n(x) = \omega(x, \lambda_n)$ is an eigenfunction with eigenvalue $\lambda_n$. Calculate $\int_a^b \omega_n^2 \rho \di x$ as follows:
+		
+		\begin{enumerate}
+			\item
+				\[
+					(\lambda - \lamb_n) \int_a^b \omega_n(x) \omega(x, \lambda) \rho(x) \di x= 
+					p(b) W(\omega, \omega_n) |_x=b
+					\]
+			\item
+				By taking the limit $\lamb \rw \lamb_n$ show that:
+				\[
+					\int_a^b \omega_n^2= 
+					p(b) \left[
+						w'_n(b) \frac{d \omega(b, \lamb)} {d \lamb} |_{\lamb=\lamb_n} 
+						- \omega(b) 
+						\frac d {d \lamb} 
+						w'_n(b, \lamb) |_{\lamb=\lamb_n} 
+						\right]
+					\]
+					primes here refering to $\frac d {dx}$.
+		\end{enumerate}
 \end{Boxed}
 \end{Porb}
 
+%6
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the S-L problem
+	\[
+		\left[
+			- \dd {} x x \dd {} x + \frac {\nu} {x} 
+			\right]u = \lambda x u
+		\]
+	Here u, $\dd u x$ bounded as $x\rw 0, u(1) =0$ and $\nu \in \RR$.
+		\begin{enumerate}
+			\item Using the sub $t= \sqrt \lamb x$ show that the above differential equation reduces to Bessel's equation of order $\nu$. One solution which is bouned as $t \rw 0$ is $J_\nu (t)$; a second linearly indep. solution, denoted by $Y_\nu(t)$ is unbounded as $t \rw 0$.
+
+			\item
+				SHow that the eigenvalues of the given problem are the squares fo the positive zeros of $J_\nu ( \sqrt \lamb)$ and that the corresponding eigenfunctions are 
+				\[
+					u_n (x) = J_\nu ( \sqrt {\lamb_n} x)
+					\]
+
+			\item
+				Show that the eigenfunctions $u_n$ satisfy the orhtogonality relaiton:
+				\[
+					\int_0^1 x u_m u_n \di x =0, \quad m \neq n
+					\]
+
+			\item
+				For the case $\nu =0$, apply the method of the previous problem to exhibit the set of orhtonormalized eiqgenfuncitons.
+			
+			\item Determine the coeffiencts of the Fourier-Bessel sereis expnaison:
+				\[
+					f(x) = \sum_{n=1}^\infty c_n u_n(x)
+					\]
+		\end{enumerate}
 \end{Boxed}
+
+
 \end{Porb}
 
+
+
+%7
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the S-L problem
+	\[
+		\left[
+			- \dd {} x (1-x^2) \dd {} x + \frac {m^2} {1-x^2} 
+			\right]u = \lambda  u
+		\]
+		Here u, $\dd u x$ bounded as $x \rw \pm 1$. Here m is an integr. The solutions to this S-L problem are $u_n = P_n^m(x)$ the "asosciated Legendre polynomials", corresponding to $\lambda_n = n(n+1)$ n being an integer. SHow that:
+		\[
+			\int_{-1}^1 P_n^m P_{n'}^m \di x = 0 \quad \lambda_n \neq \lambda_{n'}
+			\]
 \end{Boxed}
+
 \end{Porb}
 
-\begin{Porb}
-\begin{Boxed}
-	zt
-\end{Boxed}
-\end{Porb}
-
-\begin{Porb}
-\begin{Boxed}
-	zt
-\end{Boxed}
-\end{Porb}
 
 
 
+
+
+%Ch4
 \section{Green's Function Theory}
 \setcounter{subsection}{2}
-\subsection{Pictorial Definition of a Green's Function}
-\setcounter{Prb}{0}
+%\subsection{Pictorial Definition of a Green's Function}
+%\setcounter{Prb}{0}
 
+\setcounter{subsection}{2}
+\subsection{The Totally Inhomogeneous Boundary Value Problem}
+\setcounter{Prb}{0}
+%1
+\begin{Porb}
+\begin{Boxed}
+	\begin{enumerate}[a)]
+		\item 
+		\item
+	\end{enumerate}
+\end{Boxed}
+\end{Porb}
+
+%2
 \begin{Porb}
 \begin{Boxed}
 	\begin{enumerate}[a)]
@@ -2541,32 +2868,105 @@ We do this by controdiciton, so suppose that
 \end{Porb}
 
 
-\setcounter{subsection}{2}
-\subsection{The Totally Inhomogeneous Boundary Value Problem}
-\setcounter{Prb}{0}
-
+%3
 \begin{Porb}
 \begin{Boxed}
 	Let $L = -\frac{d^2}{dx^2}$ with boundary
 \end{Boxed}
 \end{Porb}
 
-
-
-
-
-
-
-
-
-
-
-
+%4
 \begin{Porb}
 \begin{Boxed}
 	zt
 \end{Boxed}
 \end{Porb}
+
+%5
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
+\setcounter{subsection}{6}
+\subsection{}
+\setcounter{Prb}{0}
+
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%3
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%4
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+%5
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
+\setcounter{subsection}{8}
+\subsection{}
+\setcounter{Prb}{0}
+
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+\setcounter{subsection}{10}
+\subsection{}
+\setcounter{Prb}{0}
+
+
+%1
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	zt
+\end{Boxed}
+\end{Porb}
+
+
+
 
 
 %ch5
