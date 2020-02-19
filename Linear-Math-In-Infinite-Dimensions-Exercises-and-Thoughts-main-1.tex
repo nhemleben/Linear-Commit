@@ -3123,12 +3123,12 @@ Consider the S-L System:
 	Consider the S-L problem
 	\[
 		\left[
-			- \dd {} x x \dd {} x + \frac {\nu} {x} 
+			- \dd {} x x \dd {} x + \frac {\nu^2} {x} 
 			\right]u = \lambda x u
 		\]
 	Here u, $\dd u x$ bounded as $x\rw 0, u(1) =0$ and $\nu \in \RR$.
 		\begin{enumerate}
-			\item Using the sub $t= \sqrt \lamb x$ show that the above differential equation reduces to Bessel's equation of order $\nu$. One solution which is bouned as $t \rw 0$ is $J_\nu (t)$; a second linearly indep. solution, denoted by $Y_\nu(t)$ is unbounded as $t \rw 0$.
+			\item Using the sub $t= \sqrt {\lamb x}$ show that the above differential equation reduces to Bessel's equation of order $\nu$. One solution which is bouned as $t \rw 0$ is $J_\nu (t)$; a second linearly indep. solution, denoted by $Y_\nu(t)$ is unbounded as $t \rw 0$.
 
 			\item
 				SHow that the eigenvalues of the given problem are the squares fo the positive zeros of $J_\nu ( \sqrt \lamb)$ and that the corresponding eigenfunctions are 
@@ -3154,54 +3154,162 @@ Consider the S-L System:
 
 		\begin{enumerate}
 			\item 
-				Let $t = \sqrt \lamb x $, then $\di t = \sqrt \lamb \di x \Rw \dd tx = \sqrt \lamb$.
+				The bessel equation is:
+				\[
+					\left[
+						x^2 \dd {^2} {x^2} + x \dd {} x + x^2 - \alpha^2 \right] u = 0
+					\]
+
+				So begining with:
+				Let $t = \sqrt {\lamb }x $, then $ t/\sqrt \lamb = x,\text{ and } \dd t x = \sqrt \lamb$, 
 				$\dd {} x = \dd {} t \dd t x = \dd {} t \sqrt \lamb $
+				Our equation is:
 		\[
 			\left[
-			- \dd {} x x \dd {} x + \frac {\nu} {x} 
+			- \dd {} x x \dd {} x + \frac {\nu^2} {x} 
 			\right]u = \lambda x u
 		\]
+				We replace with $\dd {} t$ to get:
 		\[
 			\left[
-			- \dd {} t \sqrt \lamb  t/ \sqrt \lamb  \dd {} t \sqrt \lamb + \frac {\nu} {t/\sqrt \lamb} 
+			-   \dd t x\dd {} t t/\sqrt \lamb  \dd t x\dd {} t + \frac {\nu^2} {t/\sqrt \lamb} 
 			\right]u = \lambda t/ \sqrt \lamb u
 		\]
 		\[
 			\left[
-			- \sqrt \lamb \dd {} t   t \dd {} t + \sqrt \lamb\frac {\nu} {t} 
-			\right]u =t \sqrt \lamb u
+			-   \sqrt \lamb \dd {} t t \dd {} t +\sqrt \lamb \frac {\nu^2} {t} 
+			\right]u = t \sqrt \lamb u
+		\]
+				Now multiplying across by $t /\sqrt \lamb$ we get:
+		\[
+			\left[
+			-    t \dd {} t t \dd {} t +  \nu^2 
+			\right]u = t^2   u
 		\]
 		\[
 			\left[
-			-  \dd {} t   t \dd {} t + \frac {\nu} {t} 
-			\right]u =t u
+			-    t \dd {} t t \dd {} t +  \nu^2 
+			- t^2 \right]u = 0
 		\]
+		\[
+			\left[
+				t \dd {^2} {t^2}+   \dd {} t -  \nu^2 
+			+ t^2 \right]u = 0
+		\]
+				Which is plainly the Bessel equation of order $\nu$.
 
+%				Let $t = \sqrt {\lamb x} $, then $ t^2/\lamb = x,\text{ and } \dd t x = \sqrt \lamb \frac 1 {2 \sqrt x}$, 
+%				$\dd {} x = \dd {} t \dd t x = \dd {} t \sqrt \lamb $
+%		\[
+%			\left[
+%			- \dd {} x x \dd {} x + \frac {\nu^2} {x} 
+%			\right]u = \lambda x u
+%		\]
+%				We replace with $\dd {} t$ to get:
+%		\[
+%			\left[
+%			-   \dd t x\dd {} t t^2/\lamb  \dd t x\dd {} t + \frac {\nu^2} {t^2/\lamb} 
+%			\right]u = \lambda t^2/\lamb u
+%		\]
+%		\[
+%			\left[
+%			-  \sqrt \lamb \frac 1 {2 \sqrt x} \dd {} t  t^2/\lamb \sqrt \lamb \frac 1 {2 \sqrt x} \dd {} t + \frac {\lamb \nu^2} {t^2} 
+%			\right]u = t^2 u
+%		\]
+%		\[
+%			\left[
+%				-   \frac 1 {2 t/\sqrt \lamb} \dd {} t  t^2  \frac 1 {2 t/\sqrt \lamb} \dd {} t + \frac {\lamb \nu^2} {t^2} 
+%			\right]u = t^2 u
+%		\]
+%		\[
+%			\left[
+%				-  \lamb \frac 1 {4 t} \dd {} t  t \dd {} t + \frac {\lamb \nu^2} {t^2} 
+%			\right]u = t^2 u
+%		\]
+%		\[
+%			\left[
+%				-  \lamb \frac 1 {4 t}  \left(  t\dd { ^2} {t^2} + \dd {} t \right) + \frac {\lamb \nu^2} {t^2} 
+%			\right]u = t^2 u
+%		\]
+%		\[
+%			\left[
+%				-   \frac t {4}  \left(  t\dd { ^2} {t^2} + \dd {} t \right) + \nu^2  
+%				\right]u = \frac {t^4} \lamb u
+%		\]
+%		\[
+%			\left[
+%				-   \frac 1 {4}  t^2\dd { ^2} {t^2} - \frac t 4 \dd {} t + \nu^2  -  \frac {t^4} \lamb 
+%				\right]u = 0
+%		\]
+%				From here we can see that the quesion has some issues and that the equation can not go into the form that we wanted with t as the variable.
+%
+%		\[
+%			\left[
+%				-   \frac 1 {4} \left( t^2\dd { ^2} {t^2} +  t \dd {} t \right) + \nu^2  -   t^2 x  
+%				\right]u = 0
+%		\]
+%				Rewriten as above we see that we simply eed to change the original equation to:
+%		\[
+%			\left[
+%			- 4 \dd {} x x \dd {} x + \frac {\nu^2} {x} 
+%			\right]u = \lambda u
+%		\]
+%				TO make the suggested substitiution work and the resulting ODE the Bessel equation of the order we wanted, namely $\nu$.
+%
 
 
 			\item
 				\[
 					u_n (x) = J_\nu ( \sqrt {\lamb_n} x)
 					\]
+					Let $u_n(x) $ be a solution of the above equation, then 
+					
+					**********************************\\
 
 			\item
+				We know that in genral for a S-L problem with eigenvectors $u_n, u_m$ that we have:
 				\[
-					\int_0^1 x u_m u_n \di x =0, \quad m \neq n
-					\]
+					(\lambda_m - \lamb_n) \int_a^b \omega_n(x) \omega_m(x) \rho(x) \di x= 
+			p(x) W(\omega_m, \omega_n) |^{x=b}_a
+				\]
+				In our specific case we have:
+				\[
+					(\lambda_m - \lamb_n) \int_0^1 \omega_n(x) \omega_m(x) x \di x= 
+			p(x) W(\omega_m, \omega_n) |^{x=1}_0
+				\]
+				Since the eigenvalues are disitinct it suffices to show from here that 
+				\[
+			p(x) W(\omega_m, \omega_n) |^{x=1}_0 =0
+			\]
+			Since $u(1)=0$ we see that $
+			p(x) W(\omega_m, \omega_n) |^{x=1} =0$.
+			and since $p(x) =x, p(0)= 0$ and we get our result.
 
 			\item
+
+				We have that
+				\[
+					\omega ( x, \lamb) = J( \sqrt \lamb x)
+					\]
+					And the normalization integral from the previous problem
+				\[
+					\int \omega_n^2 \di x
+					=
+					p(b) \left[
+						w'_n(b) \frac{d \omega(b, \lamb)} {d \lamb} |_{\lamb=\lamb_n} 
+						- \omega(b) 
+						\frac d {d \lamb} 
+						w'_n(b, \lamb) |_{\lamb=\lamb_n} 
+						\right]
+					\]
+					***********************************\\
+
 			
 			\item
 				\[
 					f(x) = \sum_{n=1}^\infty c_n u_n(x)
 					\]
 		\end{enumerate}
-
-
-
-
-
-
 
 \end{Porb}
 

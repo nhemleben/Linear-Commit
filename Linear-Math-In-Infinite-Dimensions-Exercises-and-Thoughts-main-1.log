@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  19 FEB 2020 00:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  19 FEB 2020 13:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -713,8 +713,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 3112--3115
 
  []
 
-[41] [42] [43]
-Overfull \hbox (15.3666pt too wide) detected at line 3269
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 3155--3157
+
+ []
+
+[42] [43]
+Overfull \hbox (15.3666pt too wide) detected at line 3348
 \U/matha/m/n/12 ^^P [][] ^^A [][] \OML/cmm/m/it/12 u[]v[] \U/matha/m/n/12 ^^@ \
 OML/cmm/m/it/12 a\U/matha/m/n/12 p\OML/cmm/m/it/12 x\U/matha/m/n/12 q\OML/cmm/m
 /it/12 uv[] \U/matha/m/n/12 ^^A \OML/cmm/m/it/12 b\U/matha/m/n/12 p\OML/cmm/m/i
@@ -726,26 +731,26 @@ U/matha/m/n/12 ^^P [][] ^^@ [][] \OML/cmm/m/it/12 uv[] \U/matha/m/n/12 ^^A \OML
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3295--3296
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3324--3325
+Underfull \hbox (badness 10000) in paragraph at lines 3374--3375
 
  []
 
 [44]
-Underfull \hbox (badness 10000) in paragraph at lines 3386--3388
+Underfull \hbox (badness 10000) in paragraph at lines 3403--3404
+
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 3465--3467
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3388--3389
+Underfull \hbox (badness 10000) in paragraph at lines 3467--3468
 
  []
 
-[45] [46] [47] [48] [49] [50] [51]
+[46] [47] [48] [49] [50] [51] [52]
 (./Linear-Math-In-Infinite-Dimensions-Exercises-and-Thoughts-main-1.aux) ) 
 Here is how much of TeX's memory you used:
  3589 strings out of 494945
@@ -777,10 +782,10 @@ dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/share/texlive/texmf-dist
 ts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on Linear-Math-In-Infinite-Dimensions-Exercises-and-Thoughts-mai
-n-1.pdf (51 pages, 301532 bytes).
+n-1.pdf (52 pages, 302516 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
+ 257 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
