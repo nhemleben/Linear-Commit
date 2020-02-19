@@ -53,7 +53,7 @@
 \newcommand{\pp}[2]{\frac{\p #1}{\p #2}}
 \newcommand{\di}{\mathrm{d}}
 \newcommand{\dd}[2]{\frac{\di #1}{\di #2}}
-\newcommand{\intinf}{\int_{-\infty}^\infty}	
+\newcommand{\intinf}{\int\limits_{-\infty}^\infty}	
 \newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
 \newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
 \newtheorem{thm}{Theorem}
@@ -2092,7 +2092,7 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 
 		\[
 			=
-\frac 1 {\eps 2 \pi } 
+\frac 1 {\eps } 
 \int_{j\eps}^{(j+1)\eps} 
  \int_{j'\eps}^{(j'+1)\eps}
  	                e^{-2\pi i l' \omega_2/\eps} 	
@@ -2105,17 +2105,21 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 		\[
 			=
 			\delta_{jj'}
-\frac 1 {\eps 2 \pi } 
+\frac 1 {\eps  } 
 \int_{j\eps}^{(j+1)\eps} 
  	                e^{-2\pi i l' \omega_1/\eps} 	
 			e^{2\pi i l \omega_1/\eps} 	
 			\di \omega_1 	
 			=
 			\delta_{jj'}
-\frac 1 {\eps 2 \pi } 
+\frac 1 {\eps } 
 \int_{j\eps}^{(j+1)\eps} 
 			e^{2\pi i (l-l') \omega_1/\eps} 	
 			\di \omega_1 
+			=
+\frac \eps {\eps } 
+			\delta_{jj'}
+			\delta_{ll'}
 			=
 			\delta_{jj'}
 			\delta_{ll'}
@@ -2123,7 +2127,6 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 			The last equality follows from considering the $1/\eps$ periodicity of 
 			$e^{2\pi i (l-l') \omega_1/\eps}$ whenever $l \neq l'$.
 
-			*************EAT CONSTANTS****************\\
 
 
 		\item
@@ -2408,8 +2411,43 @@ We do this by controdiciton, so suppose that
 
 	\begin{enumerate}[a)]
 		\item
-			***********************************
-		\item
+			Let M be the map from $V_k \rw V_{k+1}$ that is Change of basis from two orhtonormal basis? So it sunitary and stuff?
+			**********************************************************************
+
+		\item 
+			If $l' =0$ then we have:
+			\[
+			\suminf l \bar h_l h_{l-2l'} 
+			=
+			\suminf l | h_l |^2
+			=
+			\suminf l \frac 1 4 | \intinf \bar \phi ( u-l) \phi ( u/2) \di u |^2
+			\]
+			We notice now that $h_l$ is the coefficent of the projection of $\phi(u/2)$ onto the space $V_0$. Thankfully $\phi(u/2) \i V_1 \subset V_0$. 
+			Thus we see that by Parsevel's that:
+			\[
+			\suminf l \bar h_l h_{l-2l'} 
+			=
+			\norm{ \phi(u/2)}^2 \frac 1 4
+			=
+			\frac 4 4 = 1
+			\]
+
+			If $l \neq 0$ then:
+			\[
+			\suminf l \bar h_l h_{l-2l'} 
+			=
+			\suminf l  
+			\overline{
+		\intinf \bar \phi ( u-l) \phi(u/2) \di u
+				}
+			\intinf \bar \phi ( u-(l-2l')) \phi(u/2) \di u
+			\]
+
+
+		********************************\\	
+
+
 	\end{enumerate}
 \end{Porb}
 
@@ -2562,6 +2600,7 @@ Consider a function $\phi (t)$ having the property
 	\[
 		u''+ b(x) u'+ c(x) u=0
 	\]
+	*********************PACKT******************\\
 			Let u be some solution, let us try $v(x) = F(x) u(x)$ 
 			then:
 			\[
@@ -2605,7 +2644,6 @@ Consider a function $\phi (t)$ having the property
 			Thus our subsitition ends up being: $v(x) = \exp \{ \frac 1 2 \int^x b \} u(x)$. 
 			Note that $F' = \frac {b} 2 F, \ F'' = \frac {b'+ b^2/2} 2 F$
  and our equation gets:
-			
 			\[
 				Q= c- F''/F 
 				=
@@ -2613,6 +2651,15 @@ Consider a function $\phi (t)$ having the property
 				 =
 				c- \frac {b'+ b^2/2} 2
 			\]
+			All togther we have:
+	\[
+		u \rw v = \exp \{ \frac 1 2 \int^x b \} u(x), \quad
+		\]
+		\[
+		u''+ b(x) u'+ c(x) u=0
+		\ \rw \
+		v''+Q(x) v=0, \ Q(x) = 	c- \frac {b'+ b^2/2} 2
+	\]
 
 
 	\item 
@@ -2629,9 +2676,37 @@ Q= c- \frac {b'+ b^2/2} 2
 F = \exp \{ \frac 1 2 \int^x -2 y \di y \}, \quad
 Q= \lambda- \frac {-2+ 4 x^2/2} 2
 \]
+	And our equations become:
 \[
 	v= \exp \{  -x^2/2   \} u, \quad
-v'' + \left(\lambda+1+ x^2 \right) v =0
+v'' + \left(\lambda+1- x^2 \right) v =0
+	\]
+
+
+	\item 
+		\[
+			x^2u''+xu'+(x^2-\nu^2)u=0
+			=
+			u''+u'/x+(1-\frac{\nu^2}{x^2})u=0
+		\]
+		We divide by $x^2$ here to get ride of the coefficent on u''.
+		Now following the formeioli
+\[
+F = \exp \{ \frac 1 2 \int^x b \}, \quad
+Q= c- \frac {b'+ b^2/2} 2
+\]
+		\[
+F = \exp \{ \frac 1 2 \int^x \frac 1 y \di y \}, \quad
+Q= 1-\frac{\nu^2}{x^2} - \frac { - 1/x^2 + \frac 1 {x^22} } 2
+\]
+\[
+Q= 1-\frac{\nu^2}{x^2} + \frac 1 {4x^2} 
+= 1-\frac{4\nu^2-1}{4 x^2}  
+\]
+	And our equations become:
+\[
+	v= \exp \{  \ln (x) /2   \} u = \sqrt x u , \quad
+v'' + \left(1-\frac{4\nu^2-1}{4 x^2}  \right) v =0
 	\]
 
 
@@ -2640,30 +2715,76 @@ v'' + \left(\lambda+1+ x^2 \right) v =0
 
 
 
-
-
-	\item 
-		\[
-			x^2u''+xu'+(x^2-\nu^2)u=0
-		\]
 	\item 
 		\[
 			xu''+(1-x)u'+\lambda u=0
+			= u''+(1/x-1)u'+ \frac \lambda x u
 		\]
+		Again we do the divide by the whole something that could be zero trick to deal with a coefficent.
+\[
+F = \exp \{ \frac 1 2 \int^x 1/y-1 \di y \}, \quad
+Q= \frac \lamb x - \frac {- \frac 1 {x^2}+ (1/x-1)^2/2} 2
+\]
+\[
+	F = \exp \{ \frac 1 2 [\ln x-x ] \}, \quad
+Q= \frac \lamb x - \frac {- \frac 1 {2x^2}+ -1/x+1/2} 2
+\]
+\[
+	F = \exp \{ \frac 1 2 [\ln x-x ] \}, \quad
+Q= \frac \lamb x + \frac 1 {4x^2}+ 1/2x-1/4
+\]
+
+********************************\\
+
+
+
 	\item 
 		\[
 			(1-x^2)u''- xu'+\alpha^2 u=0
 		\]
+
+\[
+F = \exp \{ \frac 1 2 \int^x b \}, \quad
+Q= c- \frac {b'+ b^2/2} 2
+\]
+
+
+
+
+
+
 	\item 
 		\[
 			(pu')'+ (q+\lambda r) u=0
 		\]
+
+\[
+F = \exp \{ \frac 1 2 \int^x b \}, \quad
+Q= c- \frac {b'+ b^2/2} 2
+\]
+
+
+
+
+
+
 	\item 
 		\[
 			\left[ \frac 1 {\sin \theta} \frac \di {\di \theta} \sin \theta  \frac \di {\di \theta} 
 			+ l (l+1) - \frac {m^2} {\sin^2\theta} 
 			\right]u =0
 		\]
+
+\[
+F = \exp \{ \frac 1 2 \int^x b \}, \quad
+Q= c- \frac {b'+ b^2/2} 2
+\]
+
+
+
+
+
+
 
 	\end{enumerate}
 \end{Porb}
@@ -2679,8 +2800,66 @@ v'' + \left(\lambda+1+ x^2 \right) v =0
 		on the infinite interval $(-\infty, \infty)$\\
 	Show that the eigenvalues $\lambda_n$ are nondegenerate, ie. show that, except for a constant multiple, the correpsonding eigenfunctions are unique.
 \end{Boxed}
-*************************************************
+	By Abel's theorem we have that if two solutions to the above have the same eigenvalue then (since p(x) =1 here)
+	\[
+		u_m u_n' - u_m' u_n = const.
+		\]
+		From here it suffices to show that this constant is zero. Once there the same logic as in the end of theorem 3 applies and we would see that $\frac {u_m'} {u_m} = \frac {u_n'} {u_n} \Rw u_m = k u_n$.
+		To this end notice that 
+
+		\[
+		\lim_{x\rw \infty}
+			 u_m u_n' - u_m' u_n = C \Rw 
+			\]
+
+			******************************************\\
+
+
+
+
+********************PACKET NOTE.\\
+%Basicly this is just a slight modificaiton of the proof found on page 168 for theorem 1 of this section.
+%		\begin{enumerate}[1)]
+%			\item
+%				\[
+%					Lu_n =  - \frac{ d^2u_n} { dx^2} + x^2 u_n(x)  = \lambda_n u_n(x)
+%					\]
+%					Now multiply both sides by $u_m$
+%				\[
+%				\bar u_m Lu_n =  -\bar u_m \frac{ d^2u_n} { dx^2} + \bar u_m x^2 u_n(x)  = \lambda_n \bar u_m u_n(x)
+%					\]
+%					Now we multiply by $-1$ and then add the analgous equation with $u_m$ to get:
+%					\[
+%						u_n L \bar u_m - \bar u_m Lu_n  
+%						= 
+%						\dd {} x \left[  \bar u_m u_n '  - u_n \bar u_m ' \right] 
+%						\]
+%				Now the right hand side is just the difference of the eigenvalues times the functions:
+%				\[
+%					= (\lambda_n - \lamb_m ) \bar u_m u_n
+%					\]
+%		\item
+%			Integrating both sides we get: 
+%			\[
+%			 (\lambda_n - \lamb_m ) \intinf \bar u_m u_n \di x
+%			 = 
+%			 \intinf  u_n L \bar u_m - \bar u_m Lu_n   \di x
+%			\]
+%			Which we can see the right hand side is just
+%			\[
+%				= 
+%				\left[  \bar u_m u_n '  - u_n \bar u_m ' \right]_{\pm \infty} 
+%			\]
+%					thanks to the work above (aka Lagrange's Identity). 
+%
+%			\item
+%				We wish to show that 
+%				$\left[  \bar u_m u_n '  - u_n \bar u_m ' \right]_{\pm \infty} =0$
+%				This is straight forward as $u_m \rw 0$ as $ x \rw \pm \infty$.
+%		\end{enumerate}
 \end{Porb}
+
+
 
 %3
 \begin{Porb}
@@ -2699,9 +2878,40 @@ v'' + \left(\lambda+1+ x^2 \right) v =0
 						Next point out how this relationship applied to an eigenfunction $u_n$ of the previous problem leads ot the result $P  u_n = \mu u_n$.
 		\end{enumerate}
 \end{Boxed}
-		\begin{enumerate}
+		\begin{enumerate} [i)]
 			\item
+				The given funciton part of the question is a typeo. 
+				The eigenvalues are $\pm 1$ ($\psi(x) = \lamb \psi(-x)$) and the eigenfuncitons are even and odd functions.
 			\item
+				\[
+					\I P L P \psi(x) =
+					\I P L \psi(-x) =
+					\I P \left[- \frac{ d^2} { dx^2} + x^2 \right] \psi(-x) 
+					\]
+
+					\[
+					=
+					\I P \left[- \frac{ d^2 \psi (-x)} { dx^2} + x^2 \psi(-x) \right] 
+					=
+					 \left[- \I P\frac{ d^2 \psi (-x)} { dx^2} + \I Px^2 \psi(-x) \right] 
+					\]
+					\[
+					=
+					 \left[- \I P\frac{ -d \psi' (-x)} { dx} + x^2 \psi(x) \right] 
+					=
+					 \left[- \I P \psi'' (-x)  + x^2 \psi(x) \right] 
+					=
+					 - \psi'' (x)  + x^2 \psi(x)  
+					 = L \psi
+					\]
+
+					Thus $\I P L P = L$. 
+					*******************************************\\
+
+					Thus if $\mu, u_n$ are eigenvector 
+
+
+
 		\end{enumerate}
 
 \end{Porb}
@@ -2732,6 +2942,53 @@ v'' + \left(\lambda+1+ x^2 \right) v =0
 		\end{enumerate}
 \end{Boxed}
 
+		\begin{enumerate}
+			\item
+				\[
+		\FF L \I \FF \hat \psi 
+				=
+		\FF L \psi 
+				=
+\FF \left( - \frac{ d^2} { dx^2} + x^2\right)\psi(x) 
+				\]
+				\[
+				=
+\FF \left( - \frac{ d^2} { dx^2} + x^2\right)\psi(x) 
+				=
+				-\FF  \frac{ d^2\psi (x)} { dx^2} + \FF x^2\psi(x) 
+				\]
+				\[
+					=
+				- (i \omega )^2 \FF \psi [\omega]  + i^2 \dd { ^2} {\omega^2}  \FF \psi  [\omega]
+					=
+				 \omega^2 \FF \psi [\omega] -  \dd { ^2} {\omega^2}  \FF \psi [\omega]
+				 =
+				 \left[ \omega^2  -  \dd { ^2} {\omega^2} \right]  \hat \psi [\omega]
+				\]
+
+				Thus 
+				\[
+					\hat L 
+					=
+				  \omega^2  -  \dd { ^2} {\omega^2}
+				\]
+
+
+
+			\item
+				They do the same thing, one in frequency space and the other in real space.
+				\[
+					\hat L \hat \psi (\omega ) = L \phi (\omega)
+					\]
+
+					******************DOUBLE CHECK********************\\
+
+			\item
+				**************************\\
+
+
+
+		\end{enumerate}
 
 \end{Porb}
 
@@ -2758,7 +3015,7 @@ Consider the S-L System:
 			\item
 				\[
 					(\lambda - \lamb_n) \int_a^b \omega_n(x) \omega(x, \lambda) \rho(x) \di x= 
-					p(b) W(\omega, \omega_n) |_x=b
+			p(x) W(\omega, \omega_n) |^{x=b}_a
 					\]
 			\item
 				By taking the limit $\lamb \rw \lamb_n$ show that:
@@ -2774,7 +3031,91 @@ Consider the S-L System:
 					primes here refering to $\frac d {dx}$.
 		\end{enumerate}
 \end{Boxed}
+	\begin{enumerate}
+		\item Thanks to the first 2 steps of the 3 step proof on page 168 of the orthogonality of eigenvalues we see:
+		\[
+			(\lambda - \lamb_n) \int_a^b \omega_n(x) \omega(x, \lambda) \rho(x) \di x= 
+			p(x) W(\omega, \omega_n) |^{x=b}_a
+		\]
+		In fact we realize this is true for any S-L system with any boundary condiotns. With that aside aside, we consider the case at hand.
+
+		\[
+			p(x) W(\omega, \omega_n) |^{x=b}_a
+			=
+			p(b) W(\omega, \omega_n)(b) 
+			-
+			p(a) W(\omega, \omega_n)(a) 
+			\]
+
+			note that the boundary condition gives: $ \omega( a, \lamb) = - \alpha'/\alpha \omega'(a, \lamb)$
+			Thus we have:
+
+			\[
+			p(a) W(\omega, \omega_n)(a) 
+			=
+			p(a) (\omega(a) \omega_n'(a) - \omega'(a) \omega_n(a)) 
+			\]
+			\[
+			=
+			p(a) (-\omega'(a) \alpha'/\alpha \omega_n'(a) + \omega'(a) \omega_n'(a) \alpha'/\alpha ) = 
+			0
+			\]
+
+			Thus we get:
+		\[
+			(\lambda - \lamb_n) \int_a^b \omega_n(x) \omega(x, \lambda) \rho(x) \di x= 
+			p(x) W(\omega, \omega_n) |^{x=b}
+		\]
+
+
+	\item
+		We first divide by $\lamb - \lamb_n$:
+		\[
+		 \int_a^b \omega_n(x) \omega(x, \lambda) \rho(x) \di x= 
+			\frac 1 {\lambda - \lamb_n}	p(x) W(\omega, \omega_n) |^{x=b}
+		\]
+
+		Now we take the limit $\lamb \rw \lamb_n$:
+			the left hand side clearly does nothing funky and becomes:
+		\[
+		 \int_a^b \omega_n(x)^2  \rho(x) \di x
+			\]
+
+			Now for the right hand side:
+			\[
+			\frac 1 {\lambda - \lamb_n}	p(x) W(\omega, \omega_n) |^{x=b}
+			=
+			\frac 1 {\lambda - \lamb_n}	p(b) 
+			(\omega(b) \omega_n'(b) - \omega'(b) \omega_n(b)) 
+				\]
+				\[
+			=
+			 	p(b) 
+			(\frac{ \omega(b)} {\lambda - \lamb_n} \omega_n'(b) - \frac{ \omega'(b)} {\lambda - \lamb_n} \omega_n(b)) 
+				\]
+				We add and subtract the same term:
+				\[
+			=
+			 	p(b) 
+			(\frac{ \omega(b) - \omega_n(b)} {\lambda - \lamb_n} \omega_n'(b) - \frac{ \omega'(b) + \omega_n'(b) } {\lambda - \lamb_n} \omega_n(b)) 
+				\]
+
+				Pasing to the limit we get:
+				\[
+					=
+					p(b) \left[
+						w'_n(b) \frac{d \omega(b, \lamb)} {d \lamb} |_{\lamb=\lamb_n} 
+						- \omega(b) 
+						\frac d {d \lamb} 
+						w'_n(b, \lamb) |_{\lamb=\lamb_n} 
+						\right]
+					\]
+					which is the desired result.
+					***********************CHECK OVER ONE LAST TIME**************\\
+	\end{enumerate}
 \end{Porb}
+
+
 
 %6
 \begin{Porb}
@@ -2811,8 +3152,61 @@ Consider the S-L System:
 		\end{enumerate}
 \end{Boxed}
 
+		\begin{enumerate}
+			\item 
+				Let $t = \sqrt \lamb x $, then $\di t = \sqrt \lamb \di x \Rw \dd tx = \sqrt \lamb$.
+				$\dd {} x = \dd {} t \dd t x = \dd {} t \sqrt \lamb $
+		\[
+			\left[
+			- \dd {} x x \dd {} x + \frac {\nu} {x} 
+			\right]u = \lambda x u
+		\]
+		\[
+			\left[
+			- \dd {} t \sqrt \lamb  t/ \sqrt \lamb  \dd {} t \sqrt \lamb + \frac {\nu} {t/\sqrt \lamb} 
+			\right]u = \lambda t/ \sqrt \lamb u
+		\]
+		\[
+			\left[
+			- \sqrt \lamb \dd {} t   t \dd {} t + \sqrt \lamb\frac {\nu} {t} 
+			\right]u =t \sqrt \lamb u
+		\]
+		\[
+			\left[
+			-  \dd {} t   t \dd {} t + \frac {\nu} {t} 
+			\right]u =t u
+		\]
+
+
+
+			\item
+				\[
+					u_n (x) = J_\nu ( \sqrt {\lamb_n} x)
+					\]
+
+			\item
+				\[
+					\int_0^1 x u_m u_n \di x =0, \quad m \neq n
+					\]
+
+			\item
+			
+			\item
+				\[
+					f(x) = \sum_{n=1}^\infty c_n u_n(x)
+					\]
+		\end{enumerate}
+
+
+
+
+
+
 
 \end{Porb}
+
+
+
 
 
 
@@ -2841,38 +3235,163 @@ Consider the S-L System:
 %Ch4
 \section{Green's Function Theory}
 \setcounter{subsection}{2}
-%\subsection{Pictorial Definition of a Green's Function}
-%\setcounter{Prb}{0}
-
-\setcounter{subsection}{2}
-\subsection{The Totally Inhomogeneous Boundary Value Problem}
+\subsection{Pictorial Definition of a Green's Function}
 \setcounter{Prb}{0}
+
 %1
 \begin{Porb}
 \begin{Boxed}
+			Find the adjoint $L^*$ and the space on which it acts:
 	\begin{enumerate}[a)]
 		\item 
+			\[
+				Lu= u'' + a(x) u'+ b(x) u 
+				\]
+				with $u(0)=u'(1), \quad u(1) = u'(0)$
 		\item
+			\[
+				Lu= -(p(x) u')' + q(x) u 
+				\]
+			 with $u(0)=u(1), \quad u'(1) = u'(0)$
+
 	\end{enumerate}
 \end{Boxed}
+	\begin{enumerate}[a)]
+		\item 
+			\[
+				\langle Lu, v \rangle 
+				= \int_0^1 \left[u'' + a(x) u'+ b(x) u \right]v \di x
+				\]
+				Now we use integration by parts to get:
+				\[
+					= \left[u'v + a(x) uv \right]_0^1 - \int_0^1 u'v' + a(x) uv'- b(x) u v \di x
+					= \left[u'v + a(x) uv - uv' \right]_0^1 + \int_0^1 uv'' - a(x) uv' + b(x) u v \di x
+				\]
+				Thus we see that $L^* v = v'' - a(x) v' + b(x) v $.
+				Now considering the boundary conditions we see that the boundary terms are:
+				\[
+					u'(1)v(1) + u(1) \left(a(1) v(1) - v'(1) \right) 
+					- \left[ u'(0)v(0) + u(0)\left(a(0) v(0) - v'(0) \right)  \right]
+				\]
+				\[
+					=
+					u'(1)v(1) + u(1) \left(a(1) v(1) - v'(1) \right) 
+					- \left[ u(1)v(0) + u'(1)\left(a(0) v(0) - v'(0) \right)  \right]
+				\]
+				\[
+					=
+					u'(1) (v(1) -v(0))+ 
+					u(1) \left(a(1) v(1) - v'(1) - \left(a(0) v(0) - v'(0) \right) \right) 
+				\]
+				From the $u'(1)$ coefficent we see we need $v(1) = v(0)$, this then leaves
+				\[
+					u(1) \left(- v'(1) + v'(0) \right) 
+					\]
+					which gives us $v'(1) = v'(0)$.
+
+				Overall we see $L^* v  =v'' - a(x) v' + b(x) v $ and the adjoint domain being
+				$\{ v | v'(1) = v'(0), v(1) = v(0), v \in C^2\}$.
+
+				****************DOUBLE CHECK a(x) IS WIERD********************\\
+
+
+		\item
+			\[
+				\langle Lu, v \rangle 
+				= \int_0^1 \left[  -(p(x) u')' + q(x) u \right]v \di x
+				= \int_0^1  -(p(x) u')'v + q(x) uv \di x
+				\]
+				Again we apply integration by parts:
+				\[
+				= -(p(x) u')'v |_0^1 + 
+				\int_0^1  p(x) u'v' \di x +
+				\int_0^1q(x) uv \di x
+				\]
+
+				\[
+				= -p(x) u'v |_0^1 + 
+				 u p(x) v'|_0^1 
+				-\int_0^1   u (p(x) v')' \di x +
+				\int_0^1q(x) uv \di x
+				\]
+				\[
+				= -p(x) u'v |_0^1 + 
+				 u p(x) v'|_0^1 
+				+ \int_0^1   - u (p(x) v')' + q(x) uv \di x
+				\]
+				$L^* v = (p(x) v')' + q(x) v $
+
+				********************************************\\
+
+	\end{enumerate}
 \end{Porb}
 
 %2
 \begin{Porb}
 \begin{Boxed}
+	Let L be a operator defined on $S$ and $L^*, S^*$ the adjoint and its domain satisifying $B_1(u)=0 = B_2(u), \ B_1^*(v)=0 = B_2^*(v)$ respectivly.
+	Let $u,\lamb$, $v, \lamb'$ be eigenvalues, eigenvectors of $L$ and $L^*$
 	\begin{enumerate}[a)]
 		\item 
+			Make a guess as to the relationship between the eigenvalue of $L$ and $L^*$.
 		\item
+			Prove: If $ \lambda \neq \bar \lambda'$ then $\langle u, v \rangle =0$.
 	\end{enumerate}
 \end{Boxed}
+	Since part (ii) gives a guess we might as well say $\lambda$ cooresponds with $\bar \lamb$ for eigenvalues between L and $L^*$.
+
+	We can see this with u and v as in the satement of the problem
+	\[
+		\langle  L u , v \rangle = \bar \lambda \langle u, v \rangle
+		\]
+		from the definition of eigenvalue/function.
+	\[
+	= 	\langle   u , L^* v \rangle = \lambda' \langle u, v \rangle
+		\]
+		Thus we see that if $\langle u , v \rangle \neq 0$ that $\bar \lamb = \lamb '$.
+
+
+		*********8MAKE NOTE FOR LATER POST*****Problem is Done though*************\\
+		In fact it is clear from the above that $\bar \lamb$ being an eigenvalue of the adjoint is implied by $\exists v, \langle u, v \rangle \neq 0$.
+		Thus if an operator is self adjoint we see that $\lamb = \bar \lamb$ and the eigenvalues must all be real valued.
+
 \end{Porb}
 
 
 %3
 \begin{Porb}
 \begin{Boxed}
-	Let $L = -\frac{d^2}{dx^2}$ with boundary
+	Find the Green's function for the Bessel operators:
+
+		\begin{enumerate}[a)]
+			\item
+				\[
+					Lu(x) = \dd {} x x \dd {u(x)} x
+					\]
+			\item
+				\[
+					Lu(x) = \dd {} x x \dd {u(x)} x - \frac { n^2} x u(x) 
+					\]
+					with $y(0)$ finite and $y(1)=0$.
+		\end{enumerate}
+		ie. solve the equations $Lu = - \delta(x- \xi)$ with the given boundary conditions.
 \end{Boxed}
+		\begin{enumerate}[a)]
+			\item
+				\[
+					Lu(x) = \dd {} x x \dd {u(x)} x
+					\]
+
+
+**********************************************\\
+			\item
+**********************************************\\
+				\[
+					Lu(x) = \dd {} x x \dd {u(x)} x - \frac { n^2} x u(x) 
+					\]
+					with $y(0)$ finite and $y(1)=0$.
+		\end{enumerate}
+
 \end{Porb}
 
 %4
@@ -2892,7 +3411,7 @@ Consider the S-L System:
 
 
 \setcounter{subsection}{6}
-\subsection{}
+\subsection{The Totally Inhomogeneous Boundary Value Problem}
 \setcounter{Prb}{0}
 
 %1
