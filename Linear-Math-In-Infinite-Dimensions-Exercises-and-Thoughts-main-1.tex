@@ -53,6 +53,7 @@
 \newcommand{\pp}[2]{\frac{\p #1}{\p #2}}
 \newcommand{\di}{\mathrm{d}}
 \newcommand{\dd}[2]{\frac{\di #1}{\di #2}}
+\newcommand{\ddt}[2]{\frac{\di^2 #1}{\di #2 ^2}}
 \newcommand{\intinf}{\int\limits_{-\infty}^\infty}	
 \newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
 \newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
@@ -3097,7 +3098,7 @@ Consider the S-L System:
 				\[
 			=
 			 	p(b) 
-			(\frac{ \omega(b) - \omega_n(b)} {\lambda - \lamb_n} \omega_n'(b) - \frac{ \omega'(b) + \omega_n'(b) } {\lambda - \lamb_n} \omega_n(b)) 
+			(\frac{ \omega(b) - \omega_n(b)} {\lambda - \lamb_n} \omega_n'(b) - \frac{ \omega'(b) - \omega_n'(b) } {\lambda - \lamb_n} \omega_n(b)) 
 				\]
 
 				Pasing to the limit we get:
@@ -3111,7 +3112,6 @@ Consider the S-L System:
 						\right]
 					\]
 					which is the desired result.
-					***********************CHECK OVER ONE LAST TIME**************\\
 	\end{enumerate}
 \end{Porb}
 
@@ -3289,19 +3289,66 @@ Consider the S-L System:
 
 				We have that
 				\[
-					\omega ( x, \lamb) = J( \sqrt \lamb x)
+					\omega ( x, \lamb) = J( \sqrt \lamb x), \quad 
+					\omega ' = \sqrt \lamb J'( \sqrt \lamb x), \quad
+					\dd {} \lamb \omega ( x, \lamb) = \frac x {2 \sqrt \lamb}  J'( \sqrt \lamb x)
 					\]
+
+					\[
+					\dd {} \lamb \omega' ( x, \lamb) =
+					\dd {} \lamb\sqrt \lamb J'( \sqrt \lamb x)
+					=
+					\frac 1 {2 \sqrt \lamb}  J'( \sqrt \lamb x)
+					+ 
+					\sqrt \lamb \frac x {2 \sqrt \lamb}  J''( \sqrt \lamb x)
+					\]
+
+					\[
+					=
+					\frac 1 {2 \sqrt \lamb}  J'( \sqrt \lamb x)
+					+ \frac x {2}  J''( \sqrt \lamb x)
+					\]
+
+
+
 					And the normalization integral from the previous problem
 				\[
-					\int \omega_n^2 \di x
+					\int_0^1 \omega_n^2 \di x
 					=
-					p(b) \left[
-						w'_n(b) \frac{d \omega(b, \lamb)} {d \lamb} |_{\lamb=\lamb_n} 
-						- \omega(b) 
+					p(1) \left[
+						w'_n(1) \frac{d \omega(1, \lamb)} {d \lamb} |_{\lamb=\lamb_n} 
+						- \omega(1) 
 						\frac d {d \lamb} 
-						w'_n(b, \lamb) |_{\lamb=\lamb_n} 
+						w'_n(1, \lamb) |_{\lamb=\lamb_n} 
 						\right]
 					\]
+
+				\[
+				=
+					\sqrt \lamb J'( \sqrt \lamb 1)
+					\frac 1 {2 \sqrt \lamb}  J'( \sqrt \lamb )
+					-  
+					J( \sqrt \lamb_n )
+					\left(
+					\frac 1 {2 \sqrt \lamb}  J'( \sqrt \lamb )
+					+ \frac 1 {2}  J''( \sqrt \lamb )
+					\right)
+				\]
+
+				\[
+				=\frac 1 {2 }
+				\left[
+				J'( \sqrt \lamb )^2
+					-  
+					J( \sqrt \lamb )
+					\left(
+					\frac 1 {\sqrt \lamb}  J'( \sqrt \lamb )
+					+   J''( \sqrt \lamb )
+					\right)
+					\right]
+				\]
+
+
 					***********************************\\
 
 			
@@ -3333,7 +3380,21 @@ Consider the S-L System:
 			\]
 \end{Boxed}
 
+
+	For $\lambda_n \neq \lambda_{n'}$ we have (via the same Green's idneity derived integral as before)
+	\[
+		(\lambda_n - \lambda_{n'} ) \int_{-1}^1 P_n^m P_{n'}^m \di x = 
+			p(x) W(\lambda_{n}, \lambda_{n'}) |^{x=1}_{-1}
+	\]
+	Here we notice that $p(x) = 1-x^2$ and that $p(\pm 1) = 0$, (also the boundedness of $W$ as $x \rw \pm 1$ helps) thus we get:
+	\[
+			p(x) W(\lambda_{n}, \lambda_{n'}) |^{x=1}_{-1}
+			=0
+			\]
+			and the problem is done.
 \end{Porb}
+
+
 
 
 
@@ -3430,7 +3491,6 @@ Consider the S-L System:
 				$L^* v = (p(x) v')' + q(x) v $
 
 				********************************************\\
-
 	\end{enumerate}
 \end{Porb}
 
@@ -3486,12 +3546,25 @@ Consider the S-L System:
 \end{Boxed}
 		\begin{enumerate}[a)]
 			\item
-				\[
-					Lu(x) = \dd {} x x \dd {u(x)} x
-					\]
+				Green's funciton is defined by:
 
+			\[
+				LG( x; \zeta) =  \dd {} x x \dd {G(x; \zeta) } x =- \delta( x - \zeta) 
+			\]
+				Now if we integrate both sides we get:
+			\[
+				 x \dd {G(x; \zeta) } x =- H( x - \zeta) 
+				 \Rw
+				  \dd {G(x; \zeta) } x =- \frac 1 x H( x - \zeta) 
+			\]
+				Where H is the heavyside function. Now we can integrate once more:
+			\[
+				G(x; \zeta)  =-\int^{x_0} \frac 1 x H( x - \zeta) \di x
+			\]
 
 **********************************************\\
+THere are methods to solve these problems but they are from later sections and it is unclear if these are special cases or if I should just use the general method.
+					
 			\item
 **********************************************\\
 				\[
@@ -3505,15 +3578,72 @@ Consider the S-L System:
 %4
 \begin{Porb}
 \begin{Boxed}
-	zt
+	\begin{enumerate}
+	\item	Find Green's function fo rthe operator
+	\[
+		L = \ddt {} x + \omega^2
+		\]
+		with $u(a)= u(b) =0, \ a <b$ and $\omega^2$ some fixed cosntant.
+	\item Does this Green's function exist $\forall \omega$? If not what values fail?
+
+	\item
+		Having found the Green's function in (1), go find the Green's function for the same operator but different boudnary conditions namely $u(a) = u'(a) =0$. Do this with minimal work.
+	\end{enumerate}
 \end{Boxed}
+
+	\begin{enumerate}
+	\item	
+	\[
+		L = \ddt {} x + \omega^2
+		\]
+
+	\item
+	\item
+	\end{enumerate}
 \end{Porb}
 
 %5
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Let $Lu = u''$
+	\[
+		a_1 u(0) + b_1 u'(0) + c_1 u(1) + d_1 u'(1) =0 
+		\]
+	\[
+		a_2 u(0) + b_2 u'(0) + c_2 u(1) + d_2 u'(1) =0 
+		\]
+
+\begin{enumerate}
+	\item
+		Find $L^*$ and the space on which it acts with $\langle u, v \rangle = \int_0^1 uv \di x$
+	\item
+		For what values of the cosntants is the operator self adjoint?
+\end{enumerate}
 \end{Boxed}
+
+\begin{enumerate}
+	\item
+		As is standard we apply integration by parts.
+		\[
+		\langle Lu , v \rangle = 
+		\int_0^1 u'' v \di x = 
+		u' v |_{0}^1 -	\int_0^1 u' v' \di x = 
+		u' v |_{0}^1 -u v'|_0^1 + \int_0^1 u v'' \di x 
+		\]
+		Thus $L^* =L$ which makes sense since the problem is asking about the operator being self adjoint.
+		Now the boundary terms are:
+		\[
+			\left[	u' v  -u v'\right]_0^1 
+			=
+		u'(1) v (1) -u (1)v'(1) 
+		- u'(0) v (0) +u (0)v'(0) 
+		\]
+
+	\item
+		**********************************\\
+
+\end{enumerate}
+
 \end{Porb}
 
 
@@ -3525,8 +3655,71 @@ Consider the S-L System:
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+
+	Let $L = - \ddt {} x$ with boundary contions $u(0) = 0, u'(0) = u(1)$, so that $S = \{ u | Lu$ is square integral and satisfies b.c.$\}$.
+\begin{enumerate}
+	\item
+		Find $S^*$ with
+		\[
+			\langle u, v \rangle = \int_0^1 \bar u v \di x
+			\]
+			and compare S with its cooler twin $S^*$.
+	\item
+		Compare the eigenvalues of $L$ and $L^*$.
+		IF the two sequences are different point out the distinction, if the are the same justify the result.
+	\item
+		Exhibit the corresponding eigenfunctions.
+	\item
+		Is $\lamb=0$ an eigenvalue? Why or why not?
+	\item
+		Verify that $\int_0^1 \bar v_n u_m \di x =0 $ for $n \neq m$.
+
+\end{enumerate}
+
 \end{Boxed}
+
+\begin{enumerate}
+	\item
+		I have never not started a problem with integration by parts
+		\[
+			\langle L u, v \rangle 
+			= \int_0^1 \overline {L u} v \di x
+			= \int_0^1 \overline {-\ddt u x} v \di x
+	          \]
+		  \[
+			= 
+			-u' v |_0^1
+			+\int_0^1 \overline {\dd u x} \dd v x \di x
+			= 
+			-u' v |_0^1 + u v' |_0^1
+			-\int_0^1 \overline {u} \ddt v x \di x
+	          \]
+		  Thus $L^* = -\ddt {} x$.
+		  Our boundary terms are (with accounting for the boundary contiions on u):
+		  \[
+			u' v |_0^1 - u v' |_0^1
+			=
+			u' v |_0^1 - u v' |^1
+			u'(1) v(1)  - u(1) ( v(0)+ v'(1) ) 
+		\]
+		Thus we see the adjoint boundary conditions are $v(1) = 0 , v(0) = - v'(1)$. Thus the problem is not self adjoint even thought the operator itself satisfies $L^* =L$.
+		
+
+	\item
+
+		*****************************************\\
+
+	\item
+
+
+	\item
+
+
+	\item
+
+
+\end{enumerate}
+
 \end{Porb}
 
 
@@ -3567,8 +3760,26 @@ Consider the S-L System:
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the inhomogenous Fredholm equation of the second kind:
+	\[
+		u(x) = \lamb \ispi \intinf K(x; \zeta) u(\zeta) \di \zeta + \phi(x)
+		\]
+		Here $\lamb$ is a paramter and $\phi$ is a known and given function. SO is the integration kernal K, which in this problem is given to be translation invarient.
+		ie. you should assume that $K(x; \zeta) = v(x-\zeta)$, where v is a given function whose Fourier transform exists.
+		Solve the integral equation by finding the function $u$ in terms of what is given.
 \end{Boxed}
+********************************\\
+\end{Porb}
+
+%2
+\begin{Porb}
+\begin{Boxed}
+	Look up an integral equation of the 2nd kind, either of the Volterra or of the Fredholm type. Submit it and its solution.
+\end{Boxed}
+	Problem:
+
+	Solution:
+
 \end{Porb}
 
 
@@ -3580,7 +3791,15 @@ Consider the S-L System:
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Over the interval 
+\begin{enumerate}
+	\item
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{enumerate}
 \end{Boxed}
 \end{Porb}
 
@@ -3588,8 +3807,30 @@ Consider the S-L System:
 %2
 \begin{Porb}
 \begin{Boxed}
-	zt
+	
+	Aain consider
+	\[
+		\ddt G x + \lamb G = - \delta( x-\zeta)
+		\]
+		\[
+			\ddt u x + \lamb u = -f(x) , \text{ and } \ddt \phi x + \lamb \phi =0
+			\]
+over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet to be specified.
+\begin{enumerate}
+	\item
+		Express $u(x)$ as a Fourier integral in terms of f.
+	\item
+		Express $G(x, \zeta, \lamb) $ in the same way, ie obtain a bilinear expansion for G.
+	\item
+		How, do you think, should on incorporate boundary conditions into these expressions?
+\end{enumerate}
 \end{Boxed}
+
+\begin{enumerate}
+	\item
+	\item
+	\item
+\end{enumerate}
 \end{Porb}
 
 
