@@ -1,6 +1,6 @@
 
 \documentclass[12pt]{article} 
-\usepackage{graphicx,relsize, verbatim, amssymb, amsmath, amsthm, mathabx,dcolumn,mathrsfs, dsfont, enumerate, soul, titlesec}
+\usepackage{esvect, graphicx,relsize, verbatim, amssymb, amsmath, amsthm, mathabx,dcolumn,mathrsfs, dsfont, enumerate, soul, titlesec}
 \newcolumntype{2}{D{.}{}{2.0}}
 \textwidth = 7 in
 \textheight = 9.5 in
@@ -3651,11 +3651,9 @@ THere are methods to solve these problems but they are from later sections and i
 \setcounter{subsection}{6}
 \subsection{The Totally Inhomogeneous Boundary Value Problem}
 \setcounter{Prb}{0}
-
 %1
 \begin{Porb}
 \begin{Boxed}
-
 	Let $L = - \ddt {} x$ with boundary contions $u(0) = 0, u'(0) = u(1)$, so that $S = \{ u | Lu$ is square integral and satisfies b.c.$\}$.
 \begin{enumerate}
 	\item
@@ -3719,36 +3717,140 @@ THere are methods to solve these problems but they are from later sections and i
 
 
 \end{enumerate}
-
 \end{Porb}
 
 
 %2
 \begin{Porb}
 \begin{Boxed}
-	zt
+Attack the eigenvalue problem:
+	\[
+		-u''(x) = \lamb u(x) , \ 0<x<1, u'(1) = \lamb u(1), \ u(0)=0
+		\]
+		as follows:\\
+	Let $U = \begin{pmatrix} u(x) \\ u_1 \end{pmatrix}$ be a two-component vector whose first component is a twice differentiable function $u(x)$, and whose second componnent is a real number $u_1$.
+		Consdier the corresponding vector space $\mathfrak{H}$ with inner product
+		\[
+			\langle U, V \rangle = \int_0^1 u(x) v(x) \di x + u_1v_1
+			\]
+			Let $S \subset \mathfrak{H}$ be the subspace
+			\[
+				S= \{   U: U = \begin{pmatrix} u(x) \\ u(1) \end{pmatrix} ;\ u(0) =0 \}  
+				\]
+				and let:
+				\[
+					LU = \begin{pmatrix}- u''(x) \\ u'(1) \end{pmatrix} 
+					\]
+			The above eigenvalue problem can now be rewritten in standard form 
+			\[
+				LU = \lamb U, \quad U \in S
+				\]
+\begin{enumerate}
+	\item
+		Prove or disprove that L is self adjoint.
+	\item
+		Prove or disprove that L is postiive-definite, ie that $\langle U , L U \rangle > 0 \forall U \neq \vec 0$. 
+	\item
+		Find the (transcendental) equation for the eigenvalues of L.
+	\item
+		Denoting these eigenvalues by $\lamb_1, \lamb_2,\lamb_3, \cdots$ exhibit the orthonrmalized eigenvectors $U_n$ associated with these eigenvalues.
+\end{enumerate}
 \end{Boxed}
+\begin{enumerate}
+	\item
+		**********************************************\\
+	\item
+	\item
+	\item
+\end{enumerate}
 \end{Porb}
 
 %3
 \begin{Porb}
 \begin{Boxed}
-	zt
+	The eigenvalue equaion for 4.7.1 is 
+	\[
+		\sin \lamb^{\frac 1 2}  = \lamb^{\frac 1 2}
+		\]
+		Prove or disprove that an asymptotic formula for the roots is 
+		\[
+			\lamb^{\frac 1 2} \sim (2m + \frac 1 2) \pi - \frac{2 \log (2 m1)\pi }{ (4m+1)\pi} \pm i \log ( 4m +1) \pi
+			\]
 \end{Boxed}
+**********************HAS HINT**************************\\
+	Let $\lamb^{\frac 1 2} = \alpha +i \beta$
+
 \end{Porb}
 
 %4
 \begin{Porb}
 \begin{Boxed}
-	zt
+Consider the eigenvalue problem 
+	\[
+		Lu = \lamb u \quad L = \alpha \ddt {} x + \beta \dd {} x + \gamma
+		\]
+		\[
+			B_1(u) =B_2(u) =0
+			\]
+			and its ajdoint
+		\[
+			L^* v = \bar \lamb v \quad 
+			B^*_1(u) =B^*_2(u) =0
+			\]
+	with respect to the inner products $\langle v,u \rangle = \int_a^b \bar v u \di x$. One can show and you may safely assume, that the eigenvalue spectra of these two problems are complex conjugates of each other (this in factfollows from previous exercises).
+\begin{enumerate}
+	\item
+		Prove that the solution $u(x, \lamb)$ for the problem
+		\[
+			L u - \lamb u  = -f (x)
+			\]
+			\[
+			B_1(u) =B_2(u) =0
+			\]
+			is given by 
+			\[
+				u(x, \lamb) = \sum_n \frac{ \langle v_n, f\rangle } {\lamb - \lamb_n} u_n(x)
+				\]
+				where $u_n, v_n$ are the eigenfunctions of L and $L^*$ and have been normalized to satisfy:
+				\[
+					\langle v_n, u_m = \delta_{nm}
+					\]
+	\item
+		Show that the Green's function is 
+		\[
+			G_\lamb ( x| \zeta) = \sum_n \frac{ u_n(x) \bar v_n (x)} {\lamb - \lamb_n} 
+			\]
+\end{enumerate}
 \end{Boxed}
+*******************************************\\
+\begin{enumerate}
+	\item
+
+	\item
+
+\end{enumerate}
 \end{Porb}
 
 %5
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Obtain the o.n. set of eigen functions for the S-L problem
+	\[
+		Lu = - \ddt u x = \omega^2 u
+		\]
+		\[
+			u(a) = u(b) =0
+			\]
+			
+			by applying the complex integration technique to the Green's function $G_\omega (x , \zeta)$.
+			\[
+				(L^2 - \omega^2) G = - \ddt {G_\omega} x - \omega^2 G_\omega = \delta(x-\zeta) \quad a < x, \zeta < b
+				\]
+				\[
+					G_\omega(a | \zeta) = 0  \quad G_\omega(b | \zeta) = 0 ,\quad  a < \zeta < b
+					\]
 \end{Boxed}
+*************************************\\
 \end{Porb}
 
 
@@ -3791,16 +3893,63 @@ THere are methods to solve these problems but they are from later sections and i
 %1
 \begin{Porb}
 \begin{Boxed}
-	Over the interval 
+	Over the interval $-\infty < x< \infty$ consider
+	\[
+		\ddt G x + \lamb G = -\delta ( x - \zeta)
+		\]
+	\[
+		\ddt u x + \lamb u = -f(x)
+		\quad 
+		\text{and}
+		\quad 
+		\ddt \phi  x + \lamb \phi = 0 
+		\]
+		We are looking for solutions in $L^2$ assume that f is in $L^2$.
 \begin{enumerate}
 	\item
+		Show that there are tow candidates for G, namely
+		\[
+			G = G^{out} (x| \zeta ; \lamb )=
+			\frac i {2 \sqrt \lamb } \exp ( i \sqrt \lamb |x-\zeta|)
+			\]
+			and 
+		\[
+			G^{in} (x| \zeta ; \lamb ) =
+			- \frac i {2 \sqrt \lamb } \exp ( i \sqrt \lamb |x-\zeta|)
+			\]
+	\item
+		Given the fact that $\sqrt \lamb = \alpha + i \beta$ with $\beta>0$, point out why only one of them is square- integrable.
+	\item
+		Consider the contour integral $\oint G \di \lamb$ over a large circle of radius R. Demonstrate that 
+		\[
+			\lim_{R \rw \infty} \frac 1 {2 \pi i} \oint G \di \lamb = - \delta (x - \zeta) 
+			\]
+	\item
+		Next deform the contour until it fits snugly around the branch cut of $\sqrt \lamb$, and show that 
+		\[
+			\delta(x-\zeta) = \int_0^\infty \cdots \di \lamb
+			\]
+			and then show that the above can be rewriteten as 
+		\[
+			\delta(x-\zeta) =  \frac 1 {2\pi} \intinf e^{i \omega ( x- \zeta) } \di \omega 
+			\]
+			for $x< \zeta,$ and $ \zeta < x$.
+	\item
+		Express $u(x)$ as a Fourier integral in terms of f.
+	\item
+		Express $G$ in the same way, ie obtain a bilinear expansion for G.
+\end{enumerate}
+\end{Boxed}
+
+\begin{enumerate}
+	\item
+		***************************************\\
 	\item
 	\item
 	\item
 	\item
 	\item
 \end{enumerate}
-\end{Boxed}
 \end{Porb}
 
 
@@ -3808,7 +3957,7 @@ THere are methods to solve these problems but they are from later sections and i
 \begin{Porb}
 \begin{Boxed}
 	
-	Aain consider
+	Again consider
 	\[
 		\ddt G x + \lamb G = - \delta( x-\zeta)
 		\]
@@ -3845,28 +3994,106 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Evaluate the integral:
+	\[
+		\int_C e^{i \rho \cos \alpha + i \nu \alpha} \di \alpha
+		\]
+		along the curve C (in the complex $\alpha$ plane below) in terms of the two kinds of Hankel functions.
+
+		************Include a Tixz picutre?**********************\\
 \end{Boxed}
+
+*****************************\\
 \end{Porb}
 
 %2
 \begin{Porb}
 \begin{Boxed}
-	zt
+	In the complex $\beta$ plane, determine those semi-infinte strip regions where the line integral
+	\[
+		\int_C e^{i \rho \cos \beta- i \nu \beta} \di \beta
+		\]
+		converges if the integration limits of the path C are extended to infinity in each of a pair of such strips.
 \end{Boxed}
+*****************\\
 \end{Porb}
 
 %3
 \begin{Porb}
 \begin{Boxed}
-	zt
+	By slightly deforming the integration path prove or disprove that the integral
+	In the complex $\beta$ plane, determine those semi-infinte strip regions where the line integral
+	\[
+		\intinf e^{i \rho \cos \beta- i \nu \beta} \di \beta
+		\]
+		can be expressed in terms of a Hankel function, what kind and which order?
 \end{Boxed}
+****************************\\
 \end{Porb}
 
 %4
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Apply 
+	\[
+	t = \zeta \cosh \tau, \ z= \zeta \sinh \tau , \quad 0 < \zeta < \infty, - \infty < \tau < \infty	
+	\]
+	to the wave equation 
+	\[
+		- \pp {^2 \psi} {t^2} + \pp {^2 \psi} {z^2}  - k^2 \psi =0
+		\]
+		in order to obtain the wave equation relative to the coordinates $\zeta, \tau$. TO do this take advantage of the fact that letting 
+		\[
+			r = \zeta, \quad \theta = i \tau
+			\]
+			and 
+			\[
+				x = t, \quad y = iz 
+			\]
+			yields the hyperbolic transformation of the wave euqation.
+
+\begin{enumerate}
+	\item
+		Write down the wave equation in terms of the "pseudo" polar coordinates $\zeta, \tau$.
+
+	\item
+		Consider a solution whihc is a "psuedo" rotation eigenfunction $\psi_\omega$:
+		\[
+			\pp {\psi_\omega} \tau = -i \omega \psi_\omega
+			\]
+			and determine the differential euqation:
+			\[
+				\left[
+					\alpha (\zeta) \ddt {} \zeta +
+					\beta(\zeta) \dd {} \zeta + \gamma (\zeta)
+					\right] \psi =0 
+				\]
+				it satisfies.
+	\item
+		Verify that the translation (in the t,z plane) eigenfunction
+		\[
+			\psi = e^{-i(k_0 t - k_z z)}
+			\]
+			is a solution ot the wave equation, whenever the two k's satisfy $k_0^2-k_z^2 =k^2$.
+			Then using $k_0 = k \cosh \alpha, k_z = k \sinh \alpha$ and $t = \zeta \cosh \tau, z = \zeta \sinh \tau$, and the hiyperbolic angle additon formula, rewrite the phase and hence the wave funciton $\psi$ in terms of $\zeta, \tau$.
+	\item
+		Construct a superpositoin (as an integral over $\alpha$) of waves $\psi$ whihc is a "pseudo" ortation eigenfunction ie satsifies
+		\[
+			\pp {\psi_\omega} \tau = - i \omega \psi_\omega
+			\]
+			where $\psi_\omega$ is that superposition.
+	\item
+		Exhibit two indendpent soutions $\psi_\omega$ to the wave equation corresponding to two different integration contours. WHat are they? If your solutions are porooprtional to Hankel funcitons, specifiy what kind and identify their order.
+\end{enumerate}
+
+\begin{enumerate}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{enumerate}
+
 \end{Boxed}
 \end{Porb}
 
@@ -3875,58 +4102,220 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Show that:
+	\[
+		H^{(1)}_{-n} (\rho)  = (-1)^n H^{(1)}_{n} (\rho) 
+		\]
+		\[
+		H^{(2)}_{-n} (\rho)  = (-1)^n H^{(2)}_{n} (\rho) 
+		\]
+		\[
+		N_{-n} (\rho) 	     = (-1)^n N_{n} (\rho) 
+		\]
+%	\begin{align*}
+%		H^{(1)}_{-n} (\rho) & = (-1)^n H^{(1)}_{n} (\rho) \\
+%		H^{(2)}_{-n} (\rho) & = (-1)^n H^{(2)}_{n} (\rho) \\
+%		N_{-n} (\rho) 	    & = (-1)^n N_{n} (\rho) 
+%	\end{align*}
 \end{Boxed}
+	\[
+		H^{(1)}_{-n} (\rho)  =
+		c_1 \int_{\alpha_1}^{\alpha_2} e^{i \rho \cos \alpha + i (-n) \alpha} \di \alpha
+		\]
+		Now we introduce $\alpha = \pi - \bar \alpha, \rw \alpha -\pi = - \bar \alpha$ which shifts the bounds of the integrals by $\theta$ but this does not matter as shown on page 302 under the no angular dependence property.
+		With thi ssub we see
+		\[
+			c_1 \int^{\alpha_1+\pi}_{\alpha_2+\pi} e^{i \rho \cos ( \pi - \bar\alpha)  + i (-n) (\pi -\bar\alpha)} \di \alpha
+			=
+		c_1 \int^{\alpha_1+\pi}_{\alpha_2+\pi} e^{i \rho \cos ( \pi - \bar\alpha)  + i (-n) (\pi -\bar\alpha)} (-1) \di \bar \alpha
+		\]
+
+		Since $\cos ( \pi -x) = \cos (x)$ (think of the unit circle, or idk trig identities or something) and we swap the limits and switch the sign of the integral.
+		\[
+			=
+		c_1(-1)^n \int_{\alpha_1+\pi}^{\alpha_2+\pi} e^{i \rho \cos ( \bar\alpha)  + i (-n) (\pi -\bar\alpha)} \di \bar \alpha
+			=
+		c_1(-1)^n \int_{\alpha_1+\pi}^{\alpha_2+\pi} e^{i \rho \cos ( \bar\alpha)  + i n\bar\alpha} \di \bar \alpha
+		=
+		(-1)^n H^{(1)}_{n} (\rho) 
+		\]
+
+		Now for the 2nd identity we remmeber that 
+		\[
+			J_\nu = \frac 1 2 \left[ H_\nu^1 + H_\nu^2\right] \Rw
+			2J_\nu - H_\nu^1 =  H_\nu^2
+		\]
+		and thus just from the last 2 identities we have:
+
+		\[
+			2J_{-n} - H_{-n}^1 =
+			(-1)^n \left( 2J_{n} - H_{n}^1\right) =
+			(-1)^n H_\nu^2
+		\]
+
+		Similarly we have 
+		\[
+			N_\nu = \frac 1 {2i} \left[ H_\nu^1 - H_\nu^2\right] 
+		\]
+		and thus:
+		\[
+			N_{-n} = (-1)^n \frac 1 {2i} \left[ H_n^1 - H_n^2\right] 
+			=
+			(-1)^n N_{-n}
+		\]
+		as was deeply desired.
 \end{Porb}
-
-
-\subsection{More Properties of Hankel and Bessel Functions}
-\setcounter{Prb}{0}
-
-\begin{Porb}
-\begin{Boxed}
-	zt
-\end{Boxed}
-\end{Porb}
-
-
-
 
 \subsection{Applications of Hankel and Bessel Functions}
 \setcounter{Prb}{0}
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+	The transvers amplitude of an axially symmetric wave propagating in a cylindrical pipe of radius a is determined by the following eigenvalue problem:
+	\[
+		- \dd {} r r \dd u r = k^2 r u \quad 0 \leq r \leq a
+		\]
+		\[
+			u(0) = \text{finite} \quad u(a) =0
+		\]
+		The eigenfunctions are $u_m(r) = J_0(rk_m)$ where the boundary condiiton $J_0 (a k_m) =0$ determines the eigenvalues $K_m^2, m \in \NN$.
+
+\begin{enumerate}
+	\item
+		Show that $\{ J_0 ( r k_m) \}$ is an orthogonal set of eigenfunctions on $(0,a)$.
+	\item
+		Using the problem 3.3.5 find the squared norm of $J_0(rk_m)$.
+	\item
+		Exhibit the set of orthonormalized eigenfunctions.
+	\item
+		Find the Green's function for the above boundary value problem.
+\end{enumerate}
 \end{Boxed}
+\begin{enumerate}
+	\item
+		************************************\\
+	\item
+	\item
+	\item
+\end{enumerate}
 \end{Porb}
 
 %2
 \begin{Porb}
 \begin{Boxed}
-	zt
+	On a circula disc of radius a find an orthonormal set of eigenfunctions for the system defined by the eigenvalue problem
+	\[
+		- \nabla^2 \psi = k^2 \psi
+		\]
+		\[
+			\pp \psi r ( r=a, \theta) = 0 
+		\]
+		\[
+			\psi ( r=0 , 0 ) = \text{finite}, \ 0 \leq \theta \leq 2\pi
+			\]
+			Here $\nabla^2 =  \frac 1 r \pp {} r r \pp {} r + \frac 1 {r^2} \pp {^2} {\theta^2} $ and exhibit these eigenfunctions in their optimally simple form, ie without refering to any derivatives.
 \end{Boxed}
+************************************\\
 \end{Porb}
 
 %3
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider a wave disturbance $\psi$ which is governed by the wave equatioin.
+	\[
+		\left[
+			\pp {^2} {r^2} +\frac 1 r \pp {} r r \pp {} r + \frac 1 {r^2} \pp {^2} {\theta^2} 
+			+\pp {^2} {z^2} 
+			\right]
+			\psi 
+			= 
+			\frac 1 {c^2} \pp {^2 \psi} {t^2}
+		\]
+		Let this wave propogate inside an infintely long cylinder; in other words, it satisfies
+		\[
+			\pp \psi z = i k_z \psi
+			\]
+			where $k_z$ is some real number not equal to zero. Assume that the boundary coditions satisfied by $\psi$ is 
+		\[
+			\psi(r=a) =0, 	\psi ( r=0 ) = \text{finite}, \quad \text{ a = radius of cylinder}
+			\]
+
+\begin{enumerate}
+	\item
+		Find the 'cut off' frequencey ie the frequency belwo which no propogation in the infite cylinder is possible.
+	\item
+		Note that this frequency dpeends on the angular integer m and the radial integr j. For fixed j give an argument which supports the result that smallr m means msaller critical frequency
+	\item What is the smallest critical frequency in terms of a and c to an accuracy of $2 \%$ or better?
+\end{enumerate}
 \end{Boxed}
+*************************************\\
+\begin{enumerate}
+	\item
+	\item
+	\item
+\end{enumerate}
 \end{Porb}
 
 %4
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the sector $S=\{(r,\theta)| 0 \leq r \leq a, 0 \leq \theta \leq \alpha \}$.
+\begin{enumerate}
+	\item
+		Exhibit the set of those normalized eigenfunctions for this sector whic satisfy 
+		\[
+			(\nabla^2 + k^2) \psi =0, \quad \psi =0 \text{ on } \partial S
+			\]
+	\item
+		Compare the set of normal modes of a circular drum with the set of nromal modes in part a) when $\alpha = 2 \pi$.
+\end{enumerate}
 \end{Boxed}
+
+\begin{enumerate}
+	\item
+		**********************************************\\
+	\item
+\end{enumerate}
 \end{Porb}
 
 %5
 \begin{Porb}
 \begin{Boxed}
-	zt
+Consdier 
+\begin{enumerate}
+	\item a circular membarne of radius a.
+	\item a square membrane
+	\item a rectangular membrane which is twice as long as it is wide.
+\end{enumerate}
+
+Assume the two membranes
+\begin{enumerate}
+	\item
+		have the same area
+	\item
+		obey the same wave equation $\nabla^2 \psi = \frac 1 {c^2} \pp {^2} {t^2}$
+	\item Have the same boundary conditons, ie $\psi =0$ on the boundary.
+\end{enumerate}
+
+
+\begin{enumerate}[A)]
+	\item 
+
+		\begin{enumerate}[i)]
+		\item
+			the 3 lowest frequencies for each of the two membranes
+		\item
+			all the concomitant normal modes
+	\end{enumerate}
+
+	\item
+		FOr each of the normal modes of the circular mebrane draw a picutre of the nodes, ie the locus of points where $\psi =0$ Label each of the pictures
+	\item
+		Do the same for the other membrane (watch out for degeneracies!)
+\end{enumerate}
 \end{Boxed}
+
+		**********************************************\\
 \end{Porb}
 
 
@@ -3935,17 +4324,38 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Express $J_n(x_1+x_2)$ as a sum of products of Bessel functions of $x_1$ and $x_2$ respectively.
 \end{Boxed}
+
 \end{Porb}
 
 \subsection{The Method of Steepest Descent and Stationary Phase}
 \setcounter{Prb}{0}
-
 \begin{Porb}
 \begin{Boxed}
-	zt
+
+\begin{enumerate}
+	\item
+		Using the method of steepest descent find anasymptotic expression for $H_\nu^2$ and for $J_\nu$ where $\nu << \rho$.
+	\item
+		THe gamma function $\Gamma$ for which $Re \omega >-1$ is represented by 
+		\[
+			\Gamma ( \omega +1) = \int_0^\infty e^{-\tau} \tau^\omega \di \tau
+			\]
+			Using the steepest descent approach, find and asymptotic expression for $\Gamma ( \omega+1)$ when $Re \omega >> 1$. Why doesn't it work? Try again by susbstituting $\omega z$ for $\tau$ and obtaining:
+			\[
+				\Gamma ( \omega +1) = \omega^{\omega+1} \int_0^\infty e^{-\omega z } z ^\omega \di z
+				=
+				\omega^{\omega+1} \int_0^\infty e^{\omega ( \ln z - z) }\di z
+				\]
+\end{enumerate}
 \end{Boxed}
+
+\begin{enumerate}
+	\item
+		*********************************\\
+	\item
+\end{enumerate}
 \end{Porb}
 
 
@@ -3957,12 +4367,48 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 \setcounter{subsection}{1}
 \subsection{System of Partial Differntial Equations: How to solve Maxwell's equations using Linear Algebra}
 \setcounter{Prb}{0}
-
 %1
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider the current-charge density to an isolated moving charge:
+	\[
+		\vec J ( x,y,z,t) =
+		q \intinf \dd {\vec X (\tau)} \tau \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+		\]
+	\[
+		 \rho ( x,y,z,t) =
+		q \intinf \dd {\vec T (\tau)} \tau \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+		\]
+
+\begin{enumerate}
+	\item
+		Show that this current-charge density satisifies
+		\[
+			\nabla \cdot \vec J + \pp \rho t =0
+			\]
+
+	\item
+		By taking advantge of the fact $\dd {T(\tau)} \tau >0$, evaluate the $\tau$-integrals, and obtain explicit expressions for the components $\vec J$ and $\rho$.
+
+		Answer:
+		\[
+		 \rho ( x,y,z,t) =
+		q \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) 
+		\]
+	\[
+		\vec J ( x,y,z,t) =
+		q \dd {\vec X } t \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+		\]
+		where $\vec X(t) = \vec X(\tau)$ evaluated  at $\tau$ as determined by $\delta ( t- T(\tau))$.
+\end{enumerate}
+
+		\[
+			\nabla \cdot \vec J + \pp \rho t =0
+			\]
+			*******************\\
 \end{Boxed}
+
+
 \end{Porb}
 
 
@@ -4026,18 +4472,10 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 \begin{Boxed}
 	zt
 \end{Boxed}
-\end{Porb}
 
 
-
-\end{document}
-
-
-
-
-
-
-
+\end{Porb} 
+\end{document} 
 
 
 
