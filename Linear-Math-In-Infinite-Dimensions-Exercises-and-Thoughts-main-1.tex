@@ -3579,7 +3579,7 @@ THere are methods to solve these problems but they are from later sections and i
 \begin{Porb}
 \begin{Boxed}
 	\begin{enumerate}
-	\item	Find Green's function fo rthe operator
+	\item	Find Green's function for the operator
 	\[
 		L = \ddt {} x + \omega^2
 		\]
@@ -3597,6 +3597,8 @@ THere are methods to solve these problems but they are from later sections and i
 		L = \ddt {} x + \omega^2
 		\]
 
+		Same stuff as 4.7.2
+		***********************************\\
 	\item
 	\item
 	\end{enumerate}
@@ -3705,6 +3707,7 @@ THere are methods to solve these problems but they are from later sections and i
 
 	\item
 
+		********8same problem as 4.7.2
 		*****************************************\\
 
 	\item
@@ -3758,10 +3761,132 @@ Attack the eigenvalue problem:
 \end{Boxed}
 \begin{enumerate}
 	\item
-		**********************************************\\
+		\[
+			\langle - LU, V \rangle = \int_0^1 u''(x) v(x) \di x - u'(1)v_1
+			=
+			u'v|_0^1
+			-\int_0^1 u'(x) v'(x) \di x - u'(1) v_1 + u'(1) v'(1) - u'(1) v'(1)
+			\]
+			\[
+			=
+			u'v|_0^1
+			-
+			uv'|_0^1
+			- u'(1) \left( v_1+ v'(1)\right)
+			+\int_0^1 u(x) v''(x) \di x  - u'(1) v'(1)
+			\]
+			We have that $u(0)=0$ and thus:
+			\[
+			=
+			u'v|_0^1
+			-
+			uv'|^1
+			-
+			u'(1) \left( v_1- v'(1)\right)
+			+
+			\langle U, - L V \rangle
+			\]
+			Thus we can see from here that the 'extra' terms are 
+			\[
+			u'v|_0^1
+			-
+			u(1) v'(1)
+			-
+			u'(1) \left( v_1- v'(1)\right)
+			\]
+			We want to know if L is self adjoint on S, thus we have also that $v_1=v(1)$ and $v(0)=0$.
+			With this we get 
+			\[
+			- 
+			u(1) v'(1)
+			+
+			u'(1) \left( v'(1)\right)
+			\]
+			So we get 
+			\[
+				\langle LU , V \rangle 
+				=
+				\langle U , LV \rangle
+				+
+				\det \begin{bmatrix}
+					u(1) & v(1) \\
+					u'(1) & v'(1) 
+				\end{bmatrix}
+				\]
+
+				Thus L is self adjoint whenever the determinat $=0$.
+				Thus the most obvious space is the eigenspace where $u(1) = \lamb u'(1)$.
+				
+				All in all the operator is NOT self adjoint on S but it is self adjoint on $S \cap $ the eigenspace.
+
 	\item
+		Just calculating We get:
+		\[
+			\langle LU, U \rangle = \int_0^1 -u''(x) u(x) \di x + u(1)u'(1)
+		\]
+		Integration by parts 
+		and with $u(0)=0$ we get:
+		\[
+		=
+		-u' u |_0^1 +
+		\int_0^1 u'(x) u'(x) \di x + u(1)u'(1)
+		=
+		\int_0^1 u'(x) u'(x) \di x 
+		\]
+		which is then just $
+		\int_0^1 u'(x)^2 \di x 
+		= \norm { u'}_2^2
+		$
+
+		Now is $\langle LU, U \rangle = \norm { u'}_2^2 >0$ $\forall U \neq 0$.
+		Now if $u'$ is ever non zero then the abouve would be positive, so if there is a counter exapmle it would have to have $u'=0$. 
+		This is doabled, we have a whole host of constant functions to chose from! 
+		However we also have the condition that $u(0) =0$. With this we see that any function that satisfies:
+$\langle LU, U \rangle =0$ and is in S must be zero.
+
+All together we see that $L$ is positive semi definite.
+
 	\item
+			\[
+				-\ddt {} x u(x) = \lamb u(x)
+			\]
+			We know that there has to be a fourier series for this function by the set up of the this problem.
+			Thus we try and see if what the fourier basis elements do under this transform.
+			\[
+				-\ddt {} x e^{i 2 \pi k x} = \lamb  e^{i2 \pi  k x}
+				= 4 \pi^2  k^2  e^{i 2 \pi  k x} 
+			\]
+			We arrive the eigenvalues being:
+			\[
+			\lamb	 = 4 \pi^2   k^2 
+			\]
+			Thus we see that $ \pm k $ gets maped to the same eigenvalues. Since these eigenvalues are non degenerate we realize we have to combine them to get the actual function for our problem.
+
 	\item
+			We notice that 
+			\[
+				\frac {e^{i 2 \pi k x} - e^{i 2 \pi (-k) x} } {2 } 
+			\]
+			satisfies our boundary conditions, for normality we need to divide by 2.
+			Now we notice that this is in fact just $u_k(x) = \sin(2 \pi x)  $. 
+
+			***************************CHECK NORMALIZZATION*************************\\
+
+			So our actual eigenvetors are:
+			\[
+				U_n =
+				\begin{pmatrix}
+					u_k (x) \\
+					u(1)
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					\sin (k \pi x) \\
+					u(1)
+				\end{pmatrix}
+				\]
+				**********************\\
+
 \end{enumerate}
 \end{Porb}
 
@@ -3779,8 +3904,22 @@ Attack the eigenvalue problem:
 \end{Boxed}
 **********************HAS HINT**************************\\
 	Let $\lamb^{\frac 1 2} = \alpha +i \beta$
+	so that 
+	\[
+		\sin \alpha \cosh \beta = \alpha 
+		\quad
+		\cos \alpha \sinh \beta = \beta
+	\]
+	asdflkfj
+
+
+
+
+
 
 \end{Porb}
+
+
 
 %4
 \begin{Porb}
@@ -3866,11 +4005,39 @@ Consider the eigenvalue problem
 	\[
 		u(x) = \lamb \ispi \intinf K(x; \zeta) u(\zeta) \di \zeta + \phi(x)
 		\]
-		Here $\lamb$ is a paramter and $\phi$ is a known and given function. SO is the integration kernal K, which in this problem is given to be translation invarient.
+		Here $\lamb$ is a paramter and $\phi$ is a known and given function. Also the integration kernal K, which in this problem is given to be translation invarient.
 		ie. you should assume that $K(x; \zeta) = v(x-\zeta)$, where v is a given function whose Fourier transform exists.
 		Solve the integral equation by finding the function $u$ in terms of what is given.
 \end{Boxed}
-********************************\\
+We notice that this is a convolutuion:
+	\[
+		u(x) = \lamb \ispi \intinf K(x - \zeta) u(\zeta) \di \zeta + \phi(x)
+		=
+		\lamb \ispi K \star u + \phi(x)
+		\]
+		Now if we apply the 4-ier convolution thoerem we get:
+		\[
+		\hat u  (\omega )
+		=
+		\lamb \ispi \hat K (\omega ) \hat  u  (\omega )+ \hat \phi (\omega )
+		\]
+		Now we subtract over the $\hat u$ terms and then divide to get:
+		\[
+		\hat u  (\omega )
+		=
+		\frac  {\hat \phi (\omega )} { 1-\lamb \ispi \hat K (\omega )}
+		\]
+		So our actual function $u$ ends up being
+		\[
+		u  (x)
+		=
+		\I \FF \left[ 
+		\frac  {\hat \phi (\omega )} { 1-\lamb \ispi \hat K (\omega )}
+		\right]
+		\]
+
+
+
 \end{Porb}
 
 %2
@@ -3879,9 +4046,144 @@ Consider the eigenvalue problem
 	Look up an integral equation of the 2nd kind, either of the Volterra or of the Fredholm type. Submit it and its solution.
 \end{Boxed}
 	Problem:
+	\[
+		\phi(x)  = x^2 -x^4 + \lamb \int_{-1}^1 ( x^4 + 5 x^3 y) \phi(y) \di y
+		\]
+	Solution:\\
+	This is calle dthe 'direct computation' approach from Stack Exchange
+	\[
+		\phi(x)  
+		=
+		x^2 -x^4 + \lamb \int_{-1}^1 ( x^4 + 5 x^3 y) \phi(y) \di y
+		=
+		x^2 -x^4 + \lamb \left[
+			x^4 \int_{-1}^1 \phi(y) \di y
+			+ 5 x^3 \int_{-1}^1  y) \phi(y) \di y
+			\right]
+		\]
+		Now let 
+		\[
+			c_1 =\int_{-1}^1 \phi(y) \di y \quad 
+		 c_2 = \int_{-1}^1  y) \phi(y) \di y
+		\]
+		and we have
+		\[
+			\phi(x) =
+		x^2 -x^4 + \lamb \left[
+			x^4 c_1	
+			+ 5 x^3 c_2
+			\right]
+			=
+		x^2 + 5 \lamb x^3 c_2 + ( \lamb c_1 - 1) x^4 
+		\]
 
-	Solution:
+		Now if we plug this expression back into the first equaiton for $\phi(y)$ we get:
+	\[
+		\phi(x)  
+		=
+		x^2 -x^4 + 
+		\lamb \int_{-1}^1 ( x^4 + 5 x^3 y) 
+		\left( 
+		y^2 + 5 \lamb y^3 c_2 + ( \lamb c_1 - 1) y^4 
+		\right) 
+		 \di y
+		\]
+		\[
+		=
+		x^2 -x^4 + 
+		\lamb x^4 \int_{-1}^1 
+		y^2 + 5 \lamb y^3 c_2 + ( \lamb c_1 - 1) y^4 
+		 \di y
+		 +
+		\lamb5 x^3  \int_{-1}^1  
+		y^3 + 5 \lamb y^4 c_2 + ( \lamb c_1 - 1) y^5 
+		 \di y
+		\]
+		The region is symetric around 0 so all the odd powers of y die. Thus the only integrals we actually have to deal with are:
+		\[
+		=
+		x^2 -x^4 + 
+		\lamb x^4 \int_{-1}^1 
+		y^2 + ( \lamb c_1 - 1) y^4 
+		 \di y
+		 +
+		\lamb5 x^3  \int_{-1}^1  
+		5 \lamb y^4 c_2 
+		 \di y
+		\]
+		\[
+		=
+		x^2 -x^4 + 
+		2 \lamb x^4 \left[ 
+		\frac  1 3  + ( \lamb c_1 - 1) \frac 1 5 
+		 \right]
+		 +
+		\lamb 10  x^3   
+		 \lamb  c_2 
+		\]
+		
+		Now we remember this is equal to $\phi(x) $ and get
+		\[
+		x^2 + 5 \lamb x^3 c_2 + ( \lamb c_1 - 1) x^4 
+		=
+		x^2 -x^4 + 
+		2 \lamb x^4 \left[ 
+		\frac  1 3  + ( \lamb c_1 - 1) \frac 1 5 
+		 \right]
+		 +
+		\lamb 10  x^3   
+		 \lamb  c_2 
+		\]
+		Now equaint coefficents of the powers of x gives:
+		\begin{align}
+			1 &=& 1 \\
+		5 \lamb  c_2  &=& \lamb^2 10  c_2  \\
+			\lamb c_1 - 1 &=& 
+		2 \lamb \left[  \frac  1 3  + ( \lamb c_1 - 1) \frac 1 5  \right] -1 
+		\end{align}
+		So from this we see that 
+		\[
+		  c_2  = 0
+		\]
+		Now with some effort we go after $c_1$:
+		\[
+			\lamb c_1 - 1=
+ 	\frac 2 5   \lamb^2 c_1 
+ 	+ 2 \lamb \left[  \frac  1 3  -\frac 1 5  \right] -1
+		\]
+		\[
+			c_1 
+			( - \frac 2 5   \lamb^2 
+			+ \lamb )  
+			= 
+ 	+ 2 \lamb \left[  \frac  1 3  -\frac 1 5  \right] 
+		\]
 
+		\[
+			c_1 
+			= 
+			\frac{
+			  \frac  4 {15}  
+	}
+	{  - \frac 2 5   \lamb	+  1  
+			}
+			= 
+			  \frac  4 {3}  
+			  \frac 1 
+	{   5  - 2   \lamb	
+			}
+		\]
+		So big deal we calculated some coefficents, what about $\phi$?
+
+		\[
+			\phi(x) = 
+		x^2 + 5 \lamb x^3 c_2 + ( \lamb c_1 - 1) x^4 
+		=
+		x^2 + \left(    \frac  4 {3}  
+ \frac \lamb 	{   5  - 2   \lamb }
+		- 1 \right) x^4
+		\]
+		% https://math.stackexchange.com/questions/349133/solution-of-an-integral-equation-phix-int1-0-xtxt-phit-dt-x-0/393672#393672
 \end{Porb}
 
 
@@ -4193,10 +4495,56 @@ over the interval $-\infty < x < \infty$, but leav the boundary conditons as yet
 \end{Boxed}
 \begin{enumerate}
 	\item
-		************************************\\
+	
+		Let $u= J_0( k_m r)$ then with $x= k_m r$ then we notice that the Bessel equation gives: (we have 1 less factor of r than the standard Bessel form)
+	\[
+		\dd {} x x \dd u x  = 
+		x \ddt {}x +  \dd u x  = 
+		x u
+		\]
+		Now we see that $\dd {} x = \dd {} r \dd r x = \frac 1 {k_m}$. 
+		Thus our equaiton becomes:
+		\[
+			\frac{	k_m} { k_m^2} \ddt {}r +  \frac 1 {k_m} \dd u r  = 
+		k_m r u
+		\]
+		Which moving around some constnats yields:
+		\[
+			 \ddt {}r +  \dd u r  = 
+		k_m^2 r u
+		\]
+		Which is the ODE we have. 
+
+		By theorem 1 on page 166 we see that these eigenvalues are nondegenertae and that they are orthogonal. (Have one endpoint set to zero of a S-L system).
+
 	\item
+		Problem 3.3.5 tells us 
+		\[
+			\int_0^a J_0( r k_m)^2 \di r =
+						J'_0(a k_m) \frac{d J_0(a \lamb)} {d \lamb} |_{\lamb=k_m} 
+						- J_0(ak_m) 
+						\frac d {d \lamb} 
+						J'_0(a\lamb) |_{\lamb=k_m} 
+			\]
+			By construction we have that $J_0(ak_m)=0$, thus we only need to figure out $J'_0(x)$.
+			\[
+					J'_0(a k_m) \frac{d J_0(a \lamb)} {d \lamb} |_{\lamb=k_m} 
+					- J_0(ak_m) 
+					\frac d {d \lamb} 
+					J'_0(a\lamb) |_{\lamb=k_m} 
+					=
+					a J'_0(a k_m)^2  
+			\]
+			******************DERIVE IDENTITY LATER?**********\\
+
 	\item
+		Thus to normalize the eigenfucntions we would simply normalize by the norm above:
+		\[
+			 \frac { J_0( ak_m) } {\sqrt a J'_0( a k_m)}   = ????
+			\]
+
 	\item
+			******************Greens FUnction?**********\\
 \end{enumerate}
 \end{Porb}
 
@@ -4393,11 +4741,11 @@ Assume the two membranes
 		Answer:
 		\[
 		 \rho ( x,y,z,t) =
-		q \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) 
+		q \delta(x-X(\tau)) \delta ( y-Y(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) 
 		\]
 	\[
 		\vec J ( x,y,z,t) =
-		q \dd {\vec X } t \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+		q \dd {\vec X } t \delta(x-X(\tau)) \delta ( y-Y(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
 		\]
 		where $\vec X(t) = \vec X(\tau)$ evaluated  at $\tau$ as determined by $\delta ( t- T(\tau))$.
 \end{enumerate}
@@ -4405,10 +4753,56 @@ Assume the two membranes
 		\[
 			\nabla \cdot \vec J + \pp \rho t =0
 			\]
-			*******************\\
 \end{Boxed}
+	\begin{enumerate}
+		\item
+		\[
+			\nabla \cdot \vec J + \pp \rho t =
+			\]
+		\[
+			\nabla \cdot \vec J= 
+			\sum_{i} \pp {} {x_i} \vec J 
+			=
+		q \intinf \dd {\vec X (\tau)} \tau \sum_{i} \pp {} {x_i}
+		\delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+			\]
+
+			\[
+			=
+		q \intinf \dd {\vec X (\tau)} \tau
+		\sum_{i} \delta' ( x_i - X_i (\tau) ) \prod_{j \neq i} \delta ( x_i - X_i (\tau) )
+		\delta(t-T(\tau)) \di \tau
+			\]
 
 
+	\[
+\pp \rho t
+=
+	\pp {} t 
+		q \intinf \dd {\vec T (\tau)} \tau \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+	\]
+
+	\[
+=
+			q \intinf \dd {\vec T (\tau)} \tau \pp {} t \delta(x-X(\tau)) \delta ( z-Z(\tau)) \delta(t-T(\tau)) \di \tau
+	\]
+
+	\[
+=
+		q \intinf \dd {\vec T (\tau)} \tau
+		\sum_{i} - \delta' ( x_i - X_i (\tau) )\dd {X_i(\tau)} t  \prod_{j \neq i} \delta ( x_i - X_i (\tau) )
+		\di \tau
+	\]
+
+
+
+
+			*******************\\
+		\item Since $\dd T \tau >0$ we see that $T$ is an injective function of $\tau$ and thus there is only one specific value where $t= T(\tau)$ (if one exists at all). 
+
+
+
+\end{enumerate}
 \end{Porb}
 
 

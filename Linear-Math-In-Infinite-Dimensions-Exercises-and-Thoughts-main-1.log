@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  22 FEB 2020 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  24 FEB 2020 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -749,55 +749,75 @@ Underfull \hbox (badness 10000) in paragraph at lines 3569--3570
  []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 3643--3644
+Underfull \hbox (badness 10000) in paragraph at lines 3600--3603
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3645--3646
 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 3708--3709
+Underfull \hbox (badness 10000) in paragraph at lines 3710--3712
 
  []
 
-[49]
-Underfull \hbox (badness 10000) in paragraph at lines 3761--3763
+[49] [50] [51]
+Underfull \hbox (badness 10000) in paragraph at lines 3873--3874
 
  []
 
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 3825--3827
+
+Underfull \hbox (badness 10000) in paragraph at lines 3887--3889
 
  []
 
-[51] [52] [53]
-Underfull \hbox (badness 10000) in paragraph at lines 3946--3948
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 3964--3966
 
  []
 
-[54] [55] [56]
+[53] [54] [55] [56]
+Underfull \hbox (badness 10000) in paragraph at lines 4247--4249
+
+ []
+
+[57] [58] [59]
 Overfull \vbox (129.15536pt too high) has occurred while \output is active []
 
 
-[57] [58]
-Underfull \hbox (badness 10000) in paragraph at lines 4196--4198
+[60] [61]
+Underfull \hbox (badness 10000) in paragraph at lines 4536--4538
 
  []
 
-[59]
-Underfull \hbox (badness 10000) in paragraph at lines 4251--4253
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 4546--4547
 
  []
 
-[60]
-Underfull \hbox (badness 10000) in paragraph at lines 4276--4278
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 4598--4600
 
  []
 
-[61]
-Underfull \hbox (badness 10000) in paragraph at lines 4356--4358
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 4623--4625
 
  []
 
-[62] [63] [64]
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 4703--4705
+
+ []
+
+[66] [67]
+Underfull \hbox (badness 10000) in paragraph at lines 4799--4800
+
+ []
+
+[68] [69]
 (./Linear-Math-In-Infinite-Dimensions-Exercises-and-Thoughts-main-1.aux) ) 
 Here is how much of TeX's memory you used:
  3634 strings out of 494945
@@ -829,10 +849,10 @@ dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/share/texlive/texmf-dist
 ts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on Linear-Math-In-Infinite-Dimensions-Exercises-and-Thoughts-mai
-n-1.pdf (64 pages, 342809 bytes).
+n-1.pdf (69 pages, 356202 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
+ 312 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
