@@ -113,13 +113,68 @@
 		\end{Boxed}
 			\begin{enumerate}[a)]
 		\item
+			Hamming distance is defined by 
+				\[
+					d(x,y) = 
+					\sum_i |x_i - y_i | 
+				\]
+			We see that:
+				\[
+					\sum_i |x_i - y_i | 
+					=
+					\sum_i |x_i - z_i + z_i - y_i | 
+					\leq 
+					\sum_i |x_i - z_i | + | z_i - y_i | 
+				\]
+					\[
+					\sum_i |x_i - z_i | + 
+					\sum_i| z_i - y_i | 
+					= 
+					d(x,z) 
+					+d(y,z) 
+					\]
+
+		\item
+Pythagorean distance
+				\[
+					d(x,y) = 
+					\sqrt{ \sum_i (x_i - y_i )^2 }
+				\]
+
+		\[
+		\sqrt{ \sum_i (x_i - y_i )^2 }
+		=
+		\sqrt{ \sum_i (x_i- z_i + z_i  - y_i )^2 }
+		\]
+		\[
+			\leq
+			\sqrt{ \sum_i (x_i- z_i)^2 + ( z_i  - y_i )^2 }
+			=
+			\sqrt{ \sum_i (x_i- z_i)^2 + \sum_i ( z_i  - y_i )^2 }
+		\leq 
+		\sqrt{ \sum_i (x_i- z_i)^2} + \sqrt{\sum_i ( z_i  - y_i )^2 }
+		\]
+%		which finishes the proof
+
+		\item
+			The Chebyshev distance
+				\[
+					d(x,y) = 
+					\max \left \{ |x_i - y_i|  \right \}
+				\]
+				\[
+					\max \left \{ |x_i - y_i|  \right \}
+					= 
+					\max \left \{ |x_i- z_i + z_i  - y_i|  \right \}
+					\leq
+					\max \left \{ |x_i- z_i|  + | z_i  - y_i|  \right \}
+				\]
+				\[
+					\leq
+					\max \left \{ |x_i- z_i| \right \}  + \max \left \{  | z_i  - y_i|  \right \}
+				\]
 			\end{enumerate}
 		\end{Porb}
-
-
-
-
-
 \setcounter{subsection}{4}
 \setcounter{Prb}{0}
 \subsection{Hilber Spaces}
@@ -2815,49 +2870,9 @@ Q= c- \frac {b'+ b^2/2} 2
 
 			******************************************\\
 
+**********Packet Note*********************\\
 
 
-
-********************PACKET NOTE.\\
-%Basicly this is just a slight modificaiton of the proof found on page 168 for theorem 1 of this section.
-%		\begin{enumerate}[1)]
-%			\item
-%				\[
-%					Lu_n =  - \frac{ d^2u_n} { dx^2} + x^2 u_n(x)  = \lambda_n u_n(x)
-%					\]
-%					Now multiply both sides by $u_m$
-%				\[
-%				\bar u_m Lu_n =  -\bar u_m \frac{ d^2u_n} { dx^2} + \bar u_m x^2 u_n(x)  = \lambda_n \bar u_m u_n(x)
-%					\]
-%					Now we multiply by $-1$ and then add the analgous equation with $u_m$ to get:
-%					\[
-%						u_n L \bar u_m - \bar u_m Lu_n  
-%						= 
-%						\dd {} x \left[  \bar u_m u_n '  - u_n \bar u_m ' \right] 
-%						\]
-%				Now the right hand side is just the difference of the eigenvalues times the functions:
-%				\[
-%					= (\lambda_n - \lamb_m ) \bar u_m u_n
-%					\]
-%		\item
-%			Integrating both sides we get: 
-%			\[
-%			 (\lambda_n - \lamb_m ) \intinf \bar u_m u_n \di x
-%			 = 
-%			 \intinf  u_n L \bar u_m - \bar u_m Lu_n   \di x
-%			\]
-%			Which we can see the right hand side is just
-%			\[
-%				= 
-%				\left[  \bar u_m u_n '  - u_n \bar u_m ' \right]_{\pm \infty} 
-%			\]
-%					thanks to the work above (aka Lagrange's Identity). 
-%
-%			\item
-%				We wish to show that 
-%				$\left[  \bar u_m u_n '  - u_n \bar u_m ' \right]_{\pm \infty} =0$
-%				This is straight forward as $u_m \rw 0$ as $ x \rw \pm \infty$.
-%		\end{enumerate}
 \end{Porb}
 
 
