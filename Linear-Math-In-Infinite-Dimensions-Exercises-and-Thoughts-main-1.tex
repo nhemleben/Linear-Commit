@@ -22,6 +22,7 @@
 \DeclareMathOperator{\spn}{span}	
 \DeclareMathOperator{\sgn}{sgn}	
 \DeclareMathOperator{\sinc}{sinc}	
+\DeclareMathOperator{\rect}{rect}	
 \newcommand{\CC}{\mathbb{C}}	
 \newcommand{\GG}{\mathbb{G}}	
 \newcommand{\LL}{\mathbb{L}}	
@@ -133,14 +134,12 @@
 					d(x,z) 
 					+d(y,z) 
 					\]
-
 		\item
 Pythagorean distance
 				\[
 					d(x,y) = 
 					\sqrt{ \sum_i (x_i - y_i )^2 }
 				\]
-
 		\[
 		\sqrt{ \sum_i (x_i - y_i )^2 }
 		=
@@ -155,7 +154,6 @@ Pythagorean distance
 		\sqrt{ \sum_i (x_i- z_i)^2} + \sqrt{\sum_i ( z_i  - y_i )^2 }
 		\]
 %		which finishes the proof
-
 		\item
 			The Chebyshev distance
 				\[
@@ -203,7 +201,6 @@ Since we have that $f(x) = \sum_{k=1}^\infty u_k(x) c_k$ we can substitiute and 
 = \sum_{k=1}^\infty \bar c_k d_k 
 \]
 \end{Porb}
-
 
 \begin{Porb}
 \begin{Boxed}
@@ -693,9 +690,94 @@ Now for $k \neq l$ we see that this is just
 	Thus the set is in fact an orhtogonal set satisfying the above.
 \end{enumerate}
 
-	\item Limited bandwith functions????
-    ************************************
+	\item Limited bandwith functions\\
+		$[$ According to wikipedia this is bascily shannon's original line or reasoning$]$ \\
+		If we wish to avoid concerns with infinite sums, then we simply want to consider $\sum_{-N}^N |c_k|^2$.
+		Thus we want the function f to be represnetable as:
+		\[
+			f(t) =
+			\sum_{k=-N}^N c_k \frac 1 {\sqrt A} \sinc ( 2 \omega t -k)
+			\]
+			Now 
+			\[
+				c_k = \langle f , u_k \rangle =  \intinf f(t) \frac 1 {\sqrt A} \sinc ( 2 \omega t -k)
+				\]
 
+
+
+		**************PACKET******************\\
+		Wonderful derivation from stack exchange.
+		A usefull lemma here is the fourier transform of $\sinc x $.
+		To this end notice that $ sin( x)  = \int_{-1}^1 e^{i y x } \di y $.
+		\[
+			\hat \sinc [\omega] = 
+			\intinf \sinc x e^{-i \omega x} \di x 
+			=
+			\intinf \int_{-1}^1 e^{i y x } \di ye^{-i \omega x} \di x 
+			\]
+			\[
+			=
+			\intinf \int_{-1}^1  e^{-i ( \omega -y ) x} \di y\di x 
+			=
+			\int_{-1}^1  \intinf e^{-i ( \omega -y ) x} \di x\di y 
+			\]
+			\[
+			=
+			\int_{-1}^1  \delta( \omega - y) \di y 
+			=
+			\begin{cases}
+				1 & |\omega | \leq 1\\
+				0 & |\omega | > 1
+			\end{cases}
+			\]
+	Thus we see that the fourier transform of $\sinc$ is a rectangular function.
+				%https://math.stackexchange.com/questions/736749/fourier-transform-of-sinc-function
+
+
+
+So if $f$ has a finite specturm then we can simply apply the fourier inversion theorm to get:
+				\[
+					f(t) = \frac 1 {2\pi} \int_{-2\pi B}^{2\pi B} \hat f (\omega ) e^{i \omega t} \di \omega
+					\]
+
+		If we let $t = n/2B$ then we get:
+			\[
+				f(n/2B) = \frac 1 {2\pi} \int_{-2\pi B}^{2\pi B} \hat f (\omega ) e^{i \omega n/2B} \di \omega
+			\]
+
+				Notice that this is the caluclation of the n th fourier coefficent of $\hat f$ (on the interval $\pm B$) , and that this is the nth 'sample' of f.
+		We can conclude from this that f is determined as a badwidth limited fucntion with bandwith limit B, by its $\floor B$ many samples.
+		So we can rewrite f as:
+	\[
+		f(t) = \sum_{n=-B}^B\frac 1 {2B}  x(n/2B) e^{-i \pi n/B t} 
+	\]
+		Now with these 4-ier coefficents of $\hat f$ we can rewrite it aswell:
+	\[
+		\hat f (\omega) = 
+		\rect ( \omega/ 2B)
+		\sum_{n=-B}^B\frac 1 {2B}  x(n/2B) e^{-i \pi n/B t} 
+				=
+		\sum_{n=-B}^B  x(n/2B) 
+		\frac 1 {2B} \rect ( \omega/ 2B)e^{-i \pi n/B t} 
+	\]
+	Using the divine foresight we have on sinc functions we can rewrite $\hat f$ as:
+	\[
+		\hat f
+				=
+		\sum_{n=-B}^B  x(n/2B) 
+				\FF [ \sinc (t 2 B - n) ]
+	\]
+
+	Now taking $\I \FF$ of both sides we see:
+	\[
+		f
+				=
+		\sum_{n=-B}^B  x(n/2B) 
+				 \sinc (t 2 B - n) 
+	\]
+				Thus our Parsevel relation is satisfied, since the sum is finite.
+				%https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem#math_Eq.1
+				%Where I stolded my ideas
 \end{enumerate}
 \end{Porb}
 
@@ -3541,6 +3623,11 @@ Consider the S-L System:
 \end{Porb}
 
 
+**********************************************\\
+THere are methods to solve these problems but they are from later sections and it is unclear if these are special cases or if I should just use the general method.
+I am going to use the construiton method from later sections, it is probably an oversight and if it is not then this will help me with divine foresight see the solutions.
+**********************************************\\
+
 %3
 \begin{Porb}
 \begin{Boxed}
@@ -3577,8 +3664,6 @@ Consider the S-L System:
 				G(x; \zeta)  =-\int^{x_0} \frac 1 x H( x - \zeta) \di x
 			\]
 
-**********************************************\\
-THere are methods to solve these problems but they are from later sections and it is unclear if these are special cases or if I should just use the general method.
 					
 			\item
 **********************************************\\
