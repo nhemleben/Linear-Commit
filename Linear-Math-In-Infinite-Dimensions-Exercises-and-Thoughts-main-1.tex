@@ -58,6 +58,7 @@
 \newcommand{\intinf}{\int\limits_{-\infty}^\infty}	
 \newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
 \newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
+\newcommand{\comb}[2]{\text{comb}_#1 (#2) }
 \newtheorem{thm}{Theorem}
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}[section]
@@ -1974,6 +1975,7 @@ To make life easier to see, eveyrthin in a box gives:
 	Show that any periodic function $f(\xi) = f(\xi +a)$ is the convolution of a nonperiodic function with a train of Dirac delta DISTRIBUTIONS.
 \end{Boxed}
 [I was very stuck on this and stack exchange provided an answer.]\\
+	(This also ends up being the comb thing)
 Let $a>0$ be the length of the period of the function $f(x)$. Then let $g(x) = \one_{[0,a)} (x) f(x)$ have value in the 'first' period of f and then be 0 elsewhere.
 Obviously g is non periodic unless $f=0$ (that case being triival and not relavent). Now consider:
 \[
@@ -2078,7 +2080,12 @@ The function in reference is of the form:
 	b e^{-(\omega-\omega_0)^2/2b^2} 
 	\frac{ \sin (N+\frac 1 2) \omega T}
 	{\sin \omega T/2}
+	=
+	\sqrt{2 \pi}
+	b e^{-(\omega-\omega_0)^2/2b^2} 
+	\delta_N( \omega T)
 	\]
+	(The $\delta_N$ comes from problem 1.5.3) 
 	Thus in the end the spectral envelope ends up being the same as it was determined by the amplidude.
 	The spectral lines portion though, is now just a finite approximation. Notably it is a function and has not achieved yet distribution status.
 	The spectral lines in this case wobbles much more and has support on the whole real line and not just at integerl multilpes of $2\pi$ plus a $\Delta \phi$ factors.
@@ -2380,25 +2387,45 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 	 \ispi \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
 		e^{i \omega t} \suminf l e^{-2 \pi i l \omega/\eps} \di \omega
 			\]
-			Now letting $y= -2 \pi \omega/\eps, \di y = -2\pi /\eps \di \omega$, we can change variables and evaluate the sum:
+			we recognize this immediatly as 
+			\[
+\suminf l e^{-2 \pi i l \omega/\eps} 
+=
+			\eps \suminf l \delta ( \omega - l \eps)
+			\]
+			from page 81.
 			\[
 			=
-	  \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
-			e^{i \omega t} \sqrt{2 \pi}  \suminf l e^{i l(-2 \pi  \omega/\eps) } \di \omega
+	 \ispi \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+		e^{i \omega t} 
+			\eps \suminf l \delta ( \omega - l \eps)
+			\di \omega
 			=
-			\frac 1 {\sqrt \eps} \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
-			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \suminf l e^{i ly } \di y  \frac \eps {-2\pi }
+	 \sqrt \eps \ispi  
+		e^{i j \eps t} 
 			\]
-			\[
-			=
-		\frac 1 {-2\pi }\sqrt \eps \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
-			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \delta(y) \di y  
-			=
-		\frac 1 {-2\pi }\sqrt \eps \sqrt{2 \pi}
-			\sum_{|j|\leq 3}
-			\delta_{j,0}
-			\]
-			Since $0\in [j-\frac 1 2, j +\frac 1 2]$ iff $j=0,\pm1,\pm2,\pm3$.
+
+
+
+%			Now letting $y= -2 \pi \omega/\eps, \di y = -2\pi /\eps \di \omega$, we can change variables and evaluate the sum:
+%			\[
+%			=
+%	  \frac 1 {\sqrt \eps} \int_{(j-1/2)\eps}^{(j+1/2)\eps}
+%			e^{i \omega t} \sqrt{2 \pi}  \suminf l e^{i l(-2 \pi  \omega/\eps) } \di \omega
+%			=
+%			\frac 1 {\sqrt \eps} \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
+%			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \suminf l e^{i ly } \di y  \frac \eps {-2\pi }
+%			\]
+%			\[
+%			=
+%		\frac 1 {-2\pi }\sqrt \eps \int_{(j-1/2)(-2\pi)}^{(j+1/2)(-2\pi)}
+%			e^{i \eps y/(-2\pi) t} \sqrt{2 \pi}  \delta(y) \di y  
+%			=
+%		\frac 1 {-2\pi }\sqrt \eps \sqrt{2 \pi}
+%			\sum_{|j|\leq 3}
+%			\delta_{j,0}
+%			\]
+%			Since $0\in [j-\frac 1 2, j +\frac 1 2]$ iff $j=0,\pm1,\pm2,\pm3$.
 
 	\item
 		By the first part we immediatly see:
@@ -2412,11 +2439,39 @@ Similar to how $\FF \delta  = 1 \ \Rw \delta(x) = \suminf n e^{inx}$, and $\FF 1
 			\suminf l
 			 \delta ( t-2 \pi l/ \eps)
 		\]
+	\[
+			=
+			\sqrt{ \frac {2\pi} {\eps} }
+			\comb {2 \pi l/\eps} {t} 
+		\]
 
-
-
+		To double check we can reverse the order of summation:
+		\[
+			\suminf j\suminf l Q_{jl} (t)
+			=
+			\suminf j
+	 \sqrt \eps \ispi  
+		e^{i j \eps t} 
+			=
+	 \sqrt \eps \ispi  
+			\suminf j
+		e^{i j \eps t} 
+			\]
+			Which we can use 2.52 on page 81 again with $a = \frac {2\pi} \eps$
+			\[
+			=
+	 \sqrt \eps \ispi  
+	  a 
+			\suminf j
+			\delta ( x - j a)
+			=
+			\frac{ \sqrt {2\pi}}  {\sqrt \eps}
+			\suminf j
+			\delta ( x - j \frac {2\pi} \eps)
+		\]
+		Which is the same result just written slightly differently.
+		Now we can be confident that we are right or atleast twice as wrong as before.
 	\end{enumerate}
-	*******************DOUBLE CHECK
 \end{Porb}
 
 
@@ -2549,8 +2604,58 @@ We do this by controdiciton, so suppose that
 
 	\begin{enumerate}[a)]
 		\item
-			Let M be the map from $V_k \rw V_{k+1}$ that is Change of basis from two orhtonormal basis? So it sunitary and stuff?
-			**********************************************************************
+			Let U be the map from $V_{k+1} \rw V_k $ that is change of basis, that is we consider soem bi infinte vector 
+			\[
+				u = \begin{pmatrix}
+					\cdots\\
+					u_1 \\
+					u_0 \\
+					u_{-1} \\
+					\cdots
+				\end{pmatrix}
+				\]
+				That corespond with $f_u(t)$ via $f_u(t) = \suminf l u_l \phi( 2^{-k-1} t - l)$.
+				We define $U$ by $f_{U(u)}(t)  = \suminf l U(u)_l \phi( 2^{-k} t - l) = f(t)$.
+				That is, we want U to be the change of basis for a funciton inside $V_{k+1}$ from basis elements inside its 'home' space to basis elements inside $V_k$. 
+
+		Notice that U is an 'infinite matrix', so the most straightforward way to check unitarity is:
+			\[
+				\langle U x , U y \rangle = \langle x , y \rangle
+				\]
+
+				From the definition of $h_l$ we see that 
+				\[
+		 f_{U(u)}(t)  = \suminf l U(u)_l \phi( 2^{-k} t - l) = f(t)
+			= \suminf l \sqrt 2 \sum_{l'} u_{l'}h_{l- 2l'} \phi( 2^{-k} t - l) 
+			\]
+			Which is to say that $ U(u)_l = \sqrt 2 \sum_{l'} u_{l'}h_{l- 2l'} $
+
+			So if $f, g \in V_{k+1}$  and $u,v$ are their correpsonding vecotrs, then we have by Parsevel:
+			\[
+				 \langle x , y \rangle =
+				 \sum_i u_i \bar v_i 
+			\]
+			Similarly we have:
+		\[
+			\langle U x , U y \rangle 
+			= 
+			\sum_i U(u)_i \overline{U(v)_i}
+		\]
+		\[
+			= 
+ \sum_l \sqrt 2 \sum_{l'} u_{l'}h_{l- 2l'} 
+			\overline {\sqrt 2 \sum_{l'} v_{l'}h_{l- 2l'} }
+		\]
+		\[
+			= 
+2  \sum_l  \sum_{l'} u_{l'}h_{l- 2l'} 
+			\overline {\sum_{l'} v_{l'}h_{l- 2l'} }
+		\]
+			************************PROBLEM IS WRONG?*******************************************\\
+
+
+
+
 
 		\item 
 			If $l' =0$ then we have:
@@ -2582,10 +2687,40 @@ We do this by controdiciton, so suppose that
 			\intinf \bar \phi ( u-(l-2l')) \phi(u/2) \di u
 			\]
 
-
-		********************************\\	
-
-
+			Now for the general case:\\
+Notice that we have the follwoing equalities:\\
+\[
+	\langle \sqrt{ 2^{-(k+1)} } \phi( 2^{-(k+1)} u - l' ), f(u) \rangle=
+	\suminf l 
+	\langle \sqrt{ 2^{-(k+1)} } \phi( 2^{-(k+1)} u - l' ), \sqrt{ 2^{-k} } \phi( 2^{-k} u - l)\rangle
+	\langle \sqrt{ 2^{-k} } \phi( 2^{-k} u - l ), f(u) \rangle
+	\]
+	\[
+	=
+	\suminf l 
+	\langle \sqrt{ 2^{-k} } \phi( 2^{-k} u - l ), f(u) \rangle
+	\bar h_{l - 2l'}
+	\]
+	Now if consider $f(u) = \sqrt{ 2^{-(k+1)} } \phi( 2^{-(k+1)} u)$ in the above, then we get:
+\[
+	\langle \sqrt{ 2^{-(k+1)} } \phi( 2^{-(k+1)} u - l') , f(u) \rangle
+=
+	\delta_{0, l'}
+	=
+	\suminf l 
+	h_{l}
+	\bar h_{l - 2l'}
+	\]
+	Since 
+	$\delta_{0, l'} = \bar \delta_{0, l'}$ we see that 
+	\[
+	\delta_{0, l'}
+	=
+	\suminf l 
+	\bar h_{l}
+	h_{l - 2l'}
+	\]
+	which is the desired equality.
 	\end{enumerate}
 \end{Porb}
 
@@ -2603,11 +2738,60 @@ Begin with :
 		,
 		\hat \phi( 2 \omega) = H ( \omega) \hat \phi( \omega)
 		\]
+		Now plug $2W = \omega$ in the first equation:
+	\[
+		\suminf n | \hat \phi  ( 2 W + 2\pi n)|^2 = \frac 1 {2\pi}
+		=
+		\suminf n | \hat \phi  (2(  W + \pi n))|^2 
+		\]
 		\[
-			H( \omega ) = \frac{ \sqrt 2 } 2 \suminf l h_l e^{i\omega l}
-			\]
-		
+		=
+		\suminf n | H(  W + \pi n) \hat \phi  ( W + \pi n))|^2 
+		=
+		\suminf n | H(  W + \pi n)|^2 | \hat \phi  ( W + \pi n))|^2 
+		\]
+		Now we can split the sum into odd and even numbers and use the periodicity of $H$ to simplify somewhat
+		\[
+		=
+		\sum_{n=2m}  | H(W)|^2 | \hat \phi  ( W + 2 \pi m))|^2 
+		+
+		\sum_{n=2m+1}  | H(  W + \pi) |^2 | \hat \phi  ( W + 2 \pi m + \pi ))|^2 
+		\]
+		\[
+		=
+		| H(W)|^2 | \sum_{n=2m}   \hat \phi  ( W + 2 \pi m))|^2 
+		+
+		| H(  W + \pi) |^2 \sum_{n=2m+1}   | \hat \phi  ( W + 2 \pi +\pi ))|^2 
+		\]
+		Now notice that
 
+		\[
+			\sum_{n=2m}   \hat \phi  ( W + 2 \pi m))|^2 
+			=
+			\frac 1 {2\pi}
+			=
+			\sum_{n=2m+1}   | \hat \phi  ( W + 2 \pi +\pi ))|^2 
+		\]
+		since the W term can be exchanged for $W'=W+\pi$ and we see the oroiginal identity.
+		Now we have arived at:
+		\[
+			\frac 1 {2\pi}	
+		=
+		| H(W)|^2  
+			\frac 1 {2\pi}	
+		+
+		| H(  W + \pi)|^2
+			\frac 1 {2\pi}	
+		\]
+		Which is planely equivalent to
+		\[
+			1
+		=
+		| H(W)|^2  
+		+
+		| H(  W + \pi)|^2
+		\]
+		which was what we wanted.
 \end{Porb}
 
 
@@ -2631,9 +2815,23 @@ Consider a function $\phi (t)$ having the property
 	\hat \phi (\omega) = \hat \phi (0) \prod_{k=1}^\infty H(\omega/2^k)
 	\]
 \end{Boxed}
+	We are given $H(\omega) = \frac 1 {\sqrt 2 }  \suminf l h_l e^{i\omega l}$ and the scaling equation and wish to construct a $\phi$ that satisifes the scaling equation.
 	
-
+	We verify the solution with:
+	\[
+	\hat \phi (2 \omega) = \hat \phi (0) \prod_{k=1}^\infty H(2 \omega/2^k)
+	= \hat \phi (0) \prod_{k=1}^\infty H(\omega/2^{k-1})
+	=  H( \omega) \hat \phi (0) \prod_{k=1}^\infty H(\omega/2^k)
+	=  H( \omega) \phi(\omega)
+	\]
+	
+	Now to ensure a non trivial solution we obviously need $\hat \phi(0) \neq 0$ which is given in the statemnet of the problem.
+	We also need that $H$ is nonzero, which is to say we need atleas one of the $h_l$ to be nonzero. Which is required in the construciton of these systems as otherwise the subspaces would not have inclusions in the directions we need.
 \end{Porb}
+
+
+
+
 
 
 %7
@@ -2662,8 +2860,42 @@ Consider a function $\phi (t)$ having the property
 		\end{enumerate}
 \end{Boxed}
 
+\begin{enumerate}
+	\item
+		The functions are indepent as if $\phi^+ = \lamb \phi^-$ then taking the Fourier transform of both sides gives:
+		$ \hat \phi^+ = \lamb \hat \phi^-$, whihc is not the case unless $\hat \phi^+$ is zero for all poisitive or negative values of $\omega$.
+		Now since $\hat \phi^+ ( \omega)$ is a solution to the wave equation we have for $\omega<0$ :
+		\[
+		- \hat \phi^+( 2 \omega) 
+ 		=
+		 \hat \phi^-( 2 \omega)
+		= - H ( \omega) \hat \phi^+( \omega)
+		 =  H ( \omega) (- \hat \phi^+( \omega) )
+		 =  H ( \omega) \hat \phi^-( \omega) 
+			\]
+		For $\omega \geq 0$ we just use the original equation and replace $\phi^+$ with $\phi^-$ to get the proof.
+	\item
+		\[
+\langle \phi^+ , \phi^- \rangle =
+\langle \hat \phi^+ , \hat \phi^- \rangle =
+		\intinf \overline{\hat \phi^+} (\omega) \hat \phi^- (\omega) \di \omega
+		\]
 
+		Using the relationship of the funcitons we get:
+		\[
+		=
+		\int_0^\infty |\hat \phi^+|^2 (\omega)  \di \omega
+		-
+		\int_0^\infty |\hat \phi^+|^2 (-\omega)  \di \omega
+		=
+		\int_0^\infty |\hat \phi^+|^2 (\omega) - |\hat \phi^+|^2 (-\omega)  \di \omega
+		\]
 
+		Thus clearly if $\hat \phi^+$ is an even funciton than the integrand is clearly zero $\forall \omega$.
+
+		Now if $\phi^+(t)$ is a real valued function than $Re \hat \phi^+$ is an even function and 
+$Im \hat \phi^+$ is odd. With both components we ge that their modulus cancels inside the integrand above and we see again that the integral evalueates to 0.
+\end{enumerate}
 \end{Porb}
 
 
@@ -2676,7 +2908,24 @@ Consider a function $\phi (t)$ having the property
 	Validate conclusion \# II of the theorem on page 145. Point out why, whenever $k \neq k'$, the funcitons in $O_k$ are orthogonal to $O_{k'}$.
 \end{Boxed}
 
+We have the chain of incluisions:
+	\[
+		V_{k+1} \subset V_k \subset V_{k-1}
+		\]
+		We also have the following equlaities:
+	\[
+		V_{k+1} \oplus O_{k+1} = V_k, \quad
+V_{k} \oplus O_{k} = V_{k-1}
+		\]
+Where $O_k \perp V_k$ by construction (constraint equation 2.128).
 
+Combing these equalities we get:
+	\[
+		V_{k+1} \oplus O_{k+1} \oplus O_{k} = V_{k-1}
+	\]
+	Thus $O_{k+1} \perp O_{k}$ as $ V_{k-1}$ is the direct sum of the two (and $ V_{k+1}$).
+	Obviously we can repeate this $k-k'$ times to see that 
+$O_{k'} \perp O_{k}$.
 \end{Porb}
 
 
@@ -2879,6 +3128,8 @@ Q= \frac \lamb x + \frac 1 {4x^2}+ 1/2x-1/4
 	\item 
 		\[
 			(1-x^2)u''- xu'+\alpha^2 u=0
+			,\quad
+			u''- \frac x { 1-x^2} u'+\frac{ \alpha^2} { 1-x^2} u=0
 		\]
 
 \[
@@ -2886,7 +3137,20 @@ F = \exp \{ \frac 1 2 \int^x b \}, \quad
 Q= c- \frac {b'+ b^2/2} 2
 \]
 
+\[
+F = \exp \{ - \frac 1 2 \int^x \frac y { 1-y^2} \di y   \}, \quad
+Q=\frac{ \alpha^2} { 1-x^2}  - \frac {\frac {1+x^2} { (1-x^2)^2}+ \left(\frac x { 1-x^2}\right)^2\frac 1 2} 2
+\]
 
+\[
+	F = \exp \{ \frac 1 4  \ln | 1-x^2|   \}, \quad
+Q=\frac{ \alpha^2} { 1-x^2}  - \frac {1+x^2} {  2(1-x^2)^2}+\frac 1 4 \frac x { (1-x^2)^2}  
+\]
+
+\[
+	F = | 1-x^2|^{\frac 1 4 }   , \quad
+Q=\frac{ \alpha^2( 1-x^2)  - \frac 1 2(1+x^2) + \frac x 4 }  { (1-x^2)^2 } 
+\]
 
 
 
@@ -2894,13 +3158,18 @@ Q= c- \frac {b'+ b^2/2} 2
 	\item 
 		\[
 			(pu')'+ (q+\lambda r) u=0
+			u''+\frac {p'} p u'+ \frac 1 p (q+\lambda r) u=0
 		\]
 
 \[
-F = \exp \{ \frac 1 2 \int^x b \}, \quad
-Q= c- \frac {b'+ b^2/2} 2
+F = \exp \{ \frac 1 2 \int^x \frac {p'} p  \}, \quad
+Q= \frac 1 p (q+\lambda r)- \frac {\frac {p'} p'+ (\frac {p'} p)^2/2} 2
 \]
 
+\[
+F = \exp \{ \frac 1 2 \int^x \frac {p'} p  \}, \quad
+Q= \frac 1 p (q+\lambda r)- \frac {\frac {p'} p'+ (\frac {p'} p)^2/2} 2
+\]
 
 
 
