@@ -3098,10 +3098,6 @@ v'' + \left(1-\frac{4\nu^2-1}{4 x^2}  \right) v =0
 
 
 
-
-
-
-
 	\item 
 		\[
 			xu''+(1-x)u'+\lambda u=0
@@ -3117,11 +3113,19 @@ Q= \frac \lamb x - \frac {- \frac 1 {x^2}+ (1/x-1)^2/2} 2
 Q= \frac \lamb x - \frac {- \frac 1 {2x^2}+ -1/x+1/2} 2
 \]
 \[
-	F = \exp \{ \frac 1 2 [\ln x-x ] \}, \quad
-Q= \frac \lamb x + \frac 1 {4x^2}+ 1/2x-1/4
+	F = \sqrt x e^{-x/2} , \quad
+Q= \frac {2\lamb+ 1} {2x} + \frac 1 {4x^2} -1/4
 \]
+And our equation becomes:
+	\[
+		v =\sqrt x e^{-x/2}  u(x), \quad
+		v''+
+		\left(
+		\frac {2\lamb+ 1} {2x} + \frac 1 {4x^2} -1/4
+		\right)
+		v=0
+	\]
 
-********************************\\
 
 
 
@@ -3151,6 +3155,15 @@ Q=\frac{ \alpha^2} { 1-x^2}  - \frac {1+x^2} {  2(1-x^2)^2}+\frac 1 4 \frac x { 
 	F = | 1-x^2|^{\frac 1 4 }   , \quad
 Q=\frac{ \alpha^2( 1-x^2)  - \frac 1 2(1+x^2) + \frac x 4 }  { (1-x^2)^2 } 
 \]
+And our equation becomes:
+	\[
+		v =| 1-x^2|^{\frac 1 4 }  u(x), \quad
+		v''+
+		\left(
+\frac{ \alpha^2( 1-x^2)  - \frac 1 2(1+x^2) + \frac x 4 }  { (1-x^2)^2 } 
+		\right)
+		v=0
+	\]
 
 
 
@@ -3167,11 +3180,29 @@ Q= \frac 1 p (q+\lambda r)- \frac {\frac {p'} p'+ (\frac {p'} p)^2/2} 2
 \]
 
 \[
-F = \exp \{ \frac 1 2 \int^x \frac {p'} p  \}, \quad
-Q= \frac 1 p (q+\lambda r)- \frac {\frac {p'} p'+ (\frac {p'} p)^2/2} 2
+F = \exp \{ \frac 1 2 \ln (p(x))  \}, \quad
+Q= \frac 1 p (q+\lambda r)- \frac {\frac {p''p + (p')^2} p+ (\frac {p'} p)^2/2} 2
 \]
 
+\[
+	F = \sqrt {p(x)}  \}, \quad
+Q= \frac 1 p (q+\lambda r)- \frac {p''p + 3/2(p')^2} {2 p} 
+\]
 
+\[
+	F = \sqrt {p(x)}  \}, \quad
+Q= \frac { 2(q+\lambda r)-p''p - 3/2(p')^2} {2 p} 
+\]
+
+And our equation becomes:
+	\[
+		v =\sqrt { p( x)}   u(x), \quad
+		v''+
+		\left(
+\frac { 2(q+\lambda r)-p''p - 3/2(p')^2} {2 p} 
+		\right)
+		v=0
+	\]
 
 
 
@@ -3181,18 +3212,40 @@ Q= \frac 1 p (q+\lambda r)- \frac {\frac {p'} p'+ (\frac {p'} p)^2/2} 2
 			+ l (l+1) - \frac {m^2} {\sin^2\theta} 
 			\right]u =0
 		\]
+		\[
+			\left[   \ddt {} {\theta} + \cot \theta \dd {} \theta  
+			+ l (l+1) - \frac {m^2} {\sin^2\theta} 
+			\right]u =0
+		\]
 
 \[
-F = \exp \{ \frac 1 2 \int^x b \}, \quad
-Q= c- \frac {b'+ b^2/2} 2
+F = \exp \{ \frac 1 2 \int^x \cot \theta \di \theta \}, \quad
+Q= l (l+1) - \frac {m^2} {\sin^2\theta}- \frac {\cot \theta'+ \cot \theta^2/2} 2
+\]
+\[
+F = \exp \{ \frac 1 2 \ln [\sin x]  \}, \quad
+Q= l (l+1) - m^2\csc^2 \theta- \frac {\csc^2 \theta+ \cot \theta^2/2} 2
 \]
 
+\[
+	F = \sqrt{ \sin x }  \}, \quad
+Q= 
+l (l+1) + \csc^2\theta\left[
+	- m^2- \frac {1+ \cos^2\theta/2} 2
+	\right] 
+\]
 
-
-
-
-
-
+And our equation becomes:
+	\[
+		v =\sqrt {\sin x}  u(x), \quad
+		v''+
+		\left(
+l (l+1) + \csc^2\theta\left[
+	- m^2- \frac {1+ \cos^2\theta/2} 2
+	\right] 
+		\right)
+		v=0
+	\]
 	\end{enumerate}
 \end{Porb}
 
@@ -3213,13 +3266,21 @@ Q= c- \frac {b'+ b^2/2} 2
 		\]
 		From here it suffices to show that this constant is zero. Once there the same logic as in the end of theorem 3 applies and we would see that $\frac {u_m'} {u_m} = \frac {u_n'} {u_n} \Rw u_m = k u_n$.
 		To this end notice that 
-
 		\[
 		\lim_{x\rw \infty}
 			 u_m u_n' - u_m' u_n = C \Rw 
+		\lim_{x\rw \infty}
+			 u_m u_n' - 
+		\lim_{x\rw \infty}
+			 u_m' u_n  
 			\]
+		Now if $u'_n, u'_m$ are bounded as $x \rw \infty$ then we are done and get:
+		\[
+		\lim_{x\rw \infty}
+			 u_m u_n' - u_m' u_n =  0
+		 \]
 
-			******************************************\\
+			************ASK GERLACH******************************\\
 
 **********Packet Note*********************\\
 
@@ -3249,6 +3310,7 @@ Q= c- \frac {b'+ b^2/2} 2
 			\item
 				The given funciton part of the question is a typeo. 
 				The eigenvalues are $\pm 1$ ($\psi(x) = \lamb \psi(-x)$) and the eigenfuncitons are even and odd functions.
+				(The logic here is the same when we found the eigenvalues of $\FF^2$, basiclly $P^2 =I \di$ and we see $\lamb^2 = 1$) 
 			\item
 				\[
 					\I P L P \psi(x) =

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  27 FEB 2020 12:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2020.2.5)  27 FEB 2020 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -704,48 +704,43 @@ m/it/12 l\U/matha/m/n/12 qyx[]\OML/cmm/m/it/12 ^^^\U/matha/m/n/12 p\OT1/cmr/m/n
  q\OML/cmm/m/it/12 ; f\U/matha/m/n/12 p\OML/cmm/m/it/12 u\U/matha/m/n/12 qy
  []
 
-[35] [36] [37] [38] [39] [40] [41]
-Underfull \hbox (badness 10000) in paragraph at lines 3124--3125
-
- []
-
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 3222--3223
+[35] [36] [37] [38] [39] [40] [41] [42] [43]
+Underfull \hbox (badness 10000) in paragraph at lines 3283--3284
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3224--3225
-
- []
-
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 3275--3277
+Underfull \hbox (badness 10000) in paragraph at lines 3285--3286
 
  []
 
 [44]
-Underfull \hbox (badness 10000) in paragraph at lines 3351--3352
+Underfull \hbox (badness 10000) in paragraph at lines 3337--3339
+
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 3413--3414
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3354--3355
+Underfull \hbox (badness 10000) in paragraph at lines 3416--3417
 
  []
 
-[45] [46] [47] [48]
-Underfull \hbox (badness 10000) in paragraph at lines 3633--3634
+[46] [47] [48]
+Underfull \hbox (badness 10000) in paragraph at lines 3695--3696
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3718--3719
+Underfull \hbox (badness 10000) in paragraph at lines 3780--3781
 
  []
 
 [49] [50]
-Overfull \hbox (15.3666pt too wide) detected at line 3804
+Overfull \hbox (15.3666pt too wide) detected at line 3866
 \U/matha/m/n/12 ^^P [][] ^^A [][] \OML/cmm/m/it/12 u[]v[] \U/matha/m/n/12 ^^@ \
 OML/cmm/m/it/12 a\U/matha/m/n/12 p\OML/cmm/m/it/12 x\U/matha/m/n/12 q\OML/cmm/m
 /it/12 uv[] \U/matha/m/n/12 ^^A \OML/cmm/m/it/12 b\U/matha/m/n/12 p\OML/cmm/m/i
@@ -757,57 +752,57 @@ U/matha/m/n/12 ^^P [][] ^^@ [][] \OML/cmm/m/it/12 uv[] \U/matha/m/n/12 ^^A \OML
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3830--3831
+Underfull \hbox (badness 10000) in paragraph at lines 3892--3893
 
  []
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 3859--3860
+Underfull \hbox (badness 10000) in paragraph at lines 3921--3922
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3895--3899
+Underfull \hbox (badness 10000) in paragraph at lines 3957--3961
 
  []
 
 [52]
-Underfull \hbox (badness 10000) in paragraph at lines 3938--3939
+Underfull \hbox (badness 10000) in paragraph at lines 4000--4001
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 3969--3972
+Underfull \hbox (badness 10000) in paragraph at lines 4031--4034
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4014--4015
+Underfull \hbox (badness 10000) in paragraph at lines 4076--4077
 
  []
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 4079--4081
+Underfull \hbox (badness 10000) in paragraph at lines 4141--4143
 
  []
 
 [55] [56] [57]
-Underfull \hbox (badness 10000) in paragraph at lines 4242--4243
+Underfull \hbox (badness 10000) in paragraph at lines 4304--4305
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4256--4258
+Underfull \hbox (badness 10000) in paragraph at lines 4318--4320
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 4333--4335
+Underfull \hbox (badness 10000) in paragraph at lines 4395--4397
 
  []
 
 [59] [60] [61] [62]
-Underfull \hbox (badness 10000) in paragraph at lines 4617--4619
+Underfull \hbox (badness 10000) in paragraph at lines 4679--4681
 
  []
 
@@ -816,32 +811,32 @@ Overfull \vbox (129.15536pt too high) has occurred while \output is active []
 
 
 [66] [67]
-Underfull \hbox (badness 10000) in paragraph at lines 4907--4909
-
- []
-
-[68]
-Underfull \hbox (badness 10000) in paragraph at lines 4917--4918
-
- []
-
-[69]
 Underfull \hbox (badness 10000) in paragraph at lines 4969--4971
 
  []
 
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 4979--4980
+
+ []
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 5031--5033
+
+ []
+
 [70]
-Underfull \hbox (badness 10000) in paragraph at lines 4994--4996
+Underfull \hbox (badness 10000) in paragraph at lines 5056--5058
 
  []
 
 [71]
-Underfull \hbox (badness 10000) in paragraph at lines 5074--5076
+Underfull \hbox (badness 10000) in paragraph at lines 5136--5138
 
  []
 
 [72] [73]
-Underfull \hbox (badness 10000) in paragraph at lines 5170--5171
+Underfull \hbox (badness 10000) in paragraph at lines 5232--5233
 
  []
 
@@ -878,7 +873,7 @@ ts/type1/public/mathabx-type1/mathb12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb>
 Output written on Linear-Math-In-Infinite-Dimensions-Exercises-and-Thoughts-mai
-n-1.pdf (75 pages, 372670 bytes).
+n-1.pdf (75 pages, 375291 bytes).
 PDF statistics:
  336 PDF objects out of 1000 (max. 8388607)
  234 compressed objects within 3 object streams
