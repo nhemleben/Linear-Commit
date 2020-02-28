@@ -1,0 +1,123 @@
+
+
+
+
+
+%This is the sloppy parts document
+
+
+\documentclass[12pt]{article} 
+\usepackage{esvect, graphicx,relsize, verbatim, amssymb, amsmath, amsthm, mathabx,dcolumn,mathrsfs, dsfont, enumerate, soul, titlesec}
+\newcolumntype{2}{D{.}{}{2.0}}
+\textwidth = 7 in
+\textheight = 9.5 in
+\oddsidemargin = -0.3 in
+\evensidemargin = -0.3 in
+\topmargin = -0.4 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+\titlespacing*{\section}
+{0pt}{0ex plus .1ex minus .2ex}{.1ex plus .1ex}
+\titlespacing*{\subsection}
+{0pt}{.5ex plus .1ex minus .2ex}{.3ex plus .2ex}
+\DeclareMathOperator{\Gal}{Gal}	
+\DeclareMathOperator{\gal}{Gal}	
+\DeclareMathOperator{\im}{Image}
+\DeclareMathOperator{\Ann}{Ann}	
+\DeclareMathOperator{\spn}{span}	
+\DeclareMathOperator{\sgn}{sgn}	
+\DeclareMathOperator{\sinc}{sinc}	
+\DeclareMathOperator{\rect}{rect}	
+\newcommand{\CC}{\mathbb{C}}	
+\newcommand{\GG}{\mathbb{G}}	
+\newcommand{\LL}{\mathbb{L}}	
+\newcommand{\NN}{\mathbb{N}}	
+\newcommand{\PP}{\mathbb{P}}	
+\newcommand{\QQ}{\mathbb{Q}}	
+\newcommand{\RR}{\mathbb{R}}	
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathcal{F}}	
+\newcommand{\one}{\mathds{1}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\s}[1]{\sqrt{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\I}[1]{#1^{-1}}
+\newcommand{\Rw}{\Rightarrow}
+\newcommand{\Lw}{\Leftarrow}
+\newcommand{\lw}{\leftarrow}
+\newcommand{\rw}{\rightarrow}
+\newcommand{\p}{\partial}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\sumi}{\sum_{i=0}}
+\newcommand{\sumo}{\sum_{i=1}}
+\newcommand{\num}[1]{{\large \bf  #1)}}
+\newcommand{\del}{\Delta}
+\newcommand{\lamb}{\lambda}	
+\newcommand{\al}{\alpha}	
+\newcommand{\nab}{\nabla}	
+\newcommand{\pp}[2]{\frac{\p #1}{\p #2}}
+\newcommand{\di}{\mathrm{d}}
+\newcommand{\dd}[2]{\frac{\di #1}{\di #2}}
+\newcommand{\ddt}[2]{\frac{\di^2 #1}{\di #2 ^2}}
+\newcommand{\intinf}{\int\limits_{-\infty}^\infty}	
+\newcommand{\suminf}[1]{\sum_{#1 = -\infty}^\infty}	
+\newcommand{\ispi}{\frac 1 {\sqrt{2 \pi}} }
+\newcommand{\comb}[2]{\text{comb}_#1 (#2) }
+\newtheorem{thm}{Theorem}
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{lem}{Lemma}[section]
+\newcounter{Prb}%[subsection]
+\newenvironment{Porb}[1][]{
+	\refstepcounter{Prb}\par\medskip 
+   \noindent \textbf{\thesubsection~Problem~\thePrb. 
+   #1
+   }
+		       }
+   {\medskip \hrule}
+   %Just need one hline at the end [otheriwse double thicc lines
+\newenvironment{Boxed}{\begin{center}
+	           \begin{tabular}{|p{0.9\textwidth}|}
+			       \hline\\
+	           }
+	       { 
+           \\\\\hline
+	       \end{tabular} 
+           \end{center}
+		       }
+%So basicly the problem envorment does not want ot box stuff 
+%To combat this we use 2 enviroments, the first being Problem
+%the second being boxed
+%Problem goes in box
+%Solution goes outside box
+%Hlines for everyone and the world is happy
+%%%%% End of preamble %%%%%
+\begin{document}
+\title{Linear Math In Infinte Dimensions}
+{\Large Nicholas Hemleben} \hfill
+{\large Linear Math In Infinte Dimensions}  
+\hfill  \today
+
+
+So a quick list of the cocners I have so far:
+\begin{enumerate}
+	\item Problem 1.5.3, not really the problem itself but the discussion we had about the iff condition for bandwith limited functions satisfying the inner product equaiton.
+	\item
+		2.3.5, I have what I believe is a counter example to part ii.
+
+	\item
+		2.6.4  *************\\
+	\item
+		3.3.2, just the condition that the soltuions have bounded derivatives as $x \rw \infty$. Basicly just ensuriing the conditions to maek the WOrshrank be 0 where we need it.
+
+	\item
+		The placements of problems 4.3.3 and 4.3.4 in the book before the section outlining how to construct Green's functions.
+
+\end{enumerate}
+
+
+
+\end{document}
