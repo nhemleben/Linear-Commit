@@ -31,7 +31,7 @@
 \newcommand{\QQ}{\mathbb{Q}}	
 \newcommand{\RR}{\mathbb{R}}	
 \newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\FF}{\mathfrak{F}}	
+\newcommand{\FF}{\mathcal{F}}	
 \newcommand{\one}{\mathds{1}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
@@ -3274,17 +3274,13 @@ l (l+1) + \csc^2\theta\left[
 		\lim_{x\rw \infty}
 			 u_m' u_n  
 			\]
-		Now if $u'_n, u'_m$ are bounded as $x \rw \infty$ then we are done and get:
+		Now since $u'_n, u'_m$ are bounded and continuous as $x \rw \infty$ then we are done and get:
 		\[
 		\lim_{x\rw \infty}
 			 u_m u_n' - u_m' u_n =  0
 		 \]
 
-			************ASK GERLACH******************************\\
-
-**********Packet Note*********************\\
-
-
+			************Message? GERLACH******************************\\
 \end{Porb}
 
 
@@ -3335,12 +3331,17 @@ l (l+1) + \csc^2\theta\left[
 					\]
 
 					Thus $\I P L P = L$. 
-					*******************************************\\
-
-					Thus if $\mu, u_n$ are eigenvector 
-
-
-
+					$L P = P L$,
+					Notice that $L$ and $P$ are self adjoint and therfore Hermetian operators. Since they commute we realie that they share an eigenbases. We can see this with the following:
+					if $u, \lamb$ are eigenvalues of P, then
+					\[
+					L P u  = \lamb L u= P L u 
+						\]
+						Thus $Lu$ is also an eigenvector of P with eigenvalue $\lamb$. Now P in this paticular case is degenerate and we see that L maps $u$ back into $W_\lamb$ the space of eigenvectors to P with value $\lamb$.
+						Now thinking along similar lines but swapping $L$ with P we see that.
+						$Pv$ is an eigenvector of $L$ with value $\lamb'$. We know however now that L is nondegenerate and only has unique eigenvectors.
+						Thus we see that $Pv$ is forced to be a multiple of $v$ the original eigenvector.
+						Thus for some $\mu$ we have $P v = \mu v$ and we see that this hold for any eigenvector.
 		\end{enumerate}
 
 \end{Porb}
@@ -3410,13 +3411,13 @@ l (l+1) + \csc^2\theta\left[
 					\hat L \hat \psi (\omega ) = L \phi (\omega)
 					\]
 
-					******************DOUBLE CHECK********************\\
-
 			\item
-				**************************\\
-
-
-
+				Using the same logic as in part 2 of the above problem we see that since $\FF$ is self adjoint and $L$ is non degenerate and self adjoint, that $\FF u_n = \mu u_n$ for eigefunctions $u_n$ of L.
+				Now we know from the problem on page 75 that $\FF u_n = \mu u_n$ forces $\mu$ to be a root of unity, namely a root of $x^4 =1$.
+				Thus for any Hermite-Gauss polynomial, its fourier transform is itself times some root of unity.
+				Thus we can see that $\{ \FF^{k} u_n | n \in \NN, k \in \{0,1,2,3\} \}$ is an orthogonal system of functions
+				and is an eigenbassi for the Fourier transform in terms of the eigenbasis of the S-L operator L.
+				*****************THINK ABOUT A LITTLE MORE???***************************\\
 		\end{enumerate}
 
 \end{Porb}
@@ -3683,16 +3684,18 @@ Consider the S-L System:
 %			\right]u = \lambda u
 %		\]
 %				TO make the suggested substitiution work and the resulting ODE the Bessel equation of the order we wanted, namely $\nu$.
-%
-
-
 			\item
+				Since $ J_\nu ( \sqrt {\lamb} x) $ is a solution to the eigenvalue problem and we get non degenerate eigenvalues by the regularity of the SL set up, we see that for whatever eigenvalues $\lamb_n$ there are that 
 				\[
 					u_n (x) = J_\nu ( \sqrt {\lamb_n} x)
 					\]
-					Let $u_n(x) $ be a solution of the above equation, then 
+					is the eigenfunction.
 					
-					**********************************\\
+					It just remains to show that the eigenvalues are zeros of $J_\nu(\sqrt \lamb )$
+
+
+
+					********************************************************************\\
 
 			\item
 				We know that in genral for a S-L problem with eigenvectors $u_n, u_m$ that we have:
@@ -3777,13 +3780,16 @@ Consider the S-L System:
 				\]
 
 
-					***********************************\\
 
 			
 			\item
 				\[
 					f(x) = \sum_{n=1}^\infty c_n u_n(x)
 					\]
+
+					*********************************************************************\\
+
+
 		\end{enumerate}
 
 \end{Porb}
@@ -5241,8 +5247,102 @@ Assume the two membranes
 %2
 \begin{Porb}
 \begin{Boxed}
-	zt
+	
+	\begin{enumerate}[a)]
+	\item
+		Exhibit the pde which each of the scalars $\Phi, \cdots, \Phi^{TM}$, satifies, point out why each solution is unique and why
+			\[
+				( \phi, A_z, A_x, A_y ) ^T 
+				\leftrightarrow
+				\left ( \Phi, \Phi^{TE} , \Psi, \Phi^{TM} \right )
+			\]
+				is a one to one maping.
+				****************************SOLUTION HINT IN PROBLEM****************
+
+	\item
+		Point out why the four vectors
+
+			\[
+				\left \{
+				\begin{bmatrix}
+					0\\
+					0\\
+					\partial_y \\
+					-\partial_x
+				\end{bmatrix}
+				,
+				\begin{bmatrix}
+					-\partial_z \\
+					\partial_t\\
+					0\\
+					0
+				\end{bmatrix}
+				,
+				\begin{bmatrix}
+					-\partial_t\\
+					\partial_z \\
+					0\\
+					0
+				\end{bmatrix}
+				,
+				\begin{bmatrix}
+					0\\
+					0\\
+					\partial_x\\
+					\partial_y 
+				\end{bmatrix}
+				\right \}
+				\]
+				form a linearly indepente set.
+		\item
+			SHow that the set of vecotrs
+			\[
+				\left \{
+					\vec \nu^{(1)}
+					=
+				\begin{bmatrix}
+					0\\
+					0\\
+					\partial_y \\
+					-\partial_x
+				\end{bmatrix}
+				,
+					\vec \nu^{(2)}
+					=
+				\begin{bmatrix}
+					-\partial_z \\
+					\partial_t\\
+					0\\
+					0
+				\end{bmatrix}
+				,
+					\vec \nu^{(3)}
+					=
+				\begin{bmatrix}
+					\partial_t c\\
+					-\partial_z c \\
+					\partial_x d \\
+					\partial_y d 
+				\end{bmatrix}
+				,
+					\vec \upsilon_r
+					=
+				\begin{bmatrix}
+					-\partial_t \\
+					\partial_z  \\
+					\partial_x  \\
+					\partial_y  
+				\end{bmatrix}
+				\right \}
+				\]
+				where $c = \partial_x^2 + \partial_y^2$, and $d = \partial_z^2 - \partial_t^2$
+				also form a linearly independent set.
+\end{enumerate}
+
 \end{Boxed}
+
+***********************************\\
+
 \end{Porb}
 
 
@@ -5251,6 +5351,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 
@@ -5259,6 +5360,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 
@@ -5267,6 +5369,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 
@@ -5275,6 +5378,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 
@@ -5283,6 +5387,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 
@@ -5291,6 +5396,7 @@ Assume the two membranes
 \begin{Boxed}
 	zt
 \end{Boxed}
+***********************************\\
 \end{Porb}
 
 %9
@@ -5299,6 +5405,7 @@ Assume the two membranes
 	zt
 \end{Boxed}
 
+***********************************\\
 
 \end{Porb} 
 \end{document} 
