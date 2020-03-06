@@ -3691,11 +3691,8 @@ Consider the S-L System:
 					\]
 					is the eigenfunction.
 					
-					It just remains to show that the eigenvalues are zeros of $J_\nu(\sqrt \lamb )$
-
-
-
-					********************************************************************\\
+					It just remains to show that the eigenvalues are zeros of $J_\nu(\sqrt \lamb )$. Despite the amount of time I thought about this, this is easily done.
+					Namely the boundary conditions are $u(1) =0 = J_\nu(\sqrt \lamb)$ thus $\sqrt \lamb$ must be a positive zero of the bessel function $J_\nu$. Thus the eigenvalues are squares of the positive zeros of $J_\nu$.
 
 			\item
 				We know that in genral for a S-L problem with eigenvectors $u_n, u_m$ that we have:
@@ -3779,6 +3776,41 @@ Consider the S-L System:
 					\right]
 				\]
 
+				*******************MESSAGE GERLACH ABOUT***************\\
+				We have that 
+				\[
+					J'_\nu(z) = J_{\nu-1}(z) - \frac \nu z J_\nu(z)
+					\]
+					And differentiating the above
+				\[
+					J''_\nu(z) 
+					= J'_{\nu-1}(z)  
+					+\frac \nu {z^2} J_\nu(z)
+					-\frac \nu z J'_\nu(z)
+					\]
+					Now subbing the \emph{above} into the above
+					\[
+					= 
+					J_{\nu-2}(z) - \frac {\nu-1} z J_{\nu-1}(z)
+					+\frac \nu {z^2} J_\nu(z)
+					-\frac \nu z 
+			\left( J_{\nu-1}(z) - \frac \nu z J_\nu(z) \right)
+					\]
+
+					Using this we can rewrite the above as:
+				\[
+				=\frac 1 {2 }
+				\left[
+				J_\nu'( \sqrt \lamb )^2
+					-  
+					J_\nu( \sqrt \lamb )
+					\left(
+					\frac 1 {\sqrt \lamb}  J_\nu'( \sqrt \lamb )
+					+  
+					J'_{\nu-1}(\sqrt \lamb ) - \frac \nu {\sqrt \lamb}  J'_\nu(\sqrt \lamb)
+					\right)
+					\right]
+				\]
 
 
 			
@@ -3786,9 +3818,20 @@ Consider the S-L System:
 				\[
 					f(x) = \sum_{n=1}^\infty c_n u_n(x)
 					\]
+					What we need to do is determine $c_n$ above
 
-					*********************************************************************\\
-
+			\[
+				c_n = \langle f, u_n \rangle
+				=
+				\int_0^1 f(x) u_n(x) x \di x
+			\]
+			Now we can write this expansion in terms of the original un normalized bessel functions.
+			\[
+				=
+				\frac 1 { \int \omega_n^2 \di x} 
+				 \int_0^1 f(x) J_\nu(\sqrt \lamb_n x) x \di x
+			\]
+			*********************FINISH SIMPLIFYING NORMALZIATION THING*******************\\
 
 		\end{enumerate}
 
@@ -3960,11 +4003,8 @@ Consider the S-L System:
 \end{Porb}
 
 
-**********************************************\\
-THere are methods to solve these problems but they are from later sections and it is unclear if these are special cases or if I should just use the general method.
-I am going to use the construiton method from later sections, it is probably an oversight and if it is not then this will help me with divine foresight see the solutions.
-**********************************************\\
-
+*************************MESSAGE GERLACH AOBUT ORDER ISSUE WITH THESE PROBLEMMS*******************\\
+Also no boundary conditions ********************************************\\
 %3
 \begin{Porb}
 \begin{Boxed}
@@ -3983,31 +4023,106 @@ I am going to use the construiton method from later sections, it is probably an 
 		\end{enumerate}
 		ie. solve the equations $Lu = - \delta(x- \xi)$ with the given boundary conditions.
 \end{Boxed}
+
+				To construct the Green's function we begin by finding two functions ($u_1, u_2$) that satisfy:
+				\[
+					L u_1 = 0 
+					, \quad
+					\alpha u_1(a) + \alpha ' u'_1(a) = 0
+					\]
+				\[
+					L u_2 = 0 
+					, \quad
+					\beta u_2(b) + \beta' u'_2(b) = 0
+					\]
+					From this we construct the Green's fucntion via
+					\[
+					G( x, \zeta) = 
+					\frac {-1} c 
+				\begin{cases}
+					u_1(x) u_2(\zeta) \text{ for } x < \zeta  \\
+					u_1(\zeta ) u_2(x ) \text{ for } \zeta  < x 
+				\end{cases}
+				\]
+				with $c = p(x) [ u_1(x) u_2'(x) - u_1'(x) u_2(x) ] $
 		\begin{enumerate}[a)]
 			\item
-				Green's funciton is defined by:
+				We don't have boundary conditions here ($\alpha, \alpha'=0$).
+				\[
+					L u_1 = \dd {} x x \dd {u_1} x  =  0 
+					\]
+					Integrating we get:
+				\[
+					 x \dd {u_1} x  =  C 
+					 \quad \Rw  \quad 
+					  \dd {u_1} x  =  \frac C x
+					\]
+					Which then gives (since $u_2$ has the same conditions)
+					\[
+					  u_1  =  C_1 \ln x
+					  , \quad u_2  =  C_2 \ln x
+					\]
+					Thus 
+					\[
+						G(x, \zeta) =
+					\frac {-1} c 
+				\begin{cases}
+					C_1 C_2 \ln x \ln \zeta \text{ for } x < \zeta  \\
+					C_1 C_2 \ln x \ln \zeta \text{ for } \zeta  < x 
+				\end{cases}
+						\]
+					
 
-			\[
-				LG( x; \zeta) =  \dd {} x x \dd {G(x; \zeta) } x =- \delta( x - \zeta) 
-			\]
-				Now if we integrate both sides we get:
-			\[
-				 x \dd {G(x; \zeta) } x =- H( x - \zeta) 
-				 \Rw
-				  \dd {G(x; \zeta) } x =- \frac 1 x H( x - \zeta) 
-			\]
-				Where H is the heavyside function. Now we can integrate once more:
-			\[
-				G(x; \zeta)  =-\int^{x_0} \frac 1 x H( x - \zeta) \di x
-			\]
+
+
+%			\[
+%				LG( x; \zeta) =  \dd {} x x \dd {G(x; \zeta) } x =- \delta( x - \zeta) 
+%			\]
+%				Now if we integrate both sides we get:
+%			\[
+%				 x \dd {G(x; \zeta) } x =- H( x - \zeta) 
+%				 \Rw
+%				  \dd {G(x; \zeta) } x =- \frac 1 x H( x - \zeta) 
+%			\]
+%				Where H is the heavyside function. Now we can integrate once more:
+%			\[
+%				G(x; \zeta)  =-\int^{x_0} \frac 1 x H( x - \zeta) \di x
+%			\]
 
 					
 			\item
-**********************************************\\
 				\[
 					Lu(x) = \dd {} x x \dd {u(x)} x - \frac { n^2} x u(x) 
 					\]
 					with $y(0)$ finite and $y(1)=0$.
+
+				\[
+					\left[ \dd {} x x \dd {} x - \frac { n^2} x \right] u_1 = 0 
+					, \quad
+					u_1(0) < \infty
+					\]
+				\[
+					\left[ x \ddt {} x +  \dd {} x - \frac { n^2} x \right] u_1 = 0 
+					\]
+					This is planely bessel's equation of order $n$ and thus its solutions is $J_n(x)$. 
+
+					Now we have the same ODE for $u_2$ but with only th econdiiton that $u_2(1)=0$
+					Thus we can have $Y_n(x)/ Y_n(1)$ so long as $Y_n(1) \neq 0$. 
+
+					So we get:
+					\[
+					G( x, \zeta) = 
+					\frac 1 {Y_n(1)} 
+					\frac {-1} c 
+				\begin{cases}
+					J_n(x) Y_n(\zeta) \text{ for } x < \zeta  \\
+					J_n(\zeta) Y_n(x) \text{ for } \zeta  < x 
+				\end{cases}
+				\]
+				with $c = \frac x {(Y_n(1))^2} [ J_n(x) Y_n'(x) - J_n'(x) Y_n(x) ] $
+
+				****************DESIRED ANSWER?*************************\\
+
 		\end{enumerate}
 
 \end{Porb}
@@ -4033,11 +4148,42 @@ I am going to use the construiton method from later sections, it is probably an 
 	\[
 		L = \ddt {} x + \omega^2
 		\]
+			Following the same method as last problem we find $u_1$ that satisfies
+			\[
+				\ddt {} x u_1 + \omega^2 u_1 = 0,  \quad u_1(a) =0  
+				\]
+				Re arranging terms we see:
+				\[
+		\ddt {u_1} x   = - \omega^2 u_1 
+			\]
+			We see $e^{i \omega x}$ is a solution, and noting the boundary condiitons we see that: 
+			\[
+				u_1(x) = C \left( e^{i\omega (x-a)} - e^{-i\omega (x-a)}  \right) 
+				\]
+				is a solution.
+				Using the exact same reason we arrive at
+			\[
+				u_2(x) = C \left( e^{i\omega (x-b)} - e^{-i\omega (x-b)}  \right) 
+				\]
+				Realizing some facts about these functions we can write the greens function as:
 
-		Same stuff as 4.7.2
-		***********************************\\
+			\[
+					G( x, \zeta) = 
+					\frac {1} c 
+				\begin{cases}
+					\sin(x-a) \sin(\zeta -b) \text{ for } x < \zeta  \\
+					\sin(\zeta-a) \sin(x -b) \text{ for } \zeta  < x 
+				\end{cases}
+				\]
+				with $c =  \sin(x-a) \cos( x - b) - \cos (x-a) \sin(x-b)  = \sin ( b -a) $
 	\item
+		From the exponential represnetation of the solution we see that $\omega =0$ is a problematic value. This is becasue $\ddt {} x u =0$ has only the solutio $c_1 x + c_2$ which has issues being zero at both end points.
+All other values will have a solution.
 	\item
+	****************************************\\	
+
+
+
 	\end{enumerate}
 \end{Porb}
 
@@ -4143,9 +4289,9 @@ I am going to use the construiton method from later sections, it is probably an 
 		
 
 	\item
+		We notice that the eigenvalue problem is the same as 4.3.4. 
 
-		********8same problem as 4.7.2
-		*****************************************\\
+		*********************************************************\\
 
 	\item
 
@@ -4432,7 +4578,7 @@ Consider the eigenvalue problem
 
 
 \setcounter{subsection}{8}
-\subsection{}
+\subsection{Boundary Value Problem via Green's function: Integral Equations}
 \setcounter{Prb}{0}
 
 %1
@@ -4625,7 +4771,7 @@ We notice that this is a convolutuion:
 
 
 \setcounter{subsection}{10}
-\subsection{}
+\subsection{Spectral Represensation of the Dirac Delta Function}
 \setcounter{Prb}{0}
 
 
@@ -5349,34 +5495,145 @@ Assume the two membranes
 %3
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider a TE e.m. potential and its source:
+	\[
+		[ \phi, A_z, A_x, A_y ] 
+		=
+		[ 0,0, \partial_y \Phi^{TE}, - \partial_x \Phi^{TE} ] 
+		\]
+	\[
+		[ \rho , J_z, J_x, J_y ] 
+		=
+		[ 0,0, \partial_y S^{TE}, - \partial_x S^{TE} ] 
+		\]
+
+\begin{enumerate}
+	\item
+		Which two of the Maxwell field equtions
+		\[
+			\nabla \cdot \vec E = 4 \pi \rho
+			\]
+		\[
+			\nabla \times \vec B  - \partial_t \vec E  = 4 \pi \vec J
+			\]
+			are satisfied trivially, and which imply the nontrivial result:
+			\[
+				\pp {} y \{ \cdots \}^{TE} = 0
+				, \quad
+				\pp {} x \{ \cdots \}^{TE} = 0
+				\]
+	\item
+		What is  $\{ \cdots \}^{TE}$?
+\end{enumerate}
 \end{Boxed}
-***********************************\\
+****HAS HINT*******************************\\
+
 \end{Porb}
 
 
 %4
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider a TM e.m. potential and its source:
+	\[
+		[ \phi, A_z, A_x, A_y ] 
+		=
+		[ 0,0, \partial_y \Phi^{TM}, - \partial_x \Phi^{TM} ] 
+		\]
+	\[
+		[ \rho , J_z, J_x, J_y ] 
+		=
+		[ 0,0, \partial_y S^{TM}, - \partial_x S^{TM} ] 
+		\]
+
+\begin{enumerate}
+	\item
+		Which two of the Maxwell field equtions
+		\[
+			\nabla \cdot \vec E = 4 \pi \rho
+			\]
+		\[
+			\nabla \times \vec B  - \partial_t \vec E  = 4 \pi \vec J
+			\]
+			are satisfied trivially, and which imply the nontrivial result:
+			\[
+				\pp {} y \{ \cdots \}^{TM} = 0
+				, \quad
+				\pp {} x \{ \cdots \}^{TM} = 0
+				\]
+	\item
+		What is  $\{ \cdots \}^{TM}$?
+\end{enumerate}
 \end{Boxed}
-***********************************\\
+****HAS HINT*******************************\\
+
 \end{Porb}
 
 
 %5
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Consider a TEM e.m. potential and its source:
+	\[
+		[ \phi, A_z, A_x, A_y ] 
+		=
+		[ - \p_t \Phi, \p_z \Phi, \partial_x \Phi, \partial_y \Phi ] 
+		\]
+	\[
+		[ \rho , J_z, J_x, J_y ] 
+		=
+		[ - \p_t J, \p_z J, \partial_x J, \partial_y J] 
+		\]
+
+\begin{enumerate}
+	\item
+		Which two of the Maxwell field equtions
+		\[
+			\nabla \cdot \vec E = 4 \pi \rho
+			\]
+		\[
+			\nabla \times \vec B  - \partial_t \vec E  = 4 \pi \vec J
+			\]
+			which imply the result:
+			\[
+				\pp {} t \{ \cdots \}^{TEM} = 0
+				, \quad
+				\pp {} z \{ \cdots \}^{TEM} = 0
+				\]
+			and which imply the result:
+			\[
+				\pp {} x [ \cdots ]^{TEM} = 0
+				, \quad
+				\pp {} y [ \cdots ]^{TEM} = 0
+				\]
+	\item
+		What is  $\{ \cdots \}^{TEM}$? What is  $[ \cdots ]^{TEM}$?
+\end{enumerate}
 \end{Boxed}
-***********************************\\
+
+****HAS HINT*******************************\\
+
 \end{Porb}
 
 
 %6
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Point out why the previous three exercises imply:
+	\[
+		(\p_x^2+ \p_y^2+\p_z^2-\p_t^2) \Phi^{TE} = - 4 \pi S^{TE}
+		\]
+	\[
+		(\p_x^2+ \p_y^2+\p_z^2-\p_t^2) \Phi^{TM} = - 4 \pi S^{TM}
+		\]
+		and
+	\[
+		(\p_x^2+ \p_y^2) ( \Phi -\Psi) = - 4 \pi J
+		\]
+	\[
+		(\p_z^2- \p_t^2) ( \Phi -\Psi) =  4 \pi I
+		\]
+
 \end{Boxed}
 ***********************************\\
 \end{Porb}
@@ -5385,7 +5642,21 @@ Assume the two membranes
 %7
 \begin{Porb}
 \begin{Boxed}
-	zt
+	Show that if I and J satisfy 
+	\[
+		0 = 
+		(\p_z^2- \p_t^2)J + 
+		(\p_x^2+ \p_y^2)I  
+		\]
+		Then there exists a scalar, all it $\Phi -\Psi$ such that 
+	\[
+		(\p_x^2+ \p_y^2) ( \Phi -\Psi) = - 4 \pi J
+		\]
+	\[
+		(\p_z^2- \p_t^2) ( \Phi -\Psi) =  4 \pi I
+		\]
+		are satisfied.
+		Hint: Use Green's function
 \end{Boxed}
 ***********************************\\
 \end{Porb}

@@ -10,16 +10,16 @@
 \contentsline {subsection}{\numberline {2.6}Multiresolutions Analysis}{32}
 \contentsline {section}{\numberline {3}Strum-Liouville Theory}{39}
 \contentsline {subsection}{\numberline {3.3}Strum-Liouville Systems}{39}
-\contentsline {section}{\numberline {4}Green's Function Theory}{50}
-\contentsline {subsection}{\numberline {4.3}Pictorial Definition of a Green's Function}{50}
-\contentsline {subsection}{\numberline {4.7}The Totally Inhomogeneous Boundary Value Problem}{55}
-\contentsline {subsection}{\numberline {4.9}}{60}
-\contentsline {subsection}{\numberline {4.11}}{62}
-\contentsline {section}{\numberline {5}Special Function Theory}{64}
-\contentsline {subsection}{\numberline {5.1}The Helmholtz Equation}{64}
-\contentsline {subsection}{\numberline {5.2}Properties of Hankel and Bessel Functions}{67}
-\contentsline {subsection}{\numberline {5.3}Applications of Hankel and Bessel Functions}{68}
-\contentsline {subsection}{\numberline {5.4}More Properties of Hankel and Bessel Functions}{72}
-\contentsline {subsection}{\numberline {5.5}The Method of Steepest Descent and Stationary Phase}{72}
-\contentsline {section}{\numberline {6}Partial Differential Equations}{72}
-\contentsline {subsection}{\numberline {6.2}System of Partial Differntial Equations: How to solve Maxwell's equations using Linear Algebra}{72}
+\contentsline {section}{\numberline {4}Green's Function Theory}{51}
+\contentsline {subsection}{\numberline {4.3}Pictorial Definition of a Green's Function}{51}
+\contentsline {subsection}{\numberline {4.7}The Totally Inhomogeneous Boundary Value Problem}{56}
+\contentsline {subsection}{\numberline {4.9}Boundary Value Problem via Green's function: Integral Equations}{62}
+\contentsline {subsection}{\numberline {4.11}Spectral Represensation of the Dirac Delta Function}{64}
+\contentsline {section}{\numberline {5}Special Function Theory}{66}
+\contentsline {subsection}{\numberline {5.1}The Helmholtz Equation}{66}
+\contentsline {subsection}{\numberline {5.2}Properties of Hankel and Bessel Functions}{69}
+\contentsline {subsection}{\numberline {5.3}Applications of Hankel and Bessel Functions}{70}
+\contentsline {subsection}{\numberline {5.4}More Properties of Hankel and Bessel Functions}{74}
+\contentsline {subsection}{\numberline {5.5}The Method of Steepest Descent and Stationary Phase}{74}
+\contentsline {section}{\numberline {6}Partial Differential Equations}{74}
+\contentsline {subsection}{\numberline {6.2}System of Partial Differntial Equations: How to solve Maxwell's equations using Linear Algebra}{74}
